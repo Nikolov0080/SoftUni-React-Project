@@ -4,8 +4,8 @@ import { Nav, Navbar } from 'react-bootstrap'
 
 const Navigation = () => {
     return (
-       
-              <Navbar className="navbar-expand-sm" fixed="top" expand="lg">
+
+        <Navbar style={{ position: 'fixed' }} className="navbar-expand-sm" fixed="top" expand="lg">
             <Navbar.Brand href="#home">Beehive</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">

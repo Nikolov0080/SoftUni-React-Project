@@ -1,8 +1,10 @@
 .footer {
-    position: fixed;
+  border-top: 5px solid rgb(213, 221, 100);
+  margin-top: 40px;
     left: 0;
-    bottom: 0;
-    width: 100%;
     color: rgb(19, 2, 2);
     text-align: center;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;     
   }

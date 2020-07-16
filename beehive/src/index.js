@@ -5,12 +5,15 @@ import Footer from './components/footer/footer';
 import * as serviceWorker from './serviceWorker';
 import Navigation from './components/navigation';
 import styles from './main.module.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 // import Sidebar from './components/sidebar/sidebar'
 // import database from './db/firebaseConfig'; // database reference
 
 ReactDOM.render(
 
   <div className={styles.main}>
+
     <Navigation />
 
     <React.StrictMode>
@@ -19,7 +22,7 @@ ReactDOM.render(
 
     <Footer />
   </div>,
-  
+
 
   document.getElementById('root')
 );
