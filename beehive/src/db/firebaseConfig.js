@@ -5,6 +5,9 @@ const firebaseConfig = {
     authDomain: "beehive---0.firebaseapp.com",
     databaseURL: "https://beehive---0.firebaseio.com/",
     storageBucket: "beehive---0.appspot.com"
+
 };
 
-export default firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+export default database;
