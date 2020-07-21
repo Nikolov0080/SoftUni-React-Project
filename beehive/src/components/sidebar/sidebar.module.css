@@ -1,0 +1,18 @@
+.sidebar_container {
+  width: 100%;
+  float: left;
+}
+
+.splitter1 {
+  margin: 0 auto;
+}
+
+.splitter2 {
+  margin: 0 auto;
+}
+
+.helloMessage{
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+}

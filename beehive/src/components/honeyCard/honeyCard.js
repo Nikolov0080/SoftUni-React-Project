@@ -4,6 +4,7 @@ import style from './honeyCard.module.css';
 
 
 const HoneyCard = (props) => {
+    
 console.log(props)
     return (
         <div className={style.card}>

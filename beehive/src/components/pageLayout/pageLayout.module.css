@@ -1,0 +1,19 @@
+.page_container {
+  width:90%;
+  margin: 0 auto;
+}
+
+.inner_container {
+  border: 2px blue solid;
+  margin-top: 10vh;
+  height: 800px;
+}
+
+.over_flow_div {
+  width: 100%;
+  float: right;
+  height: 700px;
+  overflow: auto;
+  border: 2px red solid;
+}
+

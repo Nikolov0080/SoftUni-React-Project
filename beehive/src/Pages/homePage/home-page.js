@@ -1,7 +1,7 @@
 import React from 'react';
 import HoneyCard from '../../components/honeyCard/honeyCard';
-import { Row, Container } from 'react-bootstrap';
-
+import { Row } from 'react-bootstrap';
+import PageLayout from '../../components/pageLayout/pageLayout';
 
 const data = {
   title: "Honey",
@@ -11,18 +11,32 @@ const data = {
 
 function App() {
   return (
-    <div className="container-sm">
-      <Container >
+    <PageLayout>
+      <div className="container-sm">
+
         <Row>
           <HoneyCard {...data} />
           <HoneyCard {...data} />
           <HoneyCard {...data} />
           <HoneyCard {...data} />
           <HoneyCard {...data} />
+          <HoneyCard {...data} />
         </Row>
-      </Container>
-    </div>
+
+
+      </div>
+    </PageLayout>
+
   );
 }
 
 export default App;
+//  <Container >
+//         <Row>
+//           <HoneyCard {...data} />
+//           <HoneyCard {...data} />
+//           <HoneyCard {...data} />
+//           <HoneyCard {...data} />
+//           <HoneyCard {...data} />
+//         </Row>
+//       </Container>
