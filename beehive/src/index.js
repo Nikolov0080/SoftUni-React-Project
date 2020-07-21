@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Beehive from './Beehive';
+import Beehive from './Pages/homePage/home-page';
 import Footer from './components/footer/footer';
 import * as serviceWorker from './serviceWorker';
 import Navigation from './components/navigation';
