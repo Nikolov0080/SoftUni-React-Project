@@ -5,14 +5,14 @@
 
 .inner_container {
   border: 2px blue solid;
-  margin-top: 10vh;
-  height: 800px;
+  margin-top: 8vh;
+  height: 120px;
 }
 
 .over_flow_div {
   width: 100%;
-  float: right;
-  height: 700px;
+  float: auto;;
+  height: 695px;
   overflow: auto;
   border: 2px red solid;
 }

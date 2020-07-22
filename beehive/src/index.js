@@ -1,15 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Beehive from './Pages/homePage/home-page';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-// import Sidebar from './components/sidebar/sidebar'
-// import database from './db/firebaseConfig'; // database reference
+import './main.module.css'
+import PageRouter from './router';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Beehive />
+    <PageRouter />
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -11,8 +11,10 @@
   margin: 0 auto;
 }
 
-.helloMessage{
+.helloMessage {
   margin: 0 auto;
   text-align: center;
   padding: 20px;
+  font-family:  Times New Roman Times serif;
+  color: rgb(119, 113, 23)
 }

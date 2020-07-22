@@ -2,6 +2,7 @@ import React from 'react';
 import HoneyCard from '../../components/honeyCard/honeyCard';
 import { Row } from 'react-bootstrap';
 import PageLayout from '../../components/pageLayout/pageLayout';
+import Sidebar from '../../components/title/title';
 
 const data = {
   title: "Honey",
@@ -12,8 +13,8 @@ const data = {
 function App() {
   return (
     <PageLayout>
-      <div className="container-sm">
-
+      <Sidebar />
+      <div className="container-lg">
         <Row>
           <HoneyCard {...data} />
           <HoneyCard {...data} />
@@ -22,21 +23,9 @@ function App() {
           <HoneyCard {...data} />
           <HoneyCard {...data} />
         </Row>
-
-
       </div>
     </PageLayout>
-
   );
 }
 
 export default App;
-//  <Container >
-//         <Row>
-//           <HoneyCard {...data} />
-//           <HoneyCard {...data} />
-//           <HoneyCard {...data} />
-//           <HoneyCard {...data} />
-//           <HoneyCard {...data} />
-//         </Row>
-//       </Container>
