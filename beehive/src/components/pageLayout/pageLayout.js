@@ -5,17 +5,17 @@ import style from './pageLayout.module.css'
 import Title from '../title/title';
 
 class PageLayout extends Component {
-constructor(props){
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state={
-      title:  this.props.title
+        this.state = {
+            title: this.props.title
+        }
     }
-}
     render() {
         return (
             <div className={style.page_container}>
- <Title title={this.state.title} />
+                <Title title={this.state.title} />
                 <Navigation />
 
                 <div className={style.inner_container}>
