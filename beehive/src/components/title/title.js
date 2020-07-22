@@ -1,31 +1,25 @@
 import React, { Component } from 'react';
 import style from './title.module.css';
-import { Nav, NavDropdown } from 'react-bootstrap';
 
-class Sidebar extends Component {
 
+class Title extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            title: this.props.title
+        };
+    }
 
     render() {
         return (
             <div className={style.sidebar_container}>
-                <Nav className="navbar-expand-lg"               >
-                    <div className={style.splitter1}>
-                        <NavDropdown title="Honey one">
-                            <NavDropdown.Item href="#action/3.1">Honey-1</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.2">Honey-1</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.3">Honey-1</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Honey-1</NavDropdown.Item>
-                        </NavDropdown>
-                    </div>
-                </Nav>
-                <h1 className={style.helloMessage}>Hello there, lets take a look at the best honey</h1>
+
+        <h1 className={style.helloMessage}>{this.state.title}</h1>
             </div>
         )
     }
 
 }
 
-export default Sidebar;
+export default Title;

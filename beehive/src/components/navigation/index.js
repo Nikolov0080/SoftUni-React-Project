@@ -1,28 +1,28 @@
 import React from 'react'
-import { Nav, Navbar } from 'react-bootstrap'
+import { Nav, Navbar, Row } from 'react-bootstrap'
 
 
 const Navigation = () => {
     return (
-    
-            <Navbar style={{ maxWidth:'1270px',margin:"0 auto"}} variant="light" fixed="top" bg="light" >
-                <Navbar.Brand href="#home">Beehive</Navbar.Brand>
-                <Navbar.Brand href="#home">Beehive</Navbar.Brand>
-                <Navbar.Brand href="#home">Beehive</Navbar.Brand>
-                <Navbar.Brand href="#home">Beehive</Navbar.Brand>
 
-                    <Nav className="mr-auto">
-                        <Nav.Link href="#link">Order</Nav.Link>
-                    </Nav>
+        <Navbar style={{ maxWidth: '1270px', margin: "0 auto" }} variant="light" fixed="top" bg="light" >
 
-                    <Nav>
-                        <Nav.Link href="#login">Login</Nav.Link>
-                        <Nav.Link href="#login">Register</Nav.Link>
-                    </Nav>
+            <Nav className="m-auto">
+                <Row className="">
 
-              
-            </Navbar>
-      
+                    <Nav.Link href="/">Beehive</Nav.Link>
+
+                    <Nav.Link href="/login">Login</Nav.Link>
+                    <Nav.Link href="/register">Register</Nav.Link>
+                    <Nav.Link href="/order">Order</Nav.Link>
+
+                </Row>
+
+            </Nav>
+
+
+        </Navbar>
+
     )
 
 
