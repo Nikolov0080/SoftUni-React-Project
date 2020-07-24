@@ -14,9 +14,11 @@ class PageLayout extends Component {
     }
     render() {
         return (
+            
             <div className={style.page_container}>
+                 <Navigation />
                 <Title title={this.state.title} />
-                <Navigation />
+               
 
                 <div className={style.inner_container}>
 

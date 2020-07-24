@@ -1,46 +1,30 @@
 import React from 'react'
-import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import style from './index.module.css';
+import NaviItem from '../nav-item/navItem';
 
 const Navigation = () => {
     return (
-
-        <Navbar bsStyle="default" className={style.navBar} variant="light" fixed="top" bg="light" >
-
-            <Nav className="m-auto">
-
-                <Nav.Link>
-                    <Link bsStyle="default" className={style.navItem} to='/'>Beehive</Link>
-                </Nav.Link>
-                <Nav.Link>
-                    <Link bsStyle="default" className={style.navItem} to='/login'>Login</Link>
-                </Nav.Link>
-                <Nav.Link>
-                    <Link bsStyle="default" className={style.navItem} to='/register'>Register</Link>
-                </Nav.Link>
-                <NavDropdown bsStyle="default" className={style.navMenu} title="Menu" id="basic-nav-dropdown">
-                    <NavDropdown.Item bsStyle="default" className={style.dropItem} >
-                        <Nav.Link>
-                            <Link bsStyle="default" className={style.navItem} to='/order'>Place order</Link>
-                        </Nav.Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item bsStyle="default" className={style.dropItem}>
-                        <Nav.Link>
-                            <Link bsStyle="default" className={style.navItem} to='/products'>Our products</Link>
-                        </Nav.Link>
-                    </NavDropdown.Item>
-                </NavDropdown>
-
-
-            </Nav>
-
-
-        </Navbar>
-
+        <div className="bg-primary container-max-width-sm " >
+            <div className="row justify-content-md-center">
+                <div className="row" >
+                    <div className="col-sm bg-primary" >
+                        <NaviItem path="/" link="Home" />
+                    </div>
+                    <div className="col-sm bg-primary">
+                        <NaviItem path="/login" link="Login" />
+                    </div>
+                    <div className="col-sm bg-primary" >
+                        <NaviItem path="/register" link="Register" />
+                    </div>
+                    <div className="col-sm bg-primary" >
+                        <NaviItem path="/order" link="Order" />
+                    </div>
+                    <div className="col-sm bg-primary" >
+                        <NaviItem path="/products" link="Products" />
+                    </div>
+                </div>
+            </div>
+        </div>
     )
-
-
 }
 
 
