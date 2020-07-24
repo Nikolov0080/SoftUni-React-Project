@@ -9,7 +9,7 @@ class LoginPage extends Component {
         super(props);
 
         this.state = {
-            title: this.props.title,
+           
             email: '',
             password: ''
         }
@@ -30,7 +30,6 @@ class LoginPage extends Component {
 
     loginUser(event) {
         event.preventDefault();
-
         console.log(this.state)
     }
 

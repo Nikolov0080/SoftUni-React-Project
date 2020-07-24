@@ -22,8 +22,7 @@ class Input extends Component {
         return (
             <div className="form-group">
                 <label htmlFor={this.props.id}>{this.props.label}</label>
-                <input
-                    value={this.state.value}
+                <input 
                     name={this.props.name}
                     type={this.props.type}
                     className="form-control"
