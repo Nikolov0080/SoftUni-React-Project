@@ -1,0 +1,14 @@
+.register{
+    border: tomato 4px solid;
+    width:40%;
+    margin:0 auto;
+    font-size: x-large;
+    text-align: center;
+}
+
+@media(max-width:800px){
+    .register{
+        width: 100%;
+        font-size: medium;
+    }
+}

@@ -4,7 +4,7 @@
 }
 
 .inner_container {
-  border: 2px blue solid;
+  /* border: 2px blue solid; */
   margin-top: 8vh;
   height: 100px;
 }
