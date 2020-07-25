@@ -8,7 +8,7 @@ const HoneyCard = (props) => {
     return (
         <div className={style.card}>
             <Card style={{ width: '18rem' }}>
-                <Card.Body style={{"text-align":"center"}}>
+                <Card.Body style={{"textAlign":"center"}}>
                 <Card.Img style={{height:"12em",width:"10em"}} variant="bottom" src={props.imageUrl} />
                     <Card.Title>{props.name}</Card.Title>
                     <Card.Text>
