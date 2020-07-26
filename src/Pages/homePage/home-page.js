@@ -35,7 +35,7 @@ class App extends Component {
     return (
 
       <PageLayout title="Welcome to the Beehive">
-        <div className="container-xl">
+        <div className="container-xxl">
           <Row className="col-12">
 
             {this.printProducts()}

@@ -1,20 +1,20 @@
 .page_container {
-  width:90%;
+  width:94%;
   margin: 0 auto;
 }
 
 .inner_container {
-  /* border: 2px blue solid; */
-  margin-top: 8vh;
+  border: 2px blue solid;
+  margin-top: 5vh;
   height: 100px;
 }
 
 .over_flow_div {
-  width: 100%;
-  float: auto;
-  margin-top:7%;
-  height: 670px;
+  width:100%;
+  margin-top:4%;
+  height:33em;
   overflow: auto;
   border: 2px red solid;
+  margin: 0 auto;
 }
 
