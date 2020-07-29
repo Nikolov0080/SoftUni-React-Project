@@ -3,20 +3,18 @@ import PageLayout from '../../components/pageLayout/pageLayout';
 import Input from '../../components/input/input';
 import style from './register.module.css';
 import { Button } from 'react-bootstrap';
-
-
+import auth from '../../fire/fireAuth'
 
 class RegisterPage extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-          
             email: '',
             password: '',
         }
 
-     
+
         this.setEmail = this.setEmail.bind(this);
         this.setPassword = this.setPassword.bind(this);
         this.setRePassword = this.setRePassword.bind(this);
@@ -24,7 +22,7 @@ class RegisterPage extends Component {
 
     }
 
- 
+
 
     setEmail(email) {
         this.setState({ email })
@@ -43,7 +41,25 @@ class RegisterPage extends Component {
 
     registerUser = (event) => {
         event.preventDefault();
-console.log(this.state)
+
+        const {
+            email,
+            password,
+            rePassword
+        } = this.state
+
+        if (password === rePassword) {
+            auth.register(email, password).then(response => {
+                console.log("Email: " + response.user.email);
+                console.log("User ID: " + response.user.uid);
+                this.props.history.push('/products')
+
+            })
+        } else {
+            this.props.history.push('/')
+        }
+
+
     }
 
 
@@ -52,7 +68,7 @@ console.log(this.state)
             <PageLayout title="Register">
                 <div className={style.register}>
                     <form>
-                      
+
 
                         <Input
                             name="email"

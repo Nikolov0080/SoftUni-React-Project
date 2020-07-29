@@ -3,6 +3,10 @@ import HoneyCard from '../../components/honeyCard/honeyCard';
 import { Row } from 'react-bootstrap';
 import PageLayout from '../../components/pageLayout/pageLayout';
 import db from '../../fire/fire'
+// import auth from '../../fire/fireAuth'
+import firebase from 'firebase';
+
+console.log(firebase.auth().currentUser)
 
 const ref = db.database().ref().child('products');
 

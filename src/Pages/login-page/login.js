@@ -3,13 +3,13 @@ import Input from '../../components/input/input';
 import PageLayout from '../../components/pageLayout/pageLayout';
 import style from './login.module.css';
 import { Button } from 'react-bootstrap';
+import auth from '../../fire/fireAuth'
 
 class LoginPage extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-           
             email: '',
             password: ''
         }
@@ -30,7 +30,18 @@ class LoginPage extends Component {
 
     loginUser(event) {
         event.preventDefault();
-        console.log(this.state)
+
+        const {
+            email,
+            password
+        } = this.state;
+
+        auth.login(email, password).then(response => {
+            console.log("Email: " + response.user.email);
+            console.log("User ID: " + response.user.uid);
+            this.props.history.push('/products');
+        }).catch(console.log)
+
     }
 
     render() {
