@@ -40,7 +40,7 @@ class HoneyCard extends Component {
                                 content
                                 :
                                 content.slice(0, limit)}
-<br />
+                            <br />
                             {this.state.showAll === true
                                 ?
                                 <Button variant="outline-info" size="sm" onClick={this.showLess}>Show less</Button>
@@ -48,8 +48,6 @@ class HoneyCard extends Component {
                                 <Button variant="outline-info" size="sm" onClick={this.showMore}>Show more</Button>
                             }
                         </Card.Text>
-
-
 
                         <Button variant="outline-primary" href="#">Go somewhere</Button>
                     </Card.Body>

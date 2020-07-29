@@ -22,7 +22,7 @@ class App extends Component {
       })
     })
   }
-
+  
   printProducts() {
     const honeyData = Object.values(this.state.products);
     return honeyData.map((product, i) => {
