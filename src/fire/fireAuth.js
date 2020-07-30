@@ -8,6 +8,9 @@ export default {
             var errorMessage = error.message;
             console.log(errorCode)
             console.log(errorMessage)
+        }).then(response => {
+            console.log("Email: " + response.user.email);
+            console.log("User ID: " + response.user.uid);
         });
     },
     login(email, password) {
@@ -17,7 +20,25 @@ export default {
             var errorMessage = error.message;
             console.log(errorCode)
             console.log(errorMessage)
+        }).then(response => {
+            console.log("Email: " + response.user.email);
+            console.log("User ID: " + response.user.uid);
+        })
+    },
+    isLogged() {
+      return  firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                // User is signed in.
+                return user
+                // ...
+            } else {
+                // User is signed out.
+                return "No signed User detected... please Login"
+                // ...
+            }
         });
+    },
+    logOut() {
+      return  firebase.auth().signOut();
     }
-
 }

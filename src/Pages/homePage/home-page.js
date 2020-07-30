@@ -6,7 +6,17 @@ import db from '../../fire/fire'
 // import auth from '../../fire/fireAuth'
 import firebase from 'firebase';
 
-console.log(firebase.auth().currentUser)
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    console.log(user)
+    // ...
+  } else {
+    // User is signed out.
+    console.log('pls login e brat')
+    // ...
+  }
+});
 
 const ref = db.database().ref().child('products');
 
@@ -35,7 +45,7 @@ class App extends Component {
   }
 
   render() {
-
+   
     return (
 
       <PageLayout title="Welcome to the Beehive">

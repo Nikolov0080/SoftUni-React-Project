@@ -36,12 +36,9 @@ class LoginPage extends Component {
             password
         } = this.state;
 
-        auth.login(email, password).then(response => {
-            console.log("Email: " + response.user.email);
-            console.log("User ID: " + response.user.uid);
-            this.props.history.push('/products');
-        }).catch(console.log)
-
+        auth.login(email, password).then((resp)=>{
+            this.props.history.push('/products')
+        })
     }
 
     render() {

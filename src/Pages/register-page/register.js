@@ -14,29 +14,22 @@ class RegisterPage extends Component {
             password: '',
         }
 
-
         this.setEmail = this.setEmail.bind(this);
         this.setPassword = this.setPassword.bind(this);
         this.setRePassword = this.setRePassword.bind(this);
         this.registerUser = this.registerUser.bind(this);
-
     }
-
-
 
     setEmail(email) {
         this.setState({ email })
-
     }
 
     setPassword(password) {
         this.setState({ password })
-
     }
 
     setRePassword(rePassword) {
         this.setState({ rePassword })
-
     }
 
     registerUser = (event) => {
@@ -49,17 +42,12 @@ class RegisterPage extends Component {
         } = this.state
 
         if (password === rePassword) {
-            auth.register(email, password).then(response => {
-                console.log("Email: " + response.user.email);
-                console.log("User ID: " + response.user.uid);
-                this.props.history.push('/products')
-
-            })
+            auth.register(email, password)
         } else {
-            this.props.history.push('/')
+            this.props.history.push('/').then((resp) => {
+                this.props.history.push('/products')
+            })
         }
-
-
     }
 
 
