@@ -4,19 +4,19 @@ import firebase from 'firebase';
 export default {
     register(email, password, username) {
         return firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
-
+            if (error) { return false }
             console.log(error.code)
             console.log(error.message)
-
         }).then(response => {
 
             console.log("Email: " + response.user.email);
             console.log("User ID: " + response.user.uid);
 
-            return response.user.updateProfile({
+            response.user.updateProfile({
                 displayName: username
-            })
+            });
 
+            return true
 
         }).catch(e => {
             console.log(e)

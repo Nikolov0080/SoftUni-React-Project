@@ -19,13 +19,17 @@ const RegisterPage = (props) => {
         event.preventDefault();
 
         if (password === rePassword) {
-            auth.register(email, password, username);
-            props.history.push('/products')
+            auth.register(email, password, username).then(resp => {
+                if (resp) {
 
+                    setTimeout(() => {
+                        props.history.push('/products');
+                    }, 500)
+
+                }
+            });
         } else {
-
-            props.history.push('/register')
-
+            props.history.push('/register');
         }
     }
 
