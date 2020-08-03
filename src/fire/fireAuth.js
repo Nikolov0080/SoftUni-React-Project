@@ -8,10 +8,13 @@ export default {
             var errorMessage = error.message;
             console.log(errorCode)
             console.log(errorMessage)
+
         }).then(response => {
             console.log("Email: " + response.user.email);
             console.log("User ID: " + response.user.uid);
-        });
+        }).catch(e => {
+            console.log(e)
+        })
     },
     login(email, password) {
         return firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
@@ -23,22 +26,13 @@ export default {
         }).then(response => {
             console.log("Email: " + response.user.email);
             console.log("User ID: " + response.user.uid);
+            return true
+        }).catch(e => {
+            console.log(e)
         })
     },
-    isLogged() {
-      return  firebase.auth().onAuthStateChanged(function (user) {
-            if (user) {
-                // User is signed in.
-                return user
-                // ...
-            } else {
-                // User is signed out.
-                return "No signed User detected... please Login"
-                // ...
-            }
-        });
-    },
-    logOut() {
-      return  firebase.auth().signOut();
+    signOut() {
+        return firebase.auth().signOut();
+
     }
 }

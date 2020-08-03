@@ -5,6 +5,8 @@ import LoginPage from './Pages/login-page/login';
 import OrderPage from './Pages/order-page/order';
 import RegisterPage from './Pages/register-page/register';
 import ProductsPage from './Pages/products-page/products';
+import SignOut from './Pages/signOut/signOut';
+
 class PageRouter extends Component {
     render() {
         return (
@@ -15,6 +17,7 @@ class PageRouter extends Component {
                     <Route exact path="/register" component={RegisterPage} />
                     <Route exact path="/products" component={ProductsPage} />
                     <Route exact path="/order" component={OrderPage} />
+                    <Route exact path="/signOut" component={SignOut} />
                 </Switch>
             </Router>
         )

@@ -3,22 +3,20 @@ import HoneyCard from '../../components/honeyCard/honeyCard';
 import { Row } from 'react-bootstrap';
 import PageLayout from '../../components/pageLayout/pageLayout';
 import db from '../../fire/fire'
-// import auth from '../../fire/fireAuth'
-import firebase from 'firebase';
+import isLogged from '../../fire/isLogged'
+const ref = db.database().ref().child('products');
 
-firebase.auth().onAuthStateChanged(function(user) {
+isLogged((user) => {
   if (user) {
     // User is signed in.
     console.log(user)
     // ...
   } else {
     // User is signed out.
-    console.log('pls login e brat')
+    console.log("No signed User detected... please Login")
     // ...
   }
-});
-
-const ref = db.database().ref().child('products');
+})
 
 class App extends Component {
   constructor(props) {
@@ -36,7 +34,7 @@ class App extends Component {
       })
     })
   }
-  
+
   printProducts() {
     const honeyData = Object.values(this.state.products);
     return honeyData.map((product, i) => {
@@ -45,7 +43,7 @@ class App extends Component {
   }
 
   render() {
-   
+
     return (
 
       <PageLayout title="Welcome to the Beehive">

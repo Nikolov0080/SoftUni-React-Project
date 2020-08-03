@@ -21,6 +21,9 @@ const Navigation = () => {
                     <div className="col-sm bg-primary" >
                         <NaviItem path="/products" link="Products" />
                     </div>
+                    <div className="col-sm bg-primary" >
+                        <NaviItem path="/signOut" link="Sign out" />
+                    </div>
                 </div>
             </div>
         </div>

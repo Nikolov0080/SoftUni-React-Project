@@ -9,8 +9,6 @@ class Input extends Component {
         this.state = {
             email: this.props.email
         }
-        
-  
     }
 
     sendData = (event) => {

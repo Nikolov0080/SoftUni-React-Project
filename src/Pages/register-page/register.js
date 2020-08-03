@@ -42,11 +42,13 @@ class RegisterPage extends Component {
         } = this.state
 
         if (password === rePassword) {
-            auth.register(email, password)
+            auth.register(email, password);
+            this.props.history.push('/products')
+
         } else {
-            this.props.history.push('/').then((resp) => {
-                this.props.history.push('/products')
-            })
+
+            this.props.history.push('/register')
+
         }
     }
 

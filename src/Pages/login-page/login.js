@@ -36,9 +36,15 @@ class LoginPage extends Component {
             password
         } = this.state;
 
-        auth.login(email, password).then((resp)=>{
-            this.props.history.push('/products')
+        auth.login(email, password).then((resp) => {
+           
+            if (resp) {
+                return this.props.history.push('/products')
+            }
+            return this.props.history.push('/login')
         })
+
+
     }
 
     render() {
@@ -50,7 +56,7 @@ class LoginPage extends Component {
                             type="email"
                             id="email1"
                             label="Email address"
-                            placeholder="Email "
+                            placeholder="Email"
                             onChange={this.handleEmail}
                         />
 
@@ -65,8 +71,6 @@ class LoginPage extends Component {
                         <Button onClick={this.loginUser} type="submit" variant="primary">Login</Button>
                     </form>
                 </div>
-
-
             </PageLayout>
         )
     }

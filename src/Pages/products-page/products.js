@@ -1,24 +1,17 @@
-import React,{Component} from 'react';
+import React from 'react';
 import PageLayout from '../../components/pageLayout/pageLayout';
 
+const ProductsPage = (props) => {
 
 
-class ProductsPage extends Component{
-constructor(props){
-    super(props)
 
-    this.state ={
-        title:this.props.title
-    }
+    return (
+        <PageLayout title="Our Products">
+
+        </PageLayout>
+    )
 }
 
-    render(){
-        return(
-            <PageLayout title="Our Products">
-         
-            </PageLayout>
-        )
-    }
-}
+
 
 export default ProductsPage;
