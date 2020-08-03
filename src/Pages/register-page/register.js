@@ -10,15 +10,16 @@ import auth from '../../fire/fireAuth'
 const RegisterPage = (props) => {
 
     const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [rePassword, setRePassword] = useState('');
 
 
-  const  registerUser = (event) => {
+    const registerUser = (event) => {
         event.preventDefault();
 
         if (password === rePassword) {
-            auth.register(email, password);
+            auth.register(email, password, username);
             props.history.push('/products')
 
         } else {
@@ -34,6 +35,15 @@ const RegisterPage = (props) => {
             <div className={style.register}>
                 <form>
 
+
+                    <Input
+                        name="username"
+                        type="text"
+                        id="username1"
+                        label="Username"
+                        placeholder="Username"
+                        onChange={setUsername}
+                    />
 
                     <Input
                         name="email"

@@ -16,7 +16,8 @@ const Navigation = () => {
 
                 const userData = {
                     email: user.email,
-                    id: user.uid
+                    id: user.uid,
+                    username: user.displayName
                     // TODO implement user values such as orders,username,
                 }
                 console.log(userData)
@@ -37,8 +38,8 @@ const Navigation = () => {
                         <div className="col-sm bg-primary" >
                             <NaviItem path="/" link="Home" />
                         </div>
-                        <div className="col-sm bg-primary mx-5 px-5"  >
-                            <NaviItem path="/" link={user.email} />
+                        <div className="col-sm bg-primary "  >
+                            <NaviItem path="/" link={user.username} />
                         </div>
                         <div className="col-sm bg-primary" >
                             <NaviItem path="/order" link="Order" />
