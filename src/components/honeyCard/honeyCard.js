@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import style from './honeyCard.module.css';
 
-
 class HoneyCard extends Component {
 
     constructor(props) {
         super(props)
-
+      
         this.state = {
             imageUrl: props.imageUrl,
             name: props.name,
@@ -19,13 +18,9 @@ class HoneyCard extends Component {
     showMore = () => this.setState({ showAll: true });
     showLess = () => this.setState({ showAll: false });
 
-
-
     render() {
 
         const [content, limit] = [this.state.description, 60];
-
-
 
         return (
             <div className={style.card}>
