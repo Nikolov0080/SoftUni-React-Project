@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navigation from '../navigation/index';
-
+import Footer from '../footer/footer'
 import style from './pageLayout.module.css'
 import Title from '../title/title';
 import '../../fire/fire'
@@ -23,6 +23,7 @@ class PageLayout extends Component {
                         {this.props.children}
                     </div>
                 </div>
+                <Footer />
             </div>
         )
     }

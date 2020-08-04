@@ -4,9 +4,6 @@ import '../../fire/fire';
 
 import isLogged from '../../fire/isLogged';
 
-
-
-
 const Navigation = () => {
     const [user, setUser] = useState({});
 
@@ -39,7 +36,7 @@ const Navigation = () => {
                             <NaviItem path="/" link="Home" />
                         </div>
                         <div className="col-sm bg-primary "  >
-                            <NaviItem path="/" link={user.username} />
+                            <NaviItem path="/profile" link={user.username} />
                         </div>
                         <div className="col-sm bg-primary" >
                             <NaviItem path="/order" link="Order" />

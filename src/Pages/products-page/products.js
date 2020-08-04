@@ -21,7 +21,7 @@ const ProductsPage = () => {
 
     return (
         <PageLayout title="Our Products">
-            <div>
+            <div >
                 <Posts props={currentProducts} />
             </div>
         </PageLayout>

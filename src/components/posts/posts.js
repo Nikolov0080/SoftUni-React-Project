@@ -12,7 +12,7 @@ const Posts = ({ props }) => {
 
     return (
         <div>
-            <Row className="col-12">
+            <Row className="col-12" style={{margin:"0 auto"}}>
                 {items.map((item, i) => {
                     return <HoneyCard key={i} {...item} />
                 })}

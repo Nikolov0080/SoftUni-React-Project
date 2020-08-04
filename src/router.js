@@ -6,7 +6,7 @@ import OrderPage from './Pages/order-page/order';
 import RegisterPage from './Pages/register-page/register';
 import ProductsPage from './Pages/products-page/products';
 import SignOut from './Pages/signOut/signOut';
-
+import Profile from './Pages/profilePage/profilePage';
 class PageRouter extends Component {
     render() {
         return (
@@ -18,6 +18,8 @@ class PageRouter extends Component {
                     <Route exact path="/products" component={ProductsPage} />
                     <Route exact path="/order" component={OrderPage} />
                     <Route exact path="/signOut" component={SignOut} />
+                    <Route exact path="/profile" component={Profile} />
+
                 </Switch>
             </Router>
         )
