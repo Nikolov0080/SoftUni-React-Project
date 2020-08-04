@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PageLayout from '../../components/pageLayout/pageLayout';
 import Input from '../../components/input/input';
 import style from './register.module.css';

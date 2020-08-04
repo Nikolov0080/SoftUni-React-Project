@@ -3,20 +3,8 @@ import HoneyCard from '../../components/honeyCard/honeyCard';
 import { Row } from 'react-bootstrap';
 import PageLayout from '../../components/pageLayout/pageLayout';
 import db from '../../fire/fire'
-import isLogged from '../../fire/isLogged'
-const ref = db.database().ref().child('products');
 
-// isLogged((user) => {
-//   if (user) {
-//     // User is signed in.
-//     console.log(user)
-//     // ...
-//   } else {
-//     // User is signed out.
-//     console.log("No signed User detected... please Login")
-//     // ...
-//   }
-// })
+const ref = db.database().ref().child('products');
 
 class App extends Component {
   constructor(props) {

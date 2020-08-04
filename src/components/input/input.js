@@ -1,10 +1,6 @@
-import React, { Component } from 'react';
-
-
+import React from 'react';
 
 const Input = ({ id, label, name, type, placeholder,onChange }) => {
-
-
 
     const sendData = (event) => {
       return  onChange(event.target.value)

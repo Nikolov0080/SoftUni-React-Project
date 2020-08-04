@@ -20,7 +20,7 @@ const Navigation = () => {
                     username: user.displayName
                     // TODO implement user values such as orders,username,
                 }
-                console.log(userData)
+                
                 setUser(userData)
             } else {
                 setUser(false)

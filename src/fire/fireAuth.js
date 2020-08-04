@@ -1,6 +1,5 @@
 import firebase from 'firebase';
 
-
 export default {
     register(email, password, username) {
         return firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
