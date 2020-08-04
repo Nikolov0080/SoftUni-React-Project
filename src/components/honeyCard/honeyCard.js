@@ -24,7 +24,7 @@ class HoneyCard extends Component {
 
         return (
             <div className={style.card}>
-                <Card style={{ width: '18rem', margin: "20px" }}>
+                <Card style={{ width: '18rem', margin: "25px",borderColor:"green" }}>
                     <Card.Body style={{ "textAlign": "center" }}>
                         <Card.Img style={{ height: "12em", width: "10em" }} variant="bottom" src={this.state.imageUrl} />
                         <Card.Title>{this.state.name}</Card.Title>
@@ -40,7 +40,7 @@ class HoneyCard extends Component {
                                 ?
                                 <Button variant="outline-info" size="sm" onClick={this.showLess}>Show less</Button>
                                 :
-                                <Button variant="outline-info" size="sm" onClick={this.showMore}>Show more</Button>
+                                <Button variant="outline-info" size="sm" onClick={this.showMore}>Read more</Button>
                             }
                         </Card.Text>
 

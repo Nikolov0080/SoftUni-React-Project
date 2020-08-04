@@ -3,7 +3,7 @@ import PageLayout from '../../components/pageLayout/pageLayout';
 import dbRef from '../../fire/DB-refs/allProducts-ref';
 import Posts from '../../components/posts/posts';
 
-const ProductsPage = (props) => {
+const ProductsPage = () => {
 
     const [products, setProducts] = useState({});
 
@@ -14,7 +14,7 @@ const ProductsPage = (props) => {
             });
         }
 
-        allProducts()
+        allProducts();
     }, []);
   
     const currentProducts = Object.values(products)
@@ -27,7 +27,5 @@ const ProductsPage = (props) => {
         </PageLayout>
     )
 }
-
-
 
 export default ProductsPage;
