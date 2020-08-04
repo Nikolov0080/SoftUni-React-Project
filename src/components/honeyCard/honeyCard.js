@@ -44,7 +44,7 @@ class HoneyCard extends Component {
                             }
                         </Card.Text>
 
-                        <Button variant="outline-primary" href="#">Go somewhere</Button>
+                        <Button variant="outline-primary" href="/order">Buy this product</Button>
                     </Card.Body>
                 </Card>
             </div>
