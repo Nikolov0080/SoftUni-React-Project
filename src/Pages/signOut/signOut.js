@@ -1,27 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import fire from '../../fire/fireAuth';
+import React, {  useEffect, useContext } from 'react';
+import UserContext from '../../context/context';
+
 const SignOut = (props) => {
 
-    const [loading, setLoading] = useState(true);
+const context= useContext(UserContext);
 
     useEffect(() => {
-        const signOut = async () => {
-             setLoading(false);
-            await fire.signOut()
-        }
-
-        signOut()
-    }, [loading]);
-
-
-    if (loading) {
-        return (
-            <div>
-                Loading.....
-            </div>
-        )
-
-    }
+       context.signOut()
+    }, [context]);
 
     return (
         <div>

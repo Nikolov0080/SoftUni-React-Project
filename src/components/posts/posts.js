@@ -5,14 +5,15 @@ import { Row } from 'react-bootstrap'
 const Posts = ({ props }) => {
 
     const [items, setItems] = useState([]);
-    
+   
     useEffect(() => {
         setItems(props);
+    
     }, [props]);
 
     return (
         <div>
-            <Row className="col-12" style={{margin:"0 auto"}}>
+            <Row className="col-12" style={{ margin: "0 auto" }}>
                 {items.map((item, i) => {
                     return <HoneyCard key={i} {...item} />
                 })}
@@ -20,8 +21,5 @@ const Posts = ({ props }) => {
         </div>
     )
 }
-
-
-
 
 export default Posts;

@@ -1,31 +1,32 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import NaviItem from '../nav-item/navItem';
 import '../../fire/fire';
-
-import isLogged from '../../fire/isLogged';
+import UserContext from '../../context/context';
 
 const Navigation = () => {
     const [user, setUser] = useState({});
+    const [loading, setLoading] = useState(true);
+    const context = useContext(UserContext);
 
     useEffect(() => {
-        isLogged((user) => {
-            if (user) {
+        setUser(context.user);
+        setLoading(false)
+    }, [context.user])
 
-                const userData = {
-                    email: user.email,
-                    id: user.uid,
-                    username: user.displayName
-                    // TODO implement user values such as orders,username,
-                }
-                
-                setUser(userData)
-            } else {
-                setUser(false)
-            }
-        })
-
-    }, [])
-
+    if (loading) {
+        return (
+            <div className="bg-primary container-max-width-sm " >
+                <div className="row justify-content-md-center">
+                    <div className="text-center row" >
+                        <h5 style={{ color: "white" }}>loading . . .        </h5>
+                        <div className="spinner-border  text-light" role="status">
+                            <span className="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 
     if (user) {
         return (
