@@ -5,21 +5,19 @@ import style from './register.module.css';
 import { Button } from 'react-bootstrap';
 import auth from '../../fire/fireAuth'
 
-
-
 const RegisterPage = (props) => {
 
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [rePassword, setRePassword] = useState('');
-
+    const [profilePicture, setProfilePicture] = useState('');
 
     const registerUser = (event) => {
         event.preventDefault();
 
         if (password === rePassword) {
-            auth.register(email, password, username).then(resp => {
+            auth.register(email, password, username, profilePicture).then(resp => {
                 if (resp) {
 
                     setTimeout(() => {
@@ -38,6 +36,7 @@ const RegisterPage = (props) => {
         <PageLayout title="Register">
             <div className={style.register}>
                 <form>
+
 
 
                     <Input
@@ -75,6 +74,15 @@ const RegisterPage = (props) => {
                         label="Confirm password"
                         placeholder="Same as password field"
                         onChange={setRePassword}
+                    />
+
+                    <Input
+                        name="profilePicture"
+                        type="text"
+                        id="profilePicture1"
+                        label="Profile picture"
+                        placeholder="image URL"
+                        onChange={setProfilePicture}
                     />
 
                     <Button onClick={registerUser} type="submit" variant="primary">Register</Button>

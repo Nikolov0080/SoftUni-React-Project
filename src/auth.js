@@ -2,23 +2,32 @@ import React, { useState, useEffect } from 'react';
 import UserContext from './context/context';
 import firebase from 'firebase';
 import fireAuth from './fire/fireAuth'
-
+import './fire/fire'
 const Auth = (props) => {
 
     const [user, setUser] = useState('')
     const [loading, setLoading] = useState(true);
 
+
+
     useEffect(() => {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
 
-                const userData = {
-                    email: user.email,
-                    id: user.uid,
-                    username: user.displayName
-                }
+                firebase.database().ref('/users/' + user.uid).once('value').then((snapshot) => {
+                    const snap = snapshot.val();
 
-                setUser(userData)
+                    console.log(snap)
+                    const userData = {
+                        email: snap.email,
+                        id: user.uid,
+                        username: snap.username,
+                        registeredAt: snap.registeredAt,
+                        profilePicture: snap.profilePicture
+                    }
+
+                    setUser(userData)
+                })
             }
 
             setLoading(false)
