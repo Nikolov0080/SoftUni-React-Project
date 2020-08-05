@@ -19,11 +19,7 @@ const RegisterPage = (props) => {
         if (password === rePassword) {
             auth.register(email, password, username, profilePicture).then(resp => {
                 if (resp) {
-
-                    setTimeout(() => {
-                        props.history.push('/products');
-                    }, 500)
-
+                    props.history.push('/products');
                 }
             });
         } else {

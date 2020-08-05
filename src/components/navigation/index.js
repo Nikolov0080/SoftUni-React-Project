@@ -9,8 +9,13 @@ const Navigation = () => {
     const context = useContext(UserContext);
 
     useEffect(() => {
+
         setUser(context.user);
-        setLoading(false)
+        setTimeout(()=>{
+//TODO
+            setLoading(false)
+        },600)
+
     }, [context.user])
 
     if (loading) {

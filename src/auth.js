@@ -36,7 +36,7 @@ const Auth = (props) => {
 
     const signOut = () => {
         fireAuth.signOut();
-        setUser(null)
+        setUser(null);
     }
 
     if (loading) {
