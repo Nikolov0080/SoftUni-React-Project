@@ -37,7 +37,7 @@ const OrderPage = () => {
                     <div className="col text-center" style={{ border: "green solid 4px" }}>
 
 
-                        <ProductDetails name={name} price={price} user={context.user.username} />
+                        <ProductDetails name={name} price={price} user={context.user.username} userId={context.user.id} />
 
                     </div>
                     <div className="col text-center" >

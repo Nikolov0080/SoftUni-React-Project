@@ -1,4 +1,4 @@
 
 import db from '../fire';
 
-export default db.database().ref().child('products');
+export default  db.database()

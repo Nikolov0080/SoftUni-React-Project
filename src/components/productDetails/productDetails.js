@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
+import ordersRef from '../../fire/DB-refs/orders';
 
-const ProductDetails = ({ name, price, user }) => {
+
+
+const ProductDetails = ({ name, price, user, userId }) => {
     const history = useHistory();
-
+    console.log(userId)
     const [quantity, setQuantity] = useState(0);
     const [total, setTotal] = useState(0);
     const [order, setOrder] = useState({});
@@ -25,6 +28,8 @@ const ProductDetails = ({ name, price, user }) => {
 
     const submitOrder = (e) => {
         e.preventDefault();
+
+        ordersRef.ref('orders/' + userId).push(order);
 
         console.log(order);
     }
