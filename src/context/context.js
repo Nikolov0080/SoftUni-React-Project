@@ -2,7 +2,9 @@ import React from 'react'
 
 const UserContext = React.createContext({
   user: null,
-  signOut: () => {}
+  currentProduct: null,
+  setProduct: () => { },
+  signOut: () => { }
 })
 
 export default UserContext;

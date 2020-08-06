@@ -16,10 +16,9 @@ class PageRouter extends Component {
                     <Route exact path="/login" component={LoginPage} />
                     <Route exact path="/register" component={RegisterPage} />
                     <Route exact path="/products" component={ProductsPage} />
-                    <Route exact path="/order" component={OrderPage} />
+                    <Route exact path="/order/:name" component={OrderPage} />
                     <Route exact path="/signOut" component={SignOut} />
                     <Route exact path="/profile" component={Profile} />
-
                 </Switch>
             </Router>
         )

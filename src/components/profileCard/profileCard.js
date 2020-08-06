@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import UserContext from '../../context/context';
 import { Link } from 'react-router-dom'

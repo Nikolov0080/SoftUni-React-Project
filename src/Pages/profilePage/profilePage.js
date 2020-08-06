@@ -1,16 +1,11 @@
-import React ,{useContext} from 'react';
+import React  from 'react';
 import PageLayout from '../../components/pageLayout/pageLayout';
 import style from './profilePage.module.css'
 import { Row } from 'react-bootstrap';
-import UserContext from '../../context/context';
 import ProfileCard from '../../components/profileCard/profileCard';
 import OrdersCard from '../../components/ordersCard/ordersCard';
 
 const ProfilePage = (props) => {
-
-    const context = useContext(UserContext)
-
-
 
     return (
         <PageLayout title="Welcome + (Username)">

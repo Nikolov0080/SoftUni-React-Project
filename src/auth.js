@@ -5,10 +5,9 @@ import fireAuth from './fire/fireAuth'
 import './fire/fire'
 const Auth = (props) => {
 
-    const [user, setUser] = useState('')
+    const [user, setUser] = useState(undefined)
     const [loading, setLoading] = useState(true);
-
-
+    const [currentProduct, setCurrentProduct] = useState(null);
 
     useEffect(() => {
         firebase.auth().onAuthStateChanged((user) => {
@@ -17,7 +16,6 @@ const Auth = (props) => {
                 firebase.database().ref('/users/' + user.uid).once('value').then((snapshot) => {
                     const snap = snapshot.val();
 
-                    console.log(snap)
                     const userData = {
                         email: snap.email,
                         id: user.uid,
@@ -39,6 +37,10 @@ const Auth = (props) => {
         setUser(null);
     }
 
+    const setProduct = (product) => {
+        setCurrentProduct(product)
+    }
+
     if (loading) {
         return (
             <div className="text-center" style={{ marginTop: "200px" }}>
@@ -52,7 +54,9 @@ const Auth = (props) => {
     return (
         <UserContext.Provider value={{
             user,
-            signOut
+            currentProduct,
+            signOut,
+            setProduct
         }}>
 
             {props.children}

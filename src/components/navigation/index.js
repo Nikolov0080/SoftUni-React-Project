@@ -10,13 +10,15 @@ const Navigation = () => {
 
     useEffect(() => {
 
-        setUser(context.user);
-        setTimeout(()=>{
-//TODO
-            setLoading(false)
-        },600)
+        setUser(context.user)
 
-    }, [context.user])
+        if (context.user) {
+            setLoading(false)
+        } else  {
+            setTimeout(() => setLoading(false),650)
+        }
+
+    }, [context.user]);
 
     if (loading) {
         return (
@@ -76,9 +78,6 @@ const Navigation = () => {
             </div>
         )
     }
-
-
 }
-
 
 export default Navigation

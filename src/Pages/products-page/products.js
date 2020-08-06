@@ -35,7 +35,6 @@ const ProductsPage = () => {
                     </div>
                 </div>
             </PageLayout>
-
         )
     }
 

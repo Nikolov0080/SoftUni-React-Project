@@ -1,28 +1,29 @@
 import firebase from 'firebase';
 import moment from 'moment';
+import defaultImage from './image/defaultImage.png';
 
 export default {
     register(email, password, username, profilePicture) {
         return firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
-            if (error) { return false }
+
             console.log(error.code)
             console.log(error.message)
+            if (error) { return false }
         }).then(response => {
 
             const userId = response.user.uid;
             const userEmail = response.user.email;
 
-            profilePicture = (profilePicture || "https://publicdomainvectors.org/tn_img/bee-50.png")
+            profilePicture = (profilePicture || defaultImage)
 
             console.log("Email: " + userEmail);
             console.log("User ID: " + userId);
-
-
 
             firebase.database().ref('users/' + userId).set({
                 username: username,
                 email: userEmail,
                 profilePicture: profilePicture,
+                currentOrder: '',
                 registeredAt: moment().format('MMMM Do YYYY, h:mm:ss a'),
             });
 
