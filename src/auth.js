@@ -38,7 +38,7 @@ const Auth = (props) => {
     }
 
     const setProduct = (product) => {
-        setCurrentProduct(product)
+        setCurrentProduct(product);
     }
 
     if (loading) {

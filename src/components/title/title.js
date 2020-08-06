@@ -15,7 +15,7 @@ class Title extends Component {
         return (
             <div className={style.sidebar_container}>
 
-        <h1 className={style.helloMessage}>{this.state.title}</h1>
+                <h1 className={style.helloMessage}>{this.state.title}</h1>
             </div>
         )
     }

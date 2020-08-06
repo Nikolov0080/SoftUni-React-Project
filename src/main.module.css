@@ -2,3 +2,12 @@ body {
   font-family: Times New Roman Times serif;
   color: rgb(0, 0, 0);
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Pangolin&family=Piedra&family=Recursive:wght@300&family=Sriracha&display=swap");
+
+body{
+  font-family: 'Pangolin', cursive;
+font-family: 'Piedra', cursive;
+font-family: 'Recursive', sans-serif;
+font-family: 'Sriracha', cursive;
+}

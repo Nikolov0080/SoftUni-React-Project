@@ -23,7 +23,6 @@ export default {
                 username: username,
                 email: userEmail,
                 profilePicture: profilePicture,
-                currentOrder: '',
                 registeredAt: moment().format('MMMM Do YYYY, h:mm:ss a'),
             });
 
