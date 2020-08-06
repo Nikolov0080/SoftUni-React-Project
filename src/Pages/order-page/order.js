@@ -29,21 +29,28 @@ const OrderPage = () => {
                             <form >
 
                                 <Table>
+
+
                                     <tbody>
                                         <tr>
-                                            <td>Table cell</td>
+
+                                            <td>
+                                                Price: {price}
+                                            </td>
+
                                             <td>
                                                 <Dropdown>
                                                     <Dropdown.Toggle variant="outline-disabled" id="dropdown-basic">
-                                                        Dropdown Button
-                                    </Dropdown.Toggle>
+                                                        select size
+                                                    </Dropdown.Toggle>
 
                                                     <Dropdown.Menu>
-                                                        <Dropdown.Item >Action</Dropdown.Item>
+                                                        <Dropdown.Item>Action</Dropdown.Item>
                                                         <Dropdown.Item>Another action</Dropdown.Item>
                                                         <Dropdown.Item>Something else</Dropdown.Item>
                                                     </Dropdown.Menu>
-                                                </Dropdown> </td>
+                                                </Dropdown>
+                                            </td>
 
                                         </tr>
                                     </tbody>
