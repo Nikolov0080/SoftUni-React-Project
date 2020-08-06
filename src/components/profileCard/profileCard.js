@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const ProfileCard = () => {
 
     const context = useContext(UserContext)
-    console.log(context)
+   console.log(context)
     return (
         <div>
 

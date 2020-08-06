@@ -28,7 +28,7 @@ const HoneyCard = ({ imageUrl, name, description ,price}) => {
                             ?
                             content
                             :
-                            content.slice(0, limit)}
+                            content.slice(0, limit)+"..."}
                         <br />
                         {showAll === true
                             ?

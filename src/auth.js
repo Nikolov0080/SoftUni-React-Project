@@ -25,10 +25,9 @@ const Auth = (props) => {
                     }
 
                     setUser(userData)
+                    setLoading(false)
                 })
             }
-
-            setLoading(false)
         })
     }, [])
 
