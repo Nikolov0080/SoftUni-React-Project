@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import UserContext from './context/context';
 import firebase from 'firebase';
-import fireAuth from './fire/fireAuth'
+import fireAuth from './fire/fireAuth';
 import './fire/fire'
+
 const Auth = (props) => {
 
     const [user, setUser] = useState(undefined)
@@ -27,12 +28,15 @@ const Auth = (props) => {
                     setUser(userData)
                     setLoading(false)
                 })
+            } else {
+                signOut()
             }
         })
-    }, [])
+    }, [props])
 
     const signOut = () => {
         fireAuth.signOut();
+        setLoading(false)
         setUser(null);
     }
 

@@ -6,10 +6,9 @@ import { Link } from 'react-router-dom'
 const ProfileCard = () => {
 
     const context = useContext(UserContext)
-   console.log(context)
+  
     return (
         <div>
-
             <Card className="text-center" >
                 <Card.Img style={{ width: '16rem', height: '14em', margin: "0 auto", borderRadius: "50%" }}
                     src={context.user.profilePicture}></Card.Img>
