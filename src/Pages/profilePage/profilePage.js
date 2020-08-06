@@ -3,7 +3,7 @@ import PageLayout from '../../components/pageLayout/pageLayout';
 import style from './profilePage.module.css'
 import { Row } from 'react-bootstrap';
 import ProfileCard from '../../components/profileCard/profileCard';
-import OrdersCard from '../../components/ordersCard/ordersCard';
+import Card from '../../components/Card/Card';
 
 const ProfilePage = (props) => {
 
@@ -14,7 +14,7 @@ const ProfilePage = (props) => {
                 <Row>
 
                     {/* User data */}
-                    <div className="w-50 mt-4 " style={{ "border": "solid 3px #eee" }} >
+                    <div className="w-50 mt-4 " style={{ "border": "solid 3px #eee"}} >
                         <h1 className={style.header}>Profile info</h1>
                   
                       <ProfileCard />
@@ -22,11 +22,11 @@ const ProfilePage = (props) => {
                     </div>
 
                     {/* Orders Data */}
-                    <div className="w-50 mt-4" style={{ "border": "solid 3px  #000", "float": "right" }} >
+                    <div className="w-50 mt-4" style={{ "border": "solid 3px  #000", "float": "right" ,maxHeight:"560px",overflow:"auto"}} >
 
-                        <h1 className={style.header}>Orders</h1>
+                        <h1 className={style.header}>Cart</h1>
 
-                      <OrdersCard props={[1,2,3,4,5]}/>
+                      <Card />
 
                     </div>
                 </Row>

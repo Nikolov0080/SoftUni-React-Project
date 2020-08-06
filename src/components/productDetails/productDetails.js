@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import ordersRef from '../../fire/DB-refs/orders';
-
-
+import moment from 'moment';
 
 const ProductDetails = ({ name, price, user, userId }) => {
     const history = useHistory();
-    console.log(userId)
+
     const [quantity, setQuantity] = useState(0);
     const [total, setTotal] = useState(0);
     const [order, setOrder] = useState({});
@@ -17,21 +16,23 @@ const ProductDetails = ({ name, price, user, userId }) => {
             totalPrice: total,
             honeyType: name,
             quantity: quantity,
-            user: user
-        })
+            user: user,
+            createdAt: moment().format('LLL')
+        });
     }, [total, name, quantity, user]);
 
     const saveQuantity = (e) => {
-        console.log(quantity);
+
         return setQuantity(e.target.value);
     }
 
     const submitOrder = (e) => {
         e.preventDefault();
 
-        ordersRef.ref('orders/' + userId).push(order);
-
-        console.log(order);
+        ordersRef.ref('orders/' + userId).push(order).then(response => {
+            console.log('Order saved to card!');
+            history.push('/profile')
+        })
     }
 
     const backToProducts = () => {
@@ -47,27 +48,29 @@ const ProductDetails = ({ name, price, user, userId }) => {
 
             <h2>Product details</h2>
             <div className="row-4">
+                <form onSubmit={submitOrder}>
 
-                <div className="col mr-4">
-                    <h4>Type: {name}</h4>
-                </div>
-                <div className="col">
-                    <h4>Price: {price} USD</h4>
-                </div>
-                <div className="col">
-                    <label id="quantity"><h4>Quantity:  </h4></label>
-                    <input id="quantity" onChange={(e) => saveQuantity(e)} className="text-center" type="number"></input>
-                </div>
+                    <div className="col mr-4">
+                        <h4>Type: {name}</h4>
+                    </div>
+                    <div className="col">
+                        <h4>Price: {price} USD</h4>
+                    </div>
+                    <div className="col">
+                        <label id="quantity"><h4>Quantity:  </h4></label>
+                        <input min={1} id="quantity" onChange={(e) => saveQuantity(e)} className="text-center" type="number"></input>
+                    </div>
 
-                <div className="col">
-                    <h5>{total} USD</h5>
-                    <Button onClick={checkTotal}>Check total</Button>
-                </div>
+                    <div className="col">
+                        <h5>{total} USD</h5>
+                        <Button onClick={checkTotal}>Check total</Button>
+                    </div>
 
+            <Button type="submit" style={{ margin: "20px" }} >Add to card</Button>
+                </form>
             </div>
 
 
-            <Button type="submit" style={{ margin: "20px" }} onClick={(e) => submitOrder(e)}>Add to card</Button>
             <Button type="submit" onClick={backToProducts}>Back to Products</Button>
 
         </div>

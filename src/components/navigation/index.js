@@ -10,22 +10,21 @@ const Navigation = () => {
 
     useEffect(() => {
 
-        setUser(context.user)
-
+        setUser(context.user);
         if (context.user) {
             setLoading(false)
-        } else  {
-            setTimeout(() => setLoading(false),650)
+        } else {
+            setTimeout(() => setLoading(false), 650)
         }
 
-    }, [context.user]);
+    }, [context]);
 
     if (loading) {
         return (
             <div className="bg-primary container-max-width-sm " >
                 <div className="row justify-content-md-center">
                     <div className="text-center row" >
-                        <h5 style={{ color: "white" }}>loading . . .        </h5>
+                        <h5 style={{ color: "white" }}>loading . . .  </h5>
                         <div className="spinner-border  text-light" role="status">
                             <span className="sr-only">Loading...</span>
                         </div>
@@ -44,7 +43,7 @@ const Navigation = () => {
                             <NaviItem path="/" link="Home" />
                         </div>
                         <div className="col-sm bg-primary "  >
-                            <NaviItem path="/profile" link={user.username} />
+                            <NaviItem path="/profile" link="Card/Profile" />
                         </div>
                         <div className="col-sm bg-primary" >
                             <NaviItem path="/order" link="Order" />
