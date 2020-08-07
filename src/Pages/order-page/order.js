@@ -26,10 +26,6 @@ const OrderPage = () => {
         price
     } = context.currentProduct;
 
-
-
-
-    console.log(price)
     return (
         <PageLayout title="Place Your order">
             <div className="container-xxl-4 " style={{ border: "blue solid 4px", overflow: "hidden" }}>
@@ -37,7 +33,7 @@ const OrderPage = () => {
                     <div className="col text-center" style={{ border: "green solid 4px" }}>
 
 
-                        <ProductDetails name={name} price={price} user={context.user.username} userId={context.user.id} />
+                        <ProductDetails name={name} price={price} user={context.user.username} userId={context.user.id} imageUrl={imageUrl} />
 
                     </div>
                     <div className="col text-center" >
