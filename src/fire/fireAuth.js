@@ -50,6 +50,5 @@ export default {
     },
     signOut() {
         return firebase.auth().signOut();
-
     }
 }

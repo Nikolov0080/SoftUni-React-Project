@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import { Button, Card } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import UserContext from '../../context/context';
-import { Link } from 'react-router-dom'
+import ButtonLink from '../button-link/button-link';
 
 const ProfileCard = () => {
 
     const context = useContext(UserContext)
-  
+
     return (
         <div>
             <Card className="text-center" >
@@ -16,8 +16,7 @@ const ProfileCard = () => {
                     <Card.Title>Username: {context.user.username}</Card.Title>
                     <Card.Title>Email: {context.user.email}</Card.Title>
                     <Card.Title>Orders: {(context.user.orders || "No orders at all")}</Card.Title>
-
-                    <Button variant="primary"><Link style={{ color: "white" }} to="/signOut">Sign out</Link></Button>
+                    <ButtonLink to="/signOut" value="Sign out" />
                 </Card.Body>
                 <Card.Footer className="text-muted">
                     <p>Last update:</p>

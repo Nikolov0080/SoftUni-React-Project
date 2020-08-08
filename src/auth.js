@@ -7,7 +7,7 @@ import orders from './fire/DB-refs/orders';
 
 const Auth = (props) => {
 
-    const [user, setUser] = useState(undefined)
+    const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true);
     const [currentProduct, setCurrentProduct] = useState(null);
 
@@ -37,9 +37,12 @@ const Auth = (props) => {
     }, [props, orders])
 
     const signOut = () => {
-        fireAuth.signOut();
-        setLoading(false)
-        setUser(null);
+
+        fireAuth.signOut().then(() => {
+            setLoading(false)
+            setUser(null);
+        });
+
     }
 
     const setProduct = (product) => {

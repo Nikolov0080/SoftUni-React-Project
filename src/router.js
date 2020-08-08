@@ -7,8 +7,10 @@ import RegisterPage from './Pages/register-page/register';
 import ProductsPage from './Pages/products-page/products';
 import SignOut from './Pages/signOut/signOut';
 import Profile from './Pages/profilePage/profilePage';
-class PageRouter extends Component {
-    render() {
+
+
+const PageRouter =()=> {
+ 
         return (
             <Router>
                 <Switch>
@@ -22,7 +24,7 @@ class PageRouter extends Component {
                 </Switch>
             </Router>
         )
-    }
+  
 }
 
 export default PageRouter;

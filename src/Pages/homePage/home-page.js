@@ -6,24 +6,49 @@ import { Card, Button } from 'react-bootstrap';
 import honey_1 from './images/honey_1.jpg'
 import honey_2 from './images/honey_2.jpg'
 import UserContext from '../../context/context';
-
+import ButtonLink from '../../components/button-link/button-link';
 
 const ref = db.database().ref("totalSpend/usd");
 
-
-
 const App = () => {
-
 
   const context = useContext(UserContext);
   const [statistics, setStatistics] = useState({});
-  console.log(context);
+
+  const isLogged = context.user;
 
   useEffect(() => {
     ref.on('value', (snapshot) => {
       setStatistics(snapshot.val())
     });
-  }, [])
+  }, []);
+
+  const pageView = () => {
+    if (!isLogged) {
+      return (
+        <div>
+          <Card.Footer className="text-muted"><h5>Last purchase by client at </h5>
+            <br />
+            <h5>{statistics.lastOrderTime}</h5>
+            <br />
+            <h5>For: {statistics.for} USD</h5>
+          </Card.Footer>
+          <Card.Title>So <ButtonLink to="/login" value="Login" /> and make yours</Card.Title>
+
+          <Card.Title>If you don't have an account just <ButtonLink to="/register" value="Register" /></Card.Title>
+
+        </div>
+
+      )
+    } else {
+      return (
+        <div>
+
+          <h1>Pls kypi si e moi</h1>
+        </div>
+      )
+    }
+  }
 
   return (
 
@@ -44,16 +69,7 @@ const App = () => {
 
             </div>
             <div className="col">
-              <Card.Footer className="text-muted"><h5>Last purchase by client at </h5>
-                <br />
-                <h5>{statistics.lastOrderTime}</h5>
-                <br />
-                <h5>For: {statistics.for} USD</h5>
-              </Card.Footer>
-              <Card.Title>So <Button variant="primary">Login</Button> and make yours</Card.Title>
-              
-              <Card.Title>If you don't have an account just <Button variant="primary" >Register</Button></Card.Title>
-              
+              {pageView()}
             </div>
             <div className="col text-center">
 
