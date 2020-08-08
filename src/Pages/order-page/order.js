@@ -8,7 +8,6 @@ const OrderPage = () => {
     const context = useContext(UserContext);
     const history = useHistory();
 
-
     if (!context.currentProduct) {
         setTimeout(() => {
             history.push('/products');
@@ -16,7 +15,6 @@ const OrderPage = () => {
         return (
             <h1>You will be redirected to Products</h1>
         )
-
     }
 
     const {
@@ -31,7 +29,6 @@ const OrderPage = () => {
             <div className="container-xxl-4 " style={{ border: "blue solid 4px", overflow: "hidden" }}>
                 <div className="row">
                     <div className="col text-center" style={{ border: "green solid 4px" }}>
-
 
                         <ProductDetails name={name} price={price} user={context.user.username} userId={context.user.id} imageUrl={imageUrl} />
 
