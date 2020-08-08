@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
 import db from '../../fire/DB-refs/orders';
 import UserContext from '../../context/context';
-import style from './card.module.css';
 import { Button } from 'react-bootstrap';
 import moment from 'moment';
 import dbUtils from '../../fire/utils/DB-utils';
+import ButtonLink from '../button-link/button-link';
 
 
 const OrdersCart = (props) => {
@@ -18,20 +18,15 @@ const OrdersCart = (props) => {
 
     useEffect(() => {
 
-        ordersRef.on('value', (snapshot) => {
+        ordersRef.once('value', (snapshot) => {
 
             setOrders(snapshot.val());
 
-            setTimeout(() => {
+            setLoading(false);
 
-                setLoading(false);
-            }, 500);
         });
 
-    }, []);
-
-    // Add price to total price for the site
-    // update User + order
+    }, [ordersRef]);
 
     const completeOrder = () => {
 
@@ -44,9 +39,9 @@ const OrdersCart = (props) => {
         } = context.user
 
         const userData = Object.assign({}, { lastUpdate: moment().format('MMMM Do YYYY, h:mm:ss a'), email, username, profilePicture, orders: orders += 1 })
-        
+
         dbUtils.updateTotalSpend(totalPrice)
-        
+
         dbUtils.updateUser(userData, id).then(resp => {
             console.log(resp);
             dbUtils.deleteOrders(id);
@@ -67,14 +62,16 @@ const OrdersCart = (props) => {
         return (
             <div className="text-center">
                 <h2>No orders to complete</h2>
+                <h2>Go to <ButtonLink to="/products" value="Products" /> page and make one</h2>
+
             </div>
         )
     }
 
     return (
         <div>
-            {Object.entries(orders).map((order, index) => {
-                const [orderId, orderData] = order;
+            {Object.values(orders).map((orderData, index) => {
+
                 totalPrice += orderData.totalPrice;
                 return (
 

@@ -3,13 +3,13 @@ import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 
 
-const ButtonLink = ({to,value}) => {
+const ButtonLink = ({ to, value ,variant}) => {
     return (
-        <div>
-             <Button variant="primary">
-    <Link style={{ color: "white" }} to={to}>{value}</Link>
-                 </Button>
-        </div>
+
+        <Button variant={variant || "primary"}>
+            <Link style={{ color: "white" }} to={to}>{value}</Link>
+        </Button>
+
     );
 };
 

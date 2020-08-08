@@ -1,8 +1,9 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, {  useContext } from 'react';
 import PageLayout from '../../components/pageLayout/pageLayout';
 import UserContext from '../../context/context';
 import { useHistory } from 'react-router-dom';
 import ProductDetails from '../../components/productDetails/productDetails';
+
 const OrderPage = () => {
 
     const context = useContext(UserContext);
@@ -19,7 +20,6 @@ const OrderPage = () => {
 
     const {
         imageUrl,
-        description,
         name,
         price
     } = context.currentProduct;
@@ -36,7 +36,7 @@ const OrderPage = () => {
                     <div className="col text-center" >
                         <h2>Product image</h2>
                         <div className="text-center" style={{ border: "black solid 2px" }}>
-                            <img className="rounded" src={imageUrl} style={{ width: "250", height: "323px" }} />
+                            <img className="rounded" alt="honey " src={imageUrl} style={{ width: "250", height: "323px" }} />
                         </div>
                     </div>
 

@@ -3,7 +3,7 @@ import UserContext from './context/context';
 import firebase from 'firebase';
 import fireAuth from './fire/fireAuth';
 import './fire/fire'
-import orders from './fire/DB-refs/orders';
+
 
 const Auth = (props) => {
 
@@ -33,8 +33,9 @@ const Auth = (props) => {
             } else {
                 signOut()
             }
+            setLoading(false)
         })
-    }, [props, orders])
+    }, [props])
 
     const signOut = () => {
 
