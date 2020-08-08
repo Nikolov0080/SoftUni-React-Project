@@ -59,7 +59,7 @@ const ProductDetails = ({ name, price, user, userId,imageUrl }) => {
                     </div>
                     <div className="col">
                         <label id="quantity"><h4>Quantity:  </h4></label>
-                        <input min={1} id="quantity" onChange={(e) => saveQuantity(e)} className="text-center" type="number"></input>
+                        <input defaultValue="1" id="quantity" onChange={(e) => saveQuantity(e)} className="text-center" type="number"></input>
                     </div>
 
                     <div className="col">

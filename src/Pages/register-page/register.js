@@ -33,8 +33,6 @@ const RegisterPage = (props) => {
             <div className={style.register}>
                 <form>
 
-
-
                     <Input
                         name="username"
                         type="text"

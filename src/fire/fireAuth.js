@@ -23,7 +23,8 @@ export default {
                 username: username,
                 email: userEmail,
                 profilePicture: profilePicture,
-                registeredAt: moment().format('MMMM Do YYYY, h:mm:ss a'),
+                lastUpdate: moment().format('MMMM Do YYYY, h:mm:ss a'),
+                orders:0
             });
 
             return true

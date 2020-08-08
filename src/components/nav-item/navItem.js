@@ -5,13 +5,16 @@ import style from './navItem.module.css'
 
 const NaviItem = ({ link, path }) => {
     return (
-        <Nav.Item>
+        <div className="">
+             <Nav.Item>
             <NavLink id="RouterNavLink" to={path}  >
 
                 <h5 className={style.link}>{link}</h5>
 
             </NavLink>
         </Nav.Item>
+        </div>
+       
     )
 }
 

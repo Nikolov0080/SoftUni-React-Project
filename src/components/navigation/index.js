@@ -21,8 +21,8 @@ const Navigation = () => {
 
     if (loading) {
         return (
-            <div className="bg-primary container-max-width-sm " >
-                <div className="row justify-content-md-center">
+            <div className="bg-primary container-max-width-sm" >
+                <div className="row justify-content-md-center" >
                     <div className="text-center row" >
                         <h5 style={{ color: "white" }}>loading . . .  </h5>
                         <div className="spinner-border  text-light" role="status">
@@ -36,22 +36,22 @@ const Navigation = () => {
 
     if (user) {
         return (
-            <div className="bg-primary container-max-width-sm " >
+            <div className="bg-primary container-max-width-lg" >
                 <div className="row justify-content-md-center">
                     <div className="row" >
-                        <div className="col-sm bg-primary" >
+                        <div className="col bg-primary"style={{maxHeight:"65px",width:"12em"}} >
                             <NaviItem path="/" link="Home" />
                         </div>
-                        <div className="col-sm bg-primary "  >
-                            <NaviItem path="/profile" link="Card/Profile" />
+                        <div className="col bg-primary " style={{maxHeight:"65px",width:"12em"}} >
+                            <NaviItem path="/profile" link="Cart" />
                         </div>
-                        <div className="col-sm bg-primary" >
+                        <div className="col bg-primary"style={{maxHeight:"65px",width:"12em"}} >
                             <NaviItem path="/order" link="Order" />
                         </div>
-                        <div className="col-sm bg-primary" >
+                        <div className="col bg-primary" style={{maxHeight:"65px",width:"12em"}}>
                             <NaviItem path="/products" link="Products" />
                         </div>
-                        <div className="col-sm bg-primary" >
+                        <div className="col bg-primary"style={{maxHeight:"65px",width:"12em"}} >
                             <NaviItem path="/signOut" link="SignOut" />
                         </div>
                     </div>
@@ -63,13 +63,13 @@ const Navigation = () => {
             <div className="bg-primary container-max-width-sm " >
                 <div className="row justify-content-md-center">
                     <div className="row" >
-                        <div className="col-sm bg-primary" >
+                        <div className="col-sm bg-primary" style={{maxHeight:"65px",width:"12em"}} >
                             <NaviItem path="/" link="Home" />
                         </div>
-                        <div className="col-sm bg-primary">
+                        <div className="col-sm bg-primary"style={{maxHeight:"65px",width:"12em"}}>
                             <NaviItem path="/login" link="Login" />
                         </div>
-                        <div className="col-sm bg-primary" >
+                        <div className="col-sm bg-primary"style={{maxHeight:"65px",width:"12em"}} >
                             <NaviItem path="/register" link="Register" />
                         </div>
                     </div>

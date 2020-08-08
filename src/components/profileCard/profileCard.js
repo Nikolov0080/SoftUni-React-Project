@@ -20,8 +20,8 @@ const ProfileCard = () => {
                     <Button variant="primary"><Link style={{ color: "white" }} to="/signOut">Sign out</Link></Button>
                 </Card.Body>
                 <Card.Footer className="text-muted">
-                    <p>This profile created on</p>
-                    {context.user.registeredAt}</Card.Footer>
+                    <p>Last update:</p>
+                    {context.user.lastUpdate}</Card.Footer>
             </Card>
         </div>
     );

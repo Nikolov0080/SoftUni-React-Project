@@ -1,4 +1,4 @@
 
-import db from '../fire';
+import firebase from 'firebase';
 
-export default  db.database()
+export default  firebase.database()
