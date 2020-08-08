@@ -14,21 +14,22 @@ const Auth = (props) => {
     useEffect(() => {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-
                 firebase.database().ref('/users/' + user.uid).on('value', (snapshot) => {
                     const snap = snapshot.val();
+                    if (snap) {
+                        const userData = {
+                            email: snap.email,
+                            id: user.uid,
+                            username: snap.username,
+                            lastUpdate: snap.lastUpdate,
+                            profilePicture: snap.profilePicture,
+                            orders: snap.orders
+                        }
 
-                    const userData = {
-                        email: snap.email,
-                        id: user.uid,
-                        username: snap.username,
-                        lastUpdate: snap.lastUpdate,
-                        profilePicture: snap.profilePicture,
-                        orders: snap.orders
+                        setUser(userData)
+                        setLoading(false)
                     }
 
-                    setUser(userData)
-                    setLoading(false)
                 })
             } else {
                 signOut()

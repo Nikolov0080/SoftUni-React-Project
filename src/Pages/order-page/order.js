@@ -12,7 +12,7 @@ const OrderPage = () => {
     if (!context.currentProduct) {
         setTimeout(() => {
             history.push('/products');
-        }, 700)
+        }, 400)
         return (
             <h1>You will be redirected to Products</h1>
         )

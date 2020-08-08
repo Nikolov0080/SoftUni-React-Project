@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import ordersRef from '../../fire/DB-refs/orders';
 import moment from 'moment';
 
-const ProductDetails = ({ name, price, user, userId,imageUrl }) => {
+const ProductDetails = ({ name, price, user, userId, imageUrl }) => {
     const history = useHistory();
 
     const [quantity, setQuantity] = useState(0);
@@ -13,23 +13,23 @@ const ProductDetails = ({ name, price, user, userId,imageUrl }) => {
 
     useEffect(() => {
         setOrder({
-            imageUrl:imageUrl,
+            imageUrl: imageUrl,
             totalPrice: total,
             honeyType: name,
             quantity: quantity,
             user: user,
             createdAt: moment().format('LLL')
         });
-    }, [total, name, quantity, user,imageUrl]);
+    }, [total, name, quantity, user, imageUrl]);
 
     const saveQuantity = (e) => {
-
         return setQuantity(e.target.value);
+        
     }
 
     const submitOrder = (e) => {
         e.preventDefault();
-
+      setTotal(quantity * price)
         ordersRef.ref('orders/' + userId).push(order).then(response => {
             console.log('Order saved to card!');
             history.push('/profile');
@@ -67,7 +67,7 @@ const ProductDetails = ({ name, price, user, userId,imageUrl }) => {
                         <Button onClick={checkTotal}>Check total</Button>
                     </div>
 
-            <Button type="submit" style={{ margin: "20px" }} >Add to card</Button>
+                    <Button type="submit" style={{ margin: "20px" }} >Add to card</Button>
                 </form>
             </div>
 

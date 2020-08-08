@@ -1,11 +1,27 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import UserContext from '../../context/context';
 import ButtonLink from '../button-link/button-link';
 
 const ProfileCard = () => {
 
-    const context = useContext(UserContext)
+    const context = useContext(UserContext);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (context.user) { setLoading(false) }
+    }, [context])
+
+
+    if (loading) {
+        return (
+            <div className="text-center" style={{ marginTop: "200px" }}>
+                <div className="spinner-border" role="status">
+                    <span className="sr-only">Loading...</span>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <div>
@@ -24,10 +40,6 @@ const ProfileCard = () => {
             </Card>
         </div>
     );
-};
-
-ProfileCard.propTypes = {
-
 };
 
 export default ProfileCard;

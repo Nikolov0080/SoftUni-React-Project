@@ -8,12 +8,20 @@ import ButtonLink from '../button-link/button-link';
 
 
 const OrdersCart = (props) => {
-
     const context = useContext(UserContext);
-    const id = context.user.id;
+
     const [orders, setOrders] = useState({});
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
+    const [id, setId] = useState(null);
+
     let totalPrice = 0
+
+    useEffect(() => {
+        if(context.user!==null){
+            setId(context.user.id)
+        }
+    }, [context])
+
     const ordersRef = db.ref('orders/' + id);
 
     useEffect(() => {
@@ -43,7 +51,6 @@ const OrdersCart = (props) => {
         dbUtils.updateTotalSpend(totalPrice)
 
         dbUtils.updateUser(userData, id).then(resp => {
-            console.log(resp);
             dbUtils.deleteOrders(id);
         })
     }
