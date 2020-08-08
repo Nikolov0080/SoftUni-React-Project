@@ -1,32 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Navigation from '../navigation/index';
 import Footer from '../footer/footer'
 import style from './pageLayout.module.css'
 import Title from '../title/title';
 import '../../fire/fire'
 
-class PageLayout extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            title: this.props.title
-        }
-    }
-    render() {
+const PageLayout =(props)=> {
+   
         return (
             <div className={style.page_container}>
                 <Navigation />
-                <Title title={this.state.title} />
+                <Title title={props.title} />
                 <div className={style.inner_container}>
                     <div className={style.over_flow_div}>
-                        {this.props.children}
+                        {props.children}
                     </div>
                 </div>
                 <Footer />
             </div>
         )
-    }
 }
 
 export default PageLayout;
