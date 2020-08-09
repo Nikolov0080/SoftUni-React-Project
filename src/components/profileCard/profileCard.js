@@ -1,17 +1,21 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import UserContext from '../../context/context';
-import ButtonLink from '../button-link/button-link';
+import { useHistory } from 'react-router-dom';
 
 const ProfileCard = () => {
 
     const context = useContext(UserContext);
     const [loading, setLoading] = useState(true);
-
+    const history = useHistory();
     useEffect(() => {
         if (context.user) { setLoading(false) }
     }, [context])
 
+    const signOutUser = () => {
+        context.signOut()
+        history.push('/')
+    }
 
     if (loading) {
         return (
@@ -32,7 +36,7 @@ const ProfileCard = () => {
                     <Card.Title>Username: {context.user.username}</Card.Title>
                     <Card.Title>Email: {context.user.email}</Card.Title>
                     <Card.Title>Orders: {(context.user.orders || "No orders at all")}</Card.Title>
-                    <ButtonLink to="/signOut" value="Sign out" />
+                    <Button onClick={signOutUser}>Sign out</Button>
                 </Card.Body>
                 <Card.Footer className="text-muted">
                     <p>Last update:</p>

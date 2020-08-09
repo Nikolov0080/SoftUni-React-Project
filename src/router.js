@@ -5,7 +5,6 @@ import LoginPage from './Pages/login-page/login';
 import OrderPage from './Pages/order-page/order';
 import RegisterPage from './Pages/register-page/register';
 import ProductsPage from './Pages/products-page/products';
-import SignOut from './Pages/signOut/signOut';
 import Profile from './Pages/profilePage/profilePage';
 
 
@@ -19,7 +18,6 @@ const PageRouter =()=> {
                     <Route exact path="/register" component={RegisterPage} />
                     <Route exact path="/products" component={ProductsPage} />
                     <Route exact path="/order/:name" component={OrderPage} />
-                    <Route exact path="/signOut" component={SignOut} />
                     <Route exact path="/profile" component={Profile} />
                 </Switch>
             </Router>

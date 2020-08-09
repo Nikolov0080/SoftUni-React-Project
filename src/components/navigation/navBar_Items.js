@@ -17,12 +17,7 @@ const navItems = (user) => {
             {
                 link: "Products",
                 path: "/products"
-            },
-            {
-                link: "SignOut",
-                path: "/signOut"
-            },
-
+            }
         ]
     } else {
         return [
@@ -38,8 +33,6 @@ const navItems = (user) => {
                 link: "Register",
                 path: "/register"
             }
-
-
         ]
     }
 

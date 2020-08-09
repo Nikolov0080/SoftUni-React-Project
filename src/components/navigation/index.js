@@ -3,6 +3,8 @@ import NaviItem from '../nav-item/navItem';
 import '../../fire/fire';
 import UserContext from '../../context/context';
 import NavBar_items from './navBar_Items';
+import ButtonLink from '../button-link/button-link';
+import { Button } from 'react-bootstrap';
 
 const Navigation = () => {
     const [user, setUser] = useState(null);
@@ -25,7 +27,7 @@ const Navigation = () => {
         setNavData(NavBar_items(user));
     }, [user])
 
-    if (loading && navData !== [] ) {
+    if (loading && navData !== []) {
         return (
             <div className="bg-primary container-max-width-sm" >
                 <div className="row justify-content-md-center" >
@@ -46,18 +48,16 @@ const Navigation = () => {
                 <div className="row" >
 
                     {navData.map(({ path, link }, index) => {
-                      return    <div key={index} className="col bg-primary" style={{ maxHeight: "65px", width: "12em" }} >
-                        <NaviItem path={path} link={link} />
-                    </div>
+                        return <div key={index} className="col bg-primary" style={{ maxHeight: "65px", width: "12em" }} >
+                            <NaviItem path={path} link={link} />
+                        </div>
                     })}
-                  
 
+                    <Button>dsdsdsdsds</Button>
                 </div>
             </div>
         </div>
     )
-
-
 }
 
 export default Navigation
