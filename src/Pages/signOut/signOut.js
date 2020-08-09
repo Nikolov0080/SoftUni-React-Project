@@ -6,7 +6,7 @@ const SignOut = (props) => {
     const context = useContext(UserContext);
 
     useEffect(() => {
-        context.signOut()
+        context.signOut();
     }, [context]);
 
     return (

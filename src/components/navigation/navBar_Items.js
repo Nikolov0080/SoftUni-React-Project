@@ -2,9 +2,9 @@
 
 
 
-const navItems = (user ) => {
+const navItems = (user) => {
 
-    if (user) {
+    if (user !== null) {
         return [
             {
                 link: "Home",

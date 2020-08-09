@@ -4,7 +4,6 @@ import firebase from 'firebase';
 import fireAuth from './fire/fireAuth';
 import './fire/fire'
 
-
 const Auth = (props) => {
 
     const [user, setUser] = useState(null)
@@ -16,34 +15,32 @@ const Auth = (props) => {
             if (user) {
                 firebase.database().ref('/users/' + user.uid).on('value', (snapshot) => {
                     const snap = snapshot.val();
-                    if (snap) {
-                        const userData = {
-                            email: snap.email,
-                            id: user.uid,
-                            username: snap.username,
-                            lastUpdate: snap.lastUpdate,
-                            profilePicture: snap.profilePicture,
-                            orders: snap.orders
-                        }
 
-                        setUser(userData)
-                        setLoading(false)
+                    const userData = {
+                        email: snap.email,
+                        id: user.uid,
+                        username: snap.username,
+                        lastUpdate: snap.lastUpdate,
+                        profilePicture: snap.profilePicture,
+                        orders: snap.orders
                     }
+
+                    setUser(userData)
+                    setLoading(false)
 
                 })
             } else {
                 signOut()
             }
-            setLoading(false)
+
         })
     }, [props])
 
     const signOut = () => {
+        setUser(null)
 
-        fireAuth.signOut().then(() => {
-            setLoading(false)
-            setUser(null);
-        });
+        setLoading(false)
+        fireAuth.signOut();
 
     }
 

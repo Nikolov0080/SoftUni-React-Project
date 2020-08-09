@@ -14,19 +14,18 @@ const Navigation = () => {
 
         if (context.user) {
             setUser(context.user);
-            setLoading(false)
+            setTimeout(() => setLoading(false), 650)
+
         } else {
             setTimeout(() => setLoading(false), 650)
         }
     }, [context]);
 
-
     useEffect(() => {
         setNavData(NavBar_items(user));
     }, [user])
 
-
-    if (loading && navData !== []) {
+    if (loading && navData !== [] ) {
         return (
             <div className="bg-primary container-max-width-sm" >
                 <div className="row justify-content-md-center" >
@@ -40,8 +39,6 @@ const Navigation = () => {
             </div>
         )
     }
-
-
 
     return (
         <div className="bg-primary container-max-width-lg" >
