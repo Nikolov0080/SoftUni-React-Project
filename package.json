@@ -11,10 +11,10 @@
     "moment": "^2.27.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.2.2",
-    "react-bootstrap-4-pagination": "^1.0.3",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "validator": "^13.1.1"
   },
   "scripts": {
     "start": "set PORT=3000 && react-scripts start",

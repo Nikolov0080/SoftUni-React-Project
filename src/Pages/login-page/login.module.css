@@ -6,6 +6,11 @@
     text-align: center;
 }
 
+.errorMessage{
+    color: red;
+    font-size: medium;
+}
+
 @media(max-width:800px){
     .login{
         width: 100%;

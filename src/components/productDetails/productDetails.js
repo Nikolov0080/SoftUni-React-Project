@@ -7,29 +7,32 @@ import moment from 'moment';
 const ProductDetails = ({ name, price, user, userId, imageUrl }) => {
     const history = useHistory();
 
-    const [quantity, setQuantity] = useState(0);
-    const [total, setTotal] = useState(0);
+    const [quantity, setQuantity] = useState(1);
+    const [total, setTotal] = useState(price);
     const [order, setOrder] = useState({});
 
     useEffect(() => {
-        setOrder({
-            imageUrl: imageUrl,
-            totalPrice: total,
-            honeyType: name,
-            quantity: quantity,
-            user: user,
-            createdAt: moment().format('LLL')
-        });
+        
+            setOrder({
+                imageUrl: imageUrl,
+                totalPrice: total,
+                honeyType: name,
+                quantity: quantity,
+                user: user,
+                createdAt: moment().format('LLL')
+            });
+       
+      
     }, [total, name, quantity, user, imageUrl]);
 
     const saveQuantity = (e) => {
-        return setQuantity(e.target.value);
-        
+        setQuantity(e.target.value);
+        setTotal(e.target.value * price)
     }
 
     const submitOrder = (e) => {
         e.preventDefault();
-      setTotal(quantity * price)
+        setTotal(quantity * price)
         ordersRef.ref('orders/' + userId).push(order).then(response => {
             console.log('Order saved to card!');
             history.push('/profile');
@@ -38,10 +41,6 @@ const ProductDetails = ({ name, price, user, userId, imageUrl }) => {
 
     const backToProducts = () => {
         return history.push('/products');
-    }
-
-    const checkTotal = () => {
-        setTotal(quantity * price)
     }
 
     return (
@@ -57,15 +56,14 @@ const ProductDetails = ({ name, price, user, userId, imageUrl }) => {
                     <div className="col">
                         <h4>Price: {price} USD</h4>
                     </div>
-                    
+
                     <div className="col">
                         <label id="quantity"><h4>Quantity:  </h4></label>
-                        <input defaultValue="1" id="quantity" onChange={(e) => saveQuantity(e)} className="text-center" type="number"></input>
+                        <input defaultValue={1} id="quantity" onChange={(e) => saveQuantity(e)} className="text-center" type="number"></input>
                     </div>
 
                     <div className="col">
                         <h5>{total} USD</h5>
-                        <Button onClick={checkTotal}>Check total</Button>
                     </div>
 
                     <Button type="submit" style={{ margin: "20px" }} >Add to card</Button>
