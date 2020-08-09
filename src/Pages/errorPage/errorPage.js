@@ -20,7 +20,7 @@ const ErrorPage = (props) => {
             </div>
             <div className={style.rightDiv}>
 
-                <img className={style.errorImage} src={errorImg}></img>
+                <img alt="sdhfhsdjk" className={style.errorImage} src={errorImg}></img>
             </div>
             
         </PageLayout>

@@ -1,65 +1,56 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Input from '../../components/input/input';
 import PageLayout from '../../components/pageLayout/pageLayout';
 import style from './login.module.css';
 import { Button } from 'react-bootstrap';
 import auth from '../../fire/fireAuth';
 import { useHistory } from 'react-router-dom';
-import validator from 'validator';
+import validation from '../../validations/scripts/login';
 
 const LoginPage = () => {
-
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const history = useHistory();
-
-    const [validEmail, setValidEmail] = useState(true);
-    const [validPassword, setValidPassword] = useState(true);
-
-
-    //VALIDATION
-    const validateEmail = () => {
-        if (!validEmail) {
-            return (
-                <p className={style.errorMessage}>Must be a valid email (example@email.com)</p>
-            )
-        }
-    }
-
-    const validatePassword = () => {
-        if (!validPassword) {
-            return (
-                <p className={style.errorMessage}>Password must be at least 6 symbols letters and numbers</p>
-            )
-        }
-    }
-
-    //VALIDATION
-
+    const [passVal, setPassVal] = useState(true)
+    const [emailVal, setEmailVal] = useState(true)
 
     const loginUser = (e) => {
         e.preventDefault();
 
-        //VALIDATION
-        setValidEmail(validator.isEmail(email));
-        setValidPassword(validator.isLength(password, { min: 6, max: 19 }));
-        //VALIDATION
-        console.log(validEmail)
-        console.log(validPassword)
+        const { isValidEmail, isValidPassword } = validation(email, password);
 
-        if (validPassword && validPassword) {
+        setEmailVal(isValidEmail)
+        setPassVal(isValidPassword)
+
+        if (isValidEmail && isValidPassword) {
             auth.login(email, password).then((resp) => {
                 if (resp) {
                     return history.push('/products')
                 }
                 return history.push('/login')
             })
+        } else {
+            
+        }
+    }
+
+    const emailError = (validation) => {
+        if (!validation) {
+            return (
+                <p className={style.errorMessage}>Email invalid [ example@email.com ]</p>
+            )
         }
 
     }
 
-
+    const passwordError = (validation) => {
+        if (!validation) {
+            return (
+                <p className={style.errorMessage}>Min 6 symbols digits and letters</p>
+            )
+        }
+    }
 
     return (
         <PageLayout title="Login">
@@ -72,7 +63,7 @@ const LoginPage = () => {
                         placeholder="Email"
                         onChange={setEmail}
                     />
-                    {validateEmail()}
+                    {emailError(emailVal)}
 
                     <Input name="password"
                         type="password"
@@ -81,8 +72,7 @@ const LoginPage = () => {
                         placeholder="Password "
                         onChange={setPassword}
                     />
-                    {validatePassword()}
-
+                    {passwordError(passVal)}
 
                     <Button onClick={loginUser} type="submit" variant="primary">Login</Button>
                 </form>
