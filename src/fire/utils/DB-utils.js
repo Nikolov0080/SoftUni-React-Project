@@ -10,12 +10,14 @@ export default {
         return db.ref('orders/' + id).remove()
     },
     updateTotalSpend(currentOrderValue) {
+
+        console.log(currentOrderValue)
         db.ref('totalSpend/usd').once('value').then((snapshot) => {
             let result = snapshot.val();
             return db.ref('totalSpend/usd').update({
+                for:currentOrderValue,
                 usd: currentOrderValue += result.usd,
-                lastOrderTime: moment().format('LLL'),
-                for:currentOrderValue
+                lastOrderTime: moment().format('LLL')
             })
         });
     }

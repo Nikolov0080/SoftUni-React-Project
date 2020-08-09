@@ -30,7 +30,7 @@ const ProfileCard = () => {
                 <Card.Img style={{ width: '16rem', height: '14em', margin: "0 auto", borderRadius: "50%" }}
                     src={context.user.profilePicture}></Card.Img>
                 <Card.Body>
-                    <Card.Title>Username: {context.user.username}</Card.Title>
+                    <Card.Title >Username: {context.user.username}</Card.Title>
                     <Card.Title>Email: {context.user.email}</Card.Title>
                     <Card.Title>Orders: {(context.user.orders || "No orders at all")}</Card.Title>
                     <Button onClick={signOutUser}>Sign out</Button>

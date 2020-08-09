@@ -55,6 +55,7 @@ const App = () => {
               <br></br>
               <h5>Or complete complete you orders.</h5> 
               <br></br>
+              <h5>Last Order: {statistics.for} USD</h5>
             <ButtonLink to="/profile" value="Go to Cart" variant="success"/>
 
             </Card.Title>

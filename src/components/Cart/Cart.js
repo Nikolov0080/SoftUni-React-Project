@@ -6,9 +6,10 @@ import moment from 'moment';
 import dbUtils from '../../fire/utils/DB-utils';
 import ButtonLink from '../button-link/button-link';
 import Loading from '../loading/loading';
-
+import style from './cart.module.css'
 
 const OrdersCart = (props) => {
+
     const context = useContext(UserContext);
 
     const [orders, setOrders] = useState({});
@@ -30,9 +31,7 @@ const OrdersCart = (props) => {
         ordersRef.once('value', (snapshot) => {
 
             setOrders(snapshot.val());
-
             setLoading(false);
-
         });
 
     }, [ordersRef]);
@@ -49,9 +48,9 @@ const OrdersCart = (props) => {
 
         const userData = Object.assign({}, { lastUpdate: moment().format('MMMM Do YYYY, h:mm:ss a'), email, username, profilePicture, orders: orders += 1 })
 
-        dbUtils.updateTotalSpend(totalPrice)
+        dbUtils.updateTotalSpend(totalPrice);
 
-        dbUtils.updateUser(userData, id).then(resp => {
+        dbUtils.updateUser(userData, id).then(() => {
             dbUtils.deleteOrders(id);
         })
     }
@@ -65,9 +64,10 @@ const OrdersCart = (props) => {
     if (!orders) {
         return (
             <div className="text-center">
+                <div className={style.emptyMessage}>
                 <h2>No orders to complete</h2>
-                <h2>Go to <ButtonLink to="/products" value="Products" /> page and make one</h2>
-
+                <h2>Go to <ButtonLink  to="/products" value="Products" /> page and make one</h2>
+                </div>
             </div>
         )
     }

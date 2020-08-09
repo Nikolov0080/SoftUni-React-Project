@@ -13,12 +13,12 @@ const HoneyCard = ({ imageUrl, name, description ,price}) => {
 
     const getProduct = () => context.setProduct({ imageUrl, name, description,price })
 
-    const [content, limit] = [description, 60];
+    const [content, limit] = [description, 50];
     const path = '/order/' + name.replace(' ', '_').toLowerCase();
 
     return (
         <div className={style.card}>
-            <Card style={{ width: '18rem', borderColor: "green" }}>
+            <Card style={{ width: '18rem',border:"1px solid gray"}}>
                 <Card.Body style={{ "textAlign": "center" }}>
                     <Card.Img style={{ height: "12em", width: "10em" }} variant="bottom" src={imageUrl} />
                     <Card.Title>{name}</Card.Title>

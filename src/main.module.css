@@ -11,3 +11,8 @@ font-family: 'Piedra', cursive;
 font-family: 'Recursive', sans-serif;
 font-family: 'Sriracha', cursive;
 }
+
+.greenBg{
+  background-color: rgb(191, 245, 191);
+  color: rgb(51, 51, 51);
+}
