@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import UserContext from '../../context/context';
 import { useHistory } from 'react-router-dom';
+import Loading from '../loading/loading';
 
 const ProfileCard = () => {
 
@@ -19,11 +20,7 @@ const ProfileCard = () => {
 
     if (loading) {
         return (
-            <div className="text-center" style={{ marginTop: "200px" }}>
-                <div className="spinner-border" role="status">
-                    <span className="sr-only">Loading...</span>
-                </div>
-            </div>
+         <Loading />
         )
     }
 

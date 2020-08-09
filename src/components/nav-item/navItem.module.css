@@ -7,8 +7,11 @@
 
 .link:hover {
   color: black;
-  font-size: 22px;
   background-color: white;
-  border: rgb(29, 29, 211) 2px solid;
   transition: 0.5s;
+  border-radius: 45%;
+}
+
+.link:active{
+  background-color: skyblue;
 }

@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap';
 import moment from 'moment';
 import dbUtils from '../../fire/utils/DB-utils';
 import ButtonLink from '../button-link/button-link';
+import Loading from '../loading/loading';
 
 
 const OrdersCart = (props) => {
@@ -57,11 +58,7 @@ const OrdersCart = (props) => {
 
     if (loading) {
         return (
-            <div className="text-center" style={{ marginTop: "200px" }}>
-                <div className="spinner-border" role="status">
-                    <span className="sr-only">Loading...</span>
-                </div>
-            </div>
+          <Loading />
         )
     }
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PageLayout from '../../components/pageLayout/pageLayout';
 import dbRef from '../../fire/DB-refs/allProducts-ref';
 import Posts from '../../components/posts/posts';
+import Loading from '../../components/loading/loading';
 
 const ProductsPage = () => {
 
@@ -26,21 +27,14 @@ const ProductsPage = () => {
         return (
 
             <PageLayout title="Our Products">
-                <div >
-                    <div className="text-center  text-primary" style={{ marginTop: "10rem" }}>
-                        <div className="spinner-border" style={{ width: "10rem", height: "10rem" }} role="status">
-                            <span className="sr-only">Loading...</span>
-                             Loading
-                        </div>
-                    </div>
-                </div>
+                <Loading />
             </PageLayout>
         )
     }
 
     return (
         <PageLayout title="Our Products">
-            <div >
+            <div>
                 <Posts props={currentProducts} />
             </div>
         </PageLayout>

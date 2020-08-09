@@ -5,7 +5,7 @@ import UserContext from '../../context/context';
 import NavBar_items from './navBar_Items';
 import { useHistory } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-
+import LoadingNav from '../../components/loading/loadingNav';
 const Navigation = () => {
 
     const context = useContext(UserContext);
@@ -35,17 +35,8 @@ const Navigation = () => {
     }
 
     if (loading && navData !== []) {
-        return (
-            <div className="bg-primary container-max-width-sm" >
-                <div className="row justify-content-md-center" style={{backgroundColor:'green'}}>
-                    <div className="text-center row" >
-                        <h1 style={{ color: "white", height: "55px"  }}>loading . . .  </h1>
-                        <div className="spinner-border  text-light" role="status">
-                            <span className="sr-only">Loading...</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        return(
+            <LoadingNav />
         )
     }
 

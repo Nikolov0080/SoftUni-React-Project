@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import UserContext from './context/context';
 import firebase from 'firebase';
 import fireAuth from './fire/fireAuth';
+import Loading from './components/loading/loading';
+
 import './fire/fire'
 
 const Auth = (props) => {
@@ -48,11 +50,7 @@ const Auth = (props) => {
 
     if (loading) {
         return (
-            <div className="text-center" style={{ marginTop: "200px" }}>
-                <div className="spinner-border" role="status">
-                    <span className="sr-only">Loading...</span>
-                </div>
-            </div>
+            <Loading />
         )
     }
 

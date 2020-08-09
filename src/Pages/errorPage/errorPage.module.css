@@ -1,0 +1,21 @@
+.errorImage {
+  border-radius: 50%;
+  float: center;
+  margin: 4em;
+  margin-right: 15em;
+}
+
+.rightDiv {
+  float: right;
+  border: red solid 1px;
+}
+
+.leftDiv {
+    margin-top:4em;
+  float: left;
+  border: red solid 1px;
+  width: 40%;
+  margin-left: 12em;
+  text-align: center;
+  height: 28em;
+}

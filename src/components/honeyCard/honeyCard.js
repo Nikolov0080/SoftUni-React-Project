@@ -18,7 +18,7 @@ const HoneyCard = ({ imageUrl, name, description ,price}) => {
 
     return (
         <div className={style.card}>
-            <Card style={{ width: '18rem', margin: "10px", borderColor: "green" }}>
+            <Card style={{ width: '18rem', borderColor: "green" }}>
                 <Card.Body style={{ "textAlign": "center" }}>
                     <Card.Img style={{ height: "12em", width: "10em" }} variant="bottom" src={imageUrl} />
                     <Card.Title>{name}</Card.Title>

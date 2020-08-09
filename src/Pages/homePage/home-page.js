@@ -33,13 +33,8 @@ const App = () => {
             <br />
             <h5>For: {statistics.for} USD</h5>
           </Card.Footer>
-
-
           <Card.Title>So <ButtonLink to="/login" value="Login" /> and make yours</Card.Title>
-
-
           <Card.Title>If you don't have an account just <ButtonLink to="/register" value="Register" /></Card.Title>
-
         </div>
 
       )
@@ -53,7 +48,6 @@ const App = () => {
               <br></br>
               <h5>Now you can make you purchase !</h5>
           
-
             </Card.Title >
             <ButtonLink to="/products" value="Go to products" variant="success"/>
 
@@ -63,11 +57,8 @@ const App = () => {
               <br></br>
             <ButtonLink to="/profile" value="Go to Cart" variant="success"/>
 
-             
             </Card.Title>
           </Card>
-
-
         </div>
       )
     }
@@ -101,13 +92,7 @@ const App = () => {
             </div>
 
           </div>
-
-
         </Card.Body>
-
-
-
-
       </Card>
     </PageLayout>
   );

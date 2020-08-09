@@ -1,21 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import HoneyCard from '../honeyCard/honeyCard';
-import { Row } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 
 const Posts = ({ props }) => {
 
     const [items, setItems] = useState([]);
-   
+
     useEffect(() => {
         setItems(props);
-    
+
     }, [props]);
 
     return (
         <div>
             <Row className="col-12" style={{ margin: "0 auto" }}>
+
                 {items.map((item, i) => {
-                    return <HoneyCard key={i} {...item} />
+
+                    return (
+                        <Col key={i} lg="auto" >
+                            <HoneyCard  {...item} />
+                        </Col>
+                    )
                 })}
             </Row>
         </div>
