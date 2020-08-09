@@ -57,6 +57,7 @@ const ProductDetails = ({ name, price, user, userId, imageUrl }) => {
                     <div className="col">
                         <h4>Price: {price} USD</h4>
                     </div>
+                    
                     <div className="col">
                         <label id="quantity"><h4>Quantity:  </h4></label>
                         <input defaultValue="1" id="quantity" onChange={(e) => saveQuantity(e)} className="text-center" type="number"></input>

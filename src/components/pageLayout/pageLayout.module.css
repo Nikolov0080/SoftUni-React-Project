@@ -1,5 +1,5 @@
 .page_container {
-  width:98%;
+  width:100%;
   margin: 0 auto;
   height: auto ;
   height: 100%;
@@ -14,7 +14,7 @@
 
 .over_flow_div {
   margin-top: -80px;
-  width:95%;
+  width:100%;
   height:auto;
   overflow: auto;
   border: 2px red solid;
