@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Input from '../../components/input/input';
 import PageLayout from '../../components/pageLayout/pageLayout';
 import style from './login.module.css';
+import errorStyle from '../../validations/error.module.css'
 import { Button } from 'react-bootstrap';
 import auth from '../../fire/fireAuth';
 import { useHistory } from 'react-router-dom';
@@ -21,7 +22,7 @@ const LoginPage = () => {
     const loginUser = (e) => {
         e.preventDefault();
 
-        const { isValidEmail, isValidPassword } = validation(email, password);
+        const { isValidEmail, isValidPassword } = validation.login(email, password);
 
         setEmailVal(isValidEmail);
         setPassVal(isValidPassword);
@@ -50,7 +51,7 @@ const LoginPage = () => {
                         placeholder="Email"
                         onChange={setEmail}
                     />
-                    <p className={style.errorMessage}>{errMessages.emailError(emailVal)}</p>
+                    <p className={errorStyle.errorMessage}>{errMessages.emailError(emailVal)}</p>
 
                     <Input name="password"
                         type="password"
@@ -59,8 +60,8 @@ const LoginPage = () => {
                         placeholder="Password "
                         onChange={setPassword}
                     />
-                    <p className={style.errorMessage}>{errMessages.passwordError(passVal)}</p>
-                    <p className={style.errorMessage}>{errMessages.loginError(loginValid)}</p>
+                    <p className={errorStyle.errorMessage}>{errMessages.passwordError(passVal)}</p>
+                    <p className={errorStyle.errorMessage}>{errMessages.loginError(loginValid)}</p>
 
 
                     <Button onClick={loginUser} type="submit" variant="primary">Login</Button>
