@@ -5,7 +5,9 @@ import style from './login.module.css';
 import { Button } from 'react-bootstrap';
 import auth from '../../fire/fireAuth';
 import { useHistory } from 'react-router-dom';
-import validation from '../../validations/scripts/login';
+import validation from '../../validations/scripts/validators';
+import errMessages from '../../validations/errorMessages/errorMessages';
+
 
 const LoginPage = () => {
 
@@ -14,41 +16,26 @@ const LoginPage = () => {
     const history = useHistory();
     const [passVal, setPassVal] = useState(true)
     const [emailVal, setEmailVal] = useState(true)
+    const [loginValid, setLoginValid] = useState(true);
 
     const loginUser = (e) => {
         e.preventDefault();
 
         const { isValidEmail, isValidPassword } = validation(email, password);
 
-        setEmailVal(isValidEmail)
-        setPassVal(isValidPassword)
+        setEmailVal(isValidEmail);
+        setPassVal(isValidPassword);
+        setLoginValid(true);
 
         if (isValidEmail && isValidPassword) {
             auth.login(email, password).then((resp) => {
+
                 if (resp) {
                     return history.push('/products')
+                } else {
+                    setLoginValid(false);
                 }
-                return history.push('/login')
             })
-        } else {
-            
-        }
-    }
-
-    const emailError = (validation) => {
-        if (!validation) {
-            return (
-                <p className={style.errorMessage}>Email invalid [ example@email.com ]</p>
-            )
-        }
-
-    }
-
-    const passwordError = (validation) => {
-        if (!validation) {
-            return (
-                <p className={style.errorMessage}>Min 6 symbols digits and letters</p>
-            )
         }
     }
 
@@ -63,7 +50,7 @@ const LoginPage = () => {
                         placeholder="Email"
                         onChange={setEmail}
                     />
-                    {emailError(emailVal)}
+                    <p className={style.errorMessage}>{errMessages.emailError(emailVal)}</p>
 
                     <Input name="password"
                         type="password"
@@ -72,7 +59,9 @@ const LoginPage = () => {
                         placeholder="Password "
                         onChange={setPassword}
                     />
-                    {passwordError(passVal)}
+                    <p className={style.errorMessage}>{errMessages.passwordError(passVal)}</p>
+                    <p className={style.errorMessage}>{errMessages.loginError(loginValid)}</p>
+
 
                     <Button onClick={loginUser} type="submit" variant="primary">Login</Button>
                 </form>
