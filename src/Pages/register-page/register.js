@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import PageLayout from '../../components/pageLayout/pageLayout';
 import Input from '../../components/input/input';
 import style from './register.module.css';
-import errorStyle from '../../validations/error.module.css'
 import { Button } from 'react-bootstrap';
 import auth from '../../fire/fireAuth'
 import validation from '../../validations/scripts/validators';
 import errMessages from '../../validations/errorMessages/errorMessages';
+import Notification from '../../notifications/notification';
 
 const RegisterPage = (props) => {
 
@@ -16,52 +16,54 @@ const RegisterPage = (props) => {
     const [rePassword, setRePassword] = useState('');
     const [profilePicture, setProfilePicture] = useState('');
     const [haveAcc, setHaveAcc] = useState(true);
+    const [vUsername, setVUsername] = useState(true);
+    const [vPassword, setVPassword] = useState(true);
+    const [vEmail, setVEmail] = useState(true);
+    const [vPasswordMatch, setVPasswordMatch] = useState(true);
 
-    const [valData, setValData] = useState({
-        isValidEmail: true,
-        isValidPassword: true,
-        isValidUsername: true,
-        isValidPasswordMatch: true,
-        isFormValid: false
-    })
 
-    const {
-        isValidEmail,
-        isValidPassword,
-        isValidUsername,
-        isValidPasswordMatch,
-        isFormValid
-    } = validation.register(email, password, username, rePassword)
+    useEffect(() => {
+        setVUsername(true)
+        setVPassword(true)
+        setVEmail(true)
+        setVPasswordMatch(true)
+    }, [email, username, password, rePassword])
 
     const registerUser = (event) => {
         event.preventDefault();
 
-        setValData({
-            isValidEmail,
-            isValidPassword,
-            isValidUsername,
-            isValidPasswordMatch,
-            isFormValid
-        })
+        setVUsername(validation.register(email, password, username, rePassword).isValidUsername)
+        setVPassword(validation.register(email, password, username, rePassword).isValidPassword)
+        setVEmail(validation.register(email, password, username, rePassword).isValidEmail)
+        setVPasswordMatch(validation.register(email, password, username, rePassword).isValidPasswordMatch)
 
-        console.log(valData)
-setHaveAcc(true)
-        if (isFormValid) {
+        setHaveAcc(true);
+        console.log(validation.register(email, password, username, rePassword))
+        console.log(vUsername)
+        if ((vUsername === true) && (vPassword === true) && (vEmail === true) && (vPasswordMatch === true)) {
             auth.register(email, password, username, profilePicture).then(resp => {
                 if (resp) {
                     props.history.push('/products');
+                } else {
+                    props.history.push('/register');
+                    setHaveAcc(false)
                 }
             });
-        } else {
-            setHaveAcc(false)
-            props.history.push('/register');
         }
+
     }
 
     return (
         <PageLayout title="Register">
             <div className={style.register}>
                 <form>
+
+                    {vUsername !== true ? <Notification type="error" message={errMessages.usernameError()} /> : ""}
+                    {vPassword !== true ? <Notification type="error" message={errMessages.passwordError()} /> : ""}
+                    {vEmail !== true ? <Notification type="error" message={errMessages.emailError()} /> : ""}
+                    {vPasswordMatch !== true ? <Notification type="error" message={errMessages.passMatchError()} /> : ""}
+                    {haveAcc !== true ? <Notification type="error" message={errMessages.haveAcc()} /> : ""}
+
 
                     <Input
                         name="username"
@@ -71,7 +73,7 @@ setHaveAcc(true)
                         placeholder="Username  at least 6 symbols"
                         onChange={setUsername}
                     />
-                    <p className={errorStyle.errorMessage}>{errMessages.usernameError(valData.isValidUsername)}</p>
+
                     <Input
                         name="email"
                         type="email"
@@ -80,7 +82,6 @@ setHaveAcc(true)
                         placeholder="Email"
                         onChange={setEmail}
                     />
-                    <p className={errorStyle.errorMessage}>{errMessages.emailError(valData.isValidEmail)}</p>
 
                     <Input
                         name="password"
@@ -90,8 +91,6 @@ setHaveAcc(true)
                         placeholder="Enter password more than 6 symbols"
                         onChange={setPassword}
                     />
-                    <p className={errorStyle.errorMessage}>{errMessages.passwordError(valData.isValidPassword)}</p>
-
 
                     <Input
                         name="password"
@@ -101,7 +100,6 @@ setHaveAcc(true)
                         placeholder="Same as password field"
                         onChange={setRePassword}
                     />
-                    <p className={errorStyle.errorMessage}>{errMessages.passMatchError(valData.isValidPasswordMatch)}</p>
 
                     <Input
                         name="profilePicture"
@@ -111,18 +109,13 @@ setHaveAcc(true)
                         placeholder="image URL"
                         onChange={setProfilePicture}
                     />
-                    <p className={errorStyle.errorMessage}>{errMessages.haveAcc(haveAcc)}</p>
+                    {/* <p className={errorStyle.errorMessage}>{errMessages.haveAcc(haveAcc)}</p> */}
 
                     <Button onClick={registerUser} type="submit" variant="primary">Register</Button>
-
-
                 </form>
-
-
             </div>
         </PageLayout>
     )
-
 }
 
 

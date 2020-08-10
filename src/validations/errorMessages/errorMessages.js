@@ -1,41 +1,30 @@
 const messages = {
     email: "Email is not correct [ example@email.com ]",
-    password: "Min 6 symbols digits and letters",
+    password: "Password must be 6 symbols digits and letters",
     login: "Email or Password invalid try again or register a new account",
     passwordMatch: "Password and Re-Password do not match",
-    haveAcc:"This email is registered i our database",
+    haveAcc:"This email already exists in our database",
     username: "Username can contain only letters and digits"
 }
 
 export default {
     emailError(val) {
-        if (!val) {
-            return messages.email
-        }
+  return messages.email
+     
     },
-    passwordError(val) {
-        if (!val) {
+    passwordError() {
             return messages.password
-        }
     },
-    loginError(val) {
-        if (!val) {
+    loginError() {
             return messages.login
-        }
     },
-    usernameError(val) {
-        if (!val) {
+    usernameError()  {
             return messages.username
-        }
     },
-    passMatchError(val) {
-        if (!val) {
+    passMatchError() {
             return messages.passwordMatch
-        }
     },
-    haveAcc(val){
-        if(!val){
+    haveAcc(){
             return messages.haveAcc
-        }
     }
 }

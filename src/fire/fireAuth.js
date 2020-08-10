@@ -6,28 +6,30 @@ export default {
     register(email, password, username, profilePicture) {
         return firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
 
-            console.log(error.code)
+            // console.log(error.code)
             console.log(error.message)
-            if (error) { return false }
+
         }).then(response => {
+            if (response) {
 
-            const userId = response.user.uid;
-            const userEmail = response.user.email;
+                const userId = response.user.uid;
+                const userEmail = response.user.email;
 
-            profilePicture = (profilePicture || defaultImage)
+                profilePicture = (profilePicture || defaultImage)
 
-            console.log("Email: " + userEmail);
-            console.log("User ID: " + userId);
+                console.log("Email: " + userEmail);
+                console.log("User ID: " + userId);
 
-            firebase.database().ref('users/' + userId).set({
-                username: username,
-                email: userEmail,
-                profilePicture: profilePicture,
-                lastUpdate: moment().format('MMMM Do YYYY, h:mm:ss a'),
-                orders:0
-            });
+                firebase.database().ref('users/' + userId).set({
+                    username: username,
+                    email: userEmail,
+                    profilePicture: profilePicture,
+                    lastUpdate: moment().format('MMMM Do YYYY, h:mm:ss a'),
+                    orders: 0
+                });
 
-            return true
+                return true
+            }
 
         }).catch(e => {
             console.log(e)

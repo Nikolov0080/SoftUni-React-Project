@@ -7,6 +7,7 @@ import dbUtils from '../../fire/utils/DB-utils';
 import ButtonLink from '../button-link/button-link';
 import Loading from '../loading/loading';
 import style from './cart.module.css'
+import Notification from '../../notifications/notification';
 
 const OrdersCart = (props) => {
 
@@ -15,11 +16,12 @@ const OrdersCart = (props) => {
     const [orders, setOrders] = useState({});
     const [loading, setLoading] = useState(true);
     const [id, setId] = useState(null);
+    const [isNotification, setIsNotification] = useState(false)
 
     let totalPrice = 0
 
     useEffect(() => {
-        if(context.user!==null){
+        if (context.user !== null) {
             setId(context.user.id)
         }
     }, [context])
@@ -31,12 +33,17 @@ const OrdersCart = (props) => {
         ordersRef.once('value', (snapshot) => {
 
             setOrders(snapshot.val());
-            setLoading(false);
+        }).then(()=>{
+            setTimeout(()=>{
+
+                setLoading(false);
+            },200)
         });
 
     }, [ordersRef]);
 
     const completeOrder = () => {
+
 
         let {
             email,
@@ -48,16 +55,19 @@ const OrdersCart = (props) => {
 
         const userData = Object.assign({}, { lastUpdate: moment().format('MMMM Do YYYY, h:mm:ss a'), email, username, profilePicture, orders: orders += 1 })
 
-        dbUtils.updateTotalSpend(totalPrice,username);
+        dbUtils.updateTotalSpend(totalPrice, username);
 
         dbUtils.updateUser(userData, id).then(() => {
             dbUtils.deleteOrders(id);
-        })
+        });
+
+        setIsNotification(true);
+
     }
 
     if (loading) {
         return (
-          <Loading />
+            <Loading />
         )
     }
 
@@ -65,8 +75,9 @@ const OrdersCart = (props) => {
         return (
             <div className="text-center">
                 <div className={style.emptyMessage}>
-                <h2>No orders to complete</h2>
-                <h2>Go to <ButtonLink  to="/products" value="Products" /> page and make one</h2>
+                    {isNotification === true ? <Notification type="success" message="Order is complete !"/> : ""}
+                    <h2>No orders to complete</h2>
+                    <h2>Go to <ButtonLink to="/products" value="Products" /> page and make one</h2>
                 </div>
             </div>
         )
@@ -112,7 +123,9 @@ const OrdersCart = (props) => {
                     <h3>Total Price: {totalPrice} USD</h3>
                 </div>
                 <div className="col">
+
                     <Button onClick={completeOrder} variant="success">Complete</Button>
+
                 </div>
             </div>
         </div>
