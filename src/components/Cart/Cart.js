@@ -48,7 +48,7 @@ const OrdersCart = (props) => {
 
         const userData = Object.assign({}, { lastUpdate: moment().format('MMMM Do YYYY, h:mm:ss a'), email, username, profilePicture, orders: orders += 1 })
 
-        dbUtils.updateTotalSpend(totalPrice);
+        dbUtils.updateTotalSpend(totalPrice,username);
 
         dbUtils.updateUser(userData, id).then(() => {
             dbUtils.deleteOrders(id);
@@ -76,7 +76,7 @@ const OrdersCart = (props) => {
         <div>
             {Object.values(orders).map((orderData, index) => {
 
-                totalPrice += orderData.totalPrice;
+                totalPrice += +orderData.totalPrice;
                 return (
 
                     <div key={index}>

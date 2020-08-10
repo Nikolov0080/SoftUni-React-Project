@@ -3,6 +3,7 @@ const messages = {
     password: "Min 6 symbols digits and letters",
     login: "Email or Password invalid try again or register a new account",
     passwordMatch: "Password and Re-Password do not match",
+    haveAcc:"This email is registered i our database",
     username: "Username can contain only letters and digits"
 }
 
@@ -22,5 +23,19 @@ export default {
             return messages.login
         }
     },
-    
+    usernameError(val) {
+        if (!val) {
+            return messages.username
+        }
+    },
+    passMatchError(val) {
+        if (!val) {
+            return messages.passwordMatch
+        }
+    },
+    haveAcc(val){
+        if(!val){
+            return messages.haveAcc
+        }
+    }
 }

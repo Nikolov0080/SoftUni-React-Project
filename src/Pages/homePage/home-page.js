@@ -32,11 +32,11 @@ const App = () => {
             <h5>{statistics.lastOrderTime}</h5>
             <br />
             <h5>For: {statistics.for} USD</h5>
+            <h5>By User [{statistics.username}]</h5>
           </Card.Footer>
           <Card.Title>So <ButtonLink to="/login" value="Login" /> and make yours</Card.Title>
           <Card.Title>If you don't have an account just <ButtonLink to="/register" value="Register" /></Card.Title>
         </div>
-
       )
     } else {
       return (
@@ -55,7 +55,8 @@ const App = () => {
               <br></br>
               <h5>Or complete complete you orders.</h5> 
               <br></br>
-              <h5>Last Order: {statistics.for} USD</h5>
+              <h5>Last Order {statistics.for} USD</h5>
+              <h5>By User [{statistics.username}]</h5>
             <ButtonLink to="/profile" value="Go to Cart" variant="success"/>
 
             </Card.Title>
