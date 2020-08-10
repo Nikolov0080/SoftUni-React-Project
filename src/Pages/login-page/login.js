@@ -3,62 +3,52 @@ import Input from '../../components/input/input';
 import PageLayout from '../../components/pageLayout/pageLayout';
 import style from './login.module.css';
 import { Button } from 'react-bootstrap';
-import auth from '../../fire/fireAuth';
 import { useHistory } from 'react-router-dom';
-import validation from '../../validations/scripts/validators';
-import errMessages from '../../validations/errorMessages/errorMessages';
-import Notification from '../../notifications/notification';
+import auth from '../../fire/fireAuth';
+import { useForm } from 'react-hook-form'
+import Notification from "../../notifications/notification"
 
 const LoginPage = () => {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [emailInUse, setEmailInUse] = useState(false)
+
     const history = useHistory();
-    const [passVal, setPassVal] = useState(true)
-    const [emailVal, setEmailVal] = useState(true)
-    const [loginValid, setLoginValid] = useState(true);
 
     useEffect(() => {
-        setEmailVal(true);
-        setPassVal(true);
-    }, [email, password])
+        setEmailInUse(false)
+    }, [])
 
-    const loginUser = (e) => {
-        e.preventDefault();
+    const { register, handleSubmit, errors } = useForm();
 
-        const { isValidEmail, isValidPassword } = validation.login(email, password);
-
-        setEmailVal(isValidEmail);
-        setPassVal(isValidPassword);
-        setLoginValid(true);
-
-        if (isValidEmail && isValidPassword) {
-            auth.login(email, password).then((resp) => {
-
-                if (resp) {
-                    return history.push('/products')
-                } else {
-                    setLoginValid(false);
-                }
-            })
-        }
+    const onSubmit = ({ email, password }) => {
+        auth.login(email, password).then((resp) => {
+            if (resp) {
+                return history.push('/products')
+            } else {
+                setEmailInUse(true);
+                history.push('/login')
+            }
+        })
     }
 
     return (
         <PageLayout title="Login">
 
             <div className={style.login}>
-                <form className="container">
-                    {emailVal !== true ? <Notification type="error" message={errMessages.emailError()} /> : ""}
-                    {passVal !== true ? <Notification type="error" message={errMessages.passwordError()} /> : ""}
-                    {loginValid !== true ? <Notification type="error" message={errMessages.loginError()} /> : ""}
+                <form className="container" onSubmit={handleSubmit(onSubmit)}>
+
+                    {errors.email && errors.email.type === "required" && (<Notification type="error" message="Please enter your email" />)}
+                    {errors.password && errors.password.type === "required" && (<Notification type="error" message="Please enter your password" />)}
+                    {errors.password && errors.password.type === "minLength" && (<Notification type="error" message="Password must be at least 6 characters long" />)}
+                    {emailInUse === true ? <Notification type="error" message="Email or Password wrong" /> : ""}
+
 
                     <Input name="email"
                         type="email"
                         id="email1"
                         label="Email address"
                         placeholder="Email"
-                        onChange={setEmail}
+                        register={register({ required: true })}
                     />
 
                     <Input name="password"
@@ -66,9 +56,10 @@ const LoginPage = () => {
                         id="password"
                         label="Password"
                         placeholder="Password "
-                        onChange={setPassword}
-                  />
-                    <Button onClick={loginUser} type="submit" variant="primary">Login</Button>
+                        register={register({ required: true, minLength: 6 })}
+
+                    />
+                    <Button type="submit" variant="primary">Login</Button>
                 </form>
             </div>
         </PageLayout>

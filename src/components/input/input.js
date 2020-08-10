@@ -1,10 +1,6 @@
 import React from 'react';
 
-const Input = ({ id, label, name, type, placeholder,onChange }) => {
-
-    const sendData = (event) => {
-      return  onChange(event.target.value)
-    }
+const Input = ({ id, label, name, type, placeholder, register }) => {
 
     return (
         <div className="form-group">
@@ -15,7 +11,7 @@ const Input = ({ id, label, name, type, placeholder,onChange }) => {
                 className="form-control"
                 id={id}
                 placeholder={placeholder}
-                onChange={sendData}
+                ref={register}
             ></input>
         </div>
     )

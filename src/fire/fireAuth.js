@@ -42,12 +42,15 @@ export default {
             var errorMessage = error.message;
             console.log(errorCode)
             console.log(errorMessage)
+           
         }).then(response => {
             console.log("Email: " + response.user.email);
             console.log("User ID: " + response.user.uid);
             return true
         }).catch(e => {
+
             console.log(e)
+            
         })
     },
     signOut() {
