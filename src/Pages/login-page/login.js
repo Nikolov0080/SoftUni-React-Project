@@ -33,23 +33,23 @@ const LoginPage = () => {
 
     return (
         <PageLayout title="Login">
-
+{emailInUse === true ? <p>Email or password wrong,try again</p>:""}
             <div className={style.login}>
                 <form className="container" onSubmit={handleSubmit(onSubmit)}>
-
-                    {errors.email && errors.email.type === "required" && (<Notification type="error" message="Please enter your email" />)}
-                    {errors.password && errors.password.type === "required" && (<Notification type="error" message="Please enter your password" />)}
-                    {errors.password && errors.password.type === "minLength" && (<Notification type="error" message="Password must be at least 6 characters long" />)}
-                    {emailInUse === true ? <Notification type="error" message="Email or Password wrong" /> : ""}
-
 
                     <Input name="email"
                         type="email"
                         id="email1"
                         label="Email address"
                         placeholder="Email"
-                        register={register({ required: true })}
+                        register={register({ required: true, pattern: /^\S+@\S+\.\S+$/ })}
                     />
+
+                    {errors.email && errors.email.type === "required" &&
+                        (<p>Please enter Email</p>)}
+
+                    {errors.email && errors.email.type === "pattern" &&
+                        (<p>Please enter valid Email</p>)}
 
                     <Input name="password"
                         type="password"
@@ -57,8 +57,14 @@ const LoginPage = () => {
                         label="Password"
                         placeholder="Password "
                         register={register({ required: true, minLength: 6 })}
-
                     />
+
+                    {errors.password && errors.password.type === "required" &&
+                        (<p>Please enter your Password</p>)}
+
+                    {errors.password && errors.password.type === "minLength" &&
+                        (<p>Password must be 6 characters long</p>)}
+
                     <Button type="submit" variant="primary">Login</Button>
                 </form>
             </div>

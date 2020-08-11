@@ -9,20 +9,23 @@ import auth from '../../fire/fireAuth'
 
 const RegisterPage = (props) => {
 
+    const [haveAcc, setHaveAcc] = useState(false)
+    const { register, handleSubmit, errors, watch } = useForm();
 
-    const { register, handleSubmit, errors } = useForm();
+    useEffect(() => {
+        setHaveAcc(false);
+    }, [])
 
-    const onSubmit = (data) => {
-        console.log(data)
+    const onSubmit = ({ email, username, password, profilePicture }) => {
 
-        // auth.register(email, password, username, profilePicture).then(resp => {
-        //     if (resp) {
-        //         props.history.push('/products');
-        //     } else {
-        //         props.history.push('/register');
-        //         setHaveAcc(false)
-        //     }
-        // });
+        auth.register(email, password, username, profilePicture).then(resp => {
+            if (resp) {
+                props.history.push('/products');
+            } else {
+                props.history.push('/register');
+                setHaveAcc(true)
+            }
+        });
 
 
     }
@@ -32,17 +35,24 @@ const RegisterPage = (props) => {
             <div className={style.register}>
                 <form onSubmit={handleSubmit(onSubmit)}>
 
-
-
                     <Input
                         name="username"
                         type="text"
                         id="username1"
                         label="Username"
                         placeholder="Username  at least 6 symbols"
-                        register={register({ required: true })}
-
+                        register={register({ required: true, minLength: 6, pattern: /^[A-Za-z\d]+$/i })}
                     />
+
+                    {errors.username && errors.username.type === "pattern" &&
+                        (<p>Username can contain only letters and numbers</p>)}
+
+                    {errors.username && errors.username.type === "required" &&
+                        (<p>Please enter Username</p>)}
+
+                    {errors.username && errors.username.type === "minLength" &&
+                        (<p>Username must be 6 characters long</p>)}
+
 
                     <Input
                         name="email"
@@ -50,9 +60,16 @@ const RegisterPage = (props) => {
                         id="email1"
                         label="Email address"
                         placeholder="Email"
-                        register={register({ required: true })}
-
+                        register={register({ required: true, pattern: /^\S+@\S+\.\S+$/ })}
                     />
+
+                    {errors.email && errors.email.type === "required" &&
+                        (<p>Please enter Email</p>)}
+
+                    {haveAcc === true ? <p>The email address is already in use by another account.</p> : ''}
+
+                    {errors.email && errors.email.type === "pattern" &&
+                        (<p>Please enter valid Email</p>)}
 
                     <Input
                         name="password"
@@ -60,19 +77,34 @@ const RegisterPage = (props) => {
                         id="pass"
                         label="Password"
                         placeholder="Enter password more than 6 symbols"
-                        register={register({ required: true })}
-
+                        register={register({ required: true, minLength: 6 })}
                     />
 
+                    {errors.password && errors.password.type === "required" &&
+                        (<p>Please enter your Password</p>)}
+
+                    {errors.password && errors.password.type === "minLength" &&
+                        (<p>Password must be 6 characters long</p>)}
+
                     <Input
-                        name="password"
+                        name="rePassword"
                         type="password"
                         id="re-pass"
                         label="Confirm password"
                         placeholder="Same as password field"
-                        register={register({ required: true })}
-
+                        register={register({
+                            required: true, minLength: 6,
+                            validate: (value) => {
+                                return value === watch('password');
+                            }
+                        })}
                     />
+
+                    {errors.rePassword && errors.rePassword.type === "required" &&
+                        (<p>Please enter your Confirm password field</p>)}
+
+                    {errors.rePassword && errors.rePassword.type === "validate" &&
+                        (<p>Passwords must match !</p>)}
 
                     <Input
                         name="profilePicture"
@@ -81,7 +113,6 @@ const RegisterPage = (props) => {
                         label="Profile picture"
                         placeholder="image URL"
                         register={register({ required: false })}
-
                     />
 
                     <Button type="submit" variant="primary">Register</Button>
@@ -90,8 +121,5 @@ const RegisterPage = (props) => {
         </PageLayout>
     )
 }
-
-
-
 
 export default RegisterPage;
