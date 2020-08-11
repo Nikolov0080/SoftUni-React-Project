@@ -10,8 +10,8 @@ import ButtonLink from '../../components/button-link/button-link';
 
 const ref = db.database().ref("totalSpend/usd");
 
-const App = () => {
-
+const Home = (props) => {
+console.log(props.location)
   const context = useContext(UserContext);
   const [statistics, setStatistics] = useState({});
 
@@ -98,8 +98,6 @@ const App = () => {
       </Card>
     </PageLayout>
   );
-
-
 }
 
-export default App;
+export default Home; 

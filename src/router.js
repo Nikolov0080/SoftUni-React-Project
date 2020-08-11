@@ -8,6 +8,7 @@ import ProductsPage from './Pages/products-page/products';
 import Profile from './Pages/profilePage/profilePage';
 import ErrorPage from './Pages/errorPage/errorPage';
 import ProtectedRoute from './protectedRoute/protectedRoute';
+import ProtectedRouteLogged from './protectedRoute/protectedRouteLogged';
 
 const PageRouter = () => {
 
@@ -15,8 +16,8 @@ const PageRouter = () => {
         <Router>
             <Switch>
                 <Route exact path="/" component={HomePage} />
-                <Route exact path="/login" component={LoginPage} />
-                <Route exact path="/register" component={RegisterPage} />
+                <ProtectedRouteLogged exact path="/login" component={LoginPage} />
+                <ProtectedRouteLogged exact path="/register" component={RegisterPage} />
                 <ProtectedRoute exact path="/products" component={ProductsPage} />
                 <ProtectedRoute exact path="/profile" component={Profile} />
                 <ProtectedRoute exact path="/order/:name" component={OrderPage} />

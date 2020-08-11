@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
-import ordersRef from '../../fire/DB-refs/orders';
+import ordersRef from '../../fire/DB-refs/DB-ref';
 import moment from 'moment';
 
 const ProductDetails = ({ name, price, user, userId, imageUrl }) => {

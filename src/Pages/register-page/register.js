@@ -3,7 +3,6 @@ import PageLayout from '../../components/pageLayout/pageLayout';
 import Input from '../../components/input/input';
 import style from './register.module.css';
 import { Button } from 'react-bootstrap';
-import Notification from '../../notifications/notification';
 import { useForm } from 'react-hook-form'
 import auth from '../../fire/fireAuth'
 
@@ -45,13 +44,13 @@ const RegisterPage = (props) => {
                     />
 
                     {errors.username && errors.username.type === "pattern" &&
-                        (<p>Username can contain only letters and numbers</p>)}
+                        (<p className={style.err}>Username can contain only letters and numbers</p>)}
 
                     {errors.username && errors.username.type === "required" &&
-                        (<p>Please enter Username</p>)}
+                        (<p className={style.err}>Please enter Username</p>)}
 
                     {errors.username && errors.username.type === "minLength" &&
-                        (<p>Username must be 6 characters long</p>)}
+                        (<p className={style.err}>Username must be 6 characters long</p>)}
 
 
                     <Input
@@ -64,12 +63,12 @@ const RegisterPage = (props) => {
                     />
 
                     {errors.email && errors.email.type === "required" &&
-                        (<p>Please enter Email</p>)}
+                        (<p className={style.err}>Please enter Email</p>)}
 
                     {haveAcc === true ? <p>The email address is already in use by another account.</p> : ''}
 
                     {errors.email && errors.email.type === "pattern" &&
-                        (<p>Please enter valid Email</p>)}
+                        (<p className={style.err}>Please enter valid Email</p>)}
 
                     <Input
                         name="password"
@@ -81,10 +80,10 @@ const RegisterPage = (props) => {
                     />
 
                     {errors.password && errors.password.type === "required" &&
-                        (<p>Please enter your Password</p>)}
+                        (<p className={style.err}>Please enter your Password</p>)}
 
                     {errors.password && errors.password.type === "minLength" &&
-                        (<p>Password must be 6 characters long</p>)}
+                        (<p className={style.err}>Password must be 6 characters long</p>)}
 
                     <Input
                         name="rePassword"
@@ -101,16 +100,16 @@ const RegisterPage = (props) => {
                     />
 
                     {errors.rePassword && errors.rePassword.type === "required" &&
-                        (<p>Please enter your Confirm password field</p>)}
+                        (<p className={style.err}>Please enter your Confirm password field</p>)}
 
                     {errors.rePassword && errors.rePassword.type === "validate" &&
-                        (<p>Passwords must match !</p>)}
+                        (<p className={style.err}>Passwords must match !</p>)}
 
                     <Input
                         name="profilePicture"
                         type="text"
                         id="profilePicture1"
-                        label="Profile picture"
+                        label="Profile picture (optional)"
                         placeholder="image URL"
                         register={register({ required: false })}
                     />

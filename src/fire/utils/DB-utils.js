@@ -1,6 +1,7 @@
 import '../fire'
-import db from '../DB-refs/orders'
+import db from '../DB-refs/DB-ref'
 import moment from 'moment';
+
 
 export default {
     updateUser(userData, userId) {
@@ -20,5 +21,6 @@ export default {
                 username: username
             })
         });
-    }
+    },
+
 }

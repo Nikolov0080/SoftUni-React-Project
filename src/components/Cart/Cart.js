@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import db from '../../fire/DB-refs/orders';
+import db from '../../fire/DB-refs/DB-ref';
 import UserContext from '../../context/context';
 import { Button } from 'react-bootstrap';
 import moment from 'moment';

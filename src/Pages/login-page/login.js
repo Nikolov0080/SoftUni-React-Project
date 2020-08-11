@@ -6,7 +6,6 @@ import { Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import auth from '../../fire/fireAuth';
 import { useForm } from 'react-hook-form'
-import Notification from "../../notifications/notification"
 
 const LoginPage = () => {
 
@@ -21,9 +20,10 @@ const LoginPage = () => {
     const { register, handleSubmit, errors } = useForm();
 
     const onSubmit = ({ email, password }) => {
+        
         auth.login(email, password).then((resp) => {
             if (resp) {
-                return history.push('/products')
+                return history.push({ pathname: '/', state: "logged" })
             } else {
                 setEmailInUse(true);
                 history.push('/login')
@@ -33,7 +33,7 @@ const LoginPage = () => {
 
     return (
         <PageLayout title="Login">
-{emailInUse === true ? <p>Email or password wrong,try again</p>:""}
+            {emailInUse === true ? <p>Email or password wrong,try again</p> : ""}
             <div className={style.login}>
                 <form className="container" onSubmit={handleSubmit(onSubmit)}>
 
@@ -46,7 +46,7 @@ const LoginPage = () => {
                     />
 
                     {errors.email && errors.email.type === "required" &&
-                        (<p>Please enter Email</p>)}
+                        (<p className={style.err}>Please enter Email</p>)}
 
                     {errors.email && errors.email.type === "pattern" &&
                         (<p>Please enter valid Email</p>)}
