@@ -20,7 +20,6 @@ const LoginPage = () => {
     const { register, handleSubmit, errors } = useForm();
 
     const onSubmit = ({ email, password }) => {
-        
         auth.login(email, password).then((resp) => {
             if (resp) {
                 return history.push({ pathname: '/', state: "logged" })

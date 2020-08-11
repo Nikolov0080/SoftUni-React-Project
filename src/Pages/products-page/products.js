@@ -5,7 +5,7 @@ import Posts from '../../components/posts/posts';
 import Loading from '../../components/loading/loading';
 
 const ProductsPage = (props) => {
-console.log(props)
+
     const [products, setProducts] = useState({});
     const [loading, setLoading] = useState(true);
 

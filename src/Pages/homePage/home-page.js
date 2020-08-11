@@ -2,16 +2,18 @@ import React, { useState, useEffect, useContext } from 'react';
 import PageLayout from '../../components/pageLayout/pageLayout';
 import db from '../../fire/fire';
 import style from './homePage.module.css'
-import { Card} from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import honey_1 from './images/honey_1.jpg'
 import honey_2 from './images/honey_2.jpg'
 import UserContext from '../../context/context';
 import ButtonLink from '../../components/button-link/button-link';
-
+import Notification from '../../notifications/notification';
 const ref = db.database().ref("totalSpend/usd");
 
 const Home = (props) => {
-console.log(props.location)
+
+  const status = props.location.state;
+
   const context = useContext(UserContext);
   const [statistics, setStatistics] = useState({});
 
@@ -42,22 +44,28 @@ console.log(props.location)
       return (
         <div>
 
+          {status === "logged"
+            ? <Notification type="success" message="You are now Logged in !" /> : ''}
+
+          {status === "registered"
+            ? <Notification type="success" message="Registration successful !" /> : ''}
+
           <Card>
             <Card.Title className={style.total}>
               <h5>You are logged in !</h5>
               <br></br>
               <h5>Now you can make you purchase !</h5>
-          
+
             </Card.Title >
-            <ButtonLink to="/products" value="Go to products" variant="success"/>
+            <ButtonLink to="/products" value="Go to products" variant="success" />
 
             <Card.Title className={style.total}>
               <br></br>
-              <h5>Or complete complete you orders.</h5> 
+              <h5>Or complete complete you orders.</h5>
               <br></br>
               <h5>Last Order {statistics.for} USD</h5>
               <h5>By User [{statistics.username}]</h5>
-            <ButtonLink to="/profile" value="Go to Cart" variant="success"/>
+              <ButtonLink to="/profile" value="Go to Cart" variant="success" />
 
             </Card.Title>
           </Card>

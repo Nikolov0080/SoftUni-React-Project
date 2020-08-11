@@ -21,6 +21,12 @@ export default {
                 username: username
             })
         });
-    },
+    }, addToCompletedOrders(id) {
+        db.ref('orders/' + id).once('value').then((snapshot) => {
+            return snapshot.val()
+        }).then(completedOrder => {
+            db.ref('completedOrders').set(Object.values(completedOrder))
+        })
+    }
 
 }

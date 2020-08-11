@@ -16,7 +16,8 @@ const OrdersCart = (props) => {
     const [orders, setOrders] = useState({});
     const [loading, setLoading] = useState(true);
     const [id, setId] = useState(null);
-    const [isNotification, setIsNotification] = useState(false)
+    const [isNotification, setIsNotification] = useState(false);
+    const [deletedOrder, setDeletedOrder] = useState(false);
 
     let totalPrice = 0
 
@@ -31,19 +32,16 @@ const OrdersCart = (props) => {
     useEffect(() => {
 
         ordersRef.once('value', (snapshot) => {
-
             setOrders(snapshot.val());
-        }).then(()=>{
-            setTimeout(()=>{
-
+        }).then(() => {
+            setTimeout(() => {
                 setLoading(false);
-            },200)
+            }, 200)
         });
 
     }, [ordersRef]);
 
     const completeOrder = () => {
-
 
         let {
             email,
@@ -56,13 +54,18 @@ const OrdersCart = (props) => {
         const userData = Object.assign({}, { lastUpdate: moment().format('MMMM Do YYYY, h:mm:ss a'), email, username, profilePicture, orders: orders += 1 })
 
         dbUtils.updateTotalSpend(totalPrice, username);
-
+dbUtils.addToCompletedOrders(id)
         dbUtils.updateUser(userData, id).then(() => {
             dbUtils.deleteOrders(id);
         });
 
         setIsNotification(true);
+    }
 
+    const deleteOrder = () => {
+
+        setDeletedOrder(true);
+       return dbUtils.deleteOrders(context.user.id);
     }
 
     if (loading) {
@@ -75,21 +78,23 @@ const OrdersCart = (props) => {
         return (
             <div className="text-center">
                 <div className={style.emptyMessage}>
-                    {isNotification === true ? <Notification type="success" message="Order is complete !"/> : ""}
+                    {isNotification === true ? <Notification type="success" message="Order is Complete !" /> : ""}
+                    {deletedOrder === true ? <Notification type="error" message="Order is Deleted !" /> : ""}
                     <h2>No orders to complete</h2>
                     <h2>Go to <ButtonLink to="/products" value="Products" /> page and make one</h2>
                 </div>
             </div>
         )
     }
-
+    
+    
     return (
         <div>
             {Object.values(orders).map((orderData, index) => {
-
+                
                 totalPrice += +orderData.totalPrice;
                 return (
-
+                    
                     <div key={index}>
                         <div className="container">
                             <div className="row align-items-center rounded border mt-4">
@@ -123,9 +128,8 @@ const OrdersCart = (props) => {
                     <h3>Total Price: {totalPrice} USD</h3>
                 </div>
                 <div className="col">
-
                     <Button onClick={completeOrder} variant="success">Complete</Button>
-
+                    <Button onClick={deleteOrder} variant="danger">Delete</Button>
                 </div>
             </div>
         </div>

@@ -19,7 +19,7 @@ const RegisterPage = (props) => {
 
         auth.register(email, password, username, profilePicture).then(resp => {
             if (resp) {
-                props.history.push('/products');
+                props.history.push({ pathname: '/', state: "registered" });
             } else {
                 props.history.push('/register');
                 setHaveAcc(true)
