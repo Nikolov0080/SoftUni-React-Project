@@ -8,14 +8,12 @@
 
 ### `Functionalities`
 
-- Authentication 
 
-**Description**:
+**Authentication**:
 This functionality includes **sign up**,**sign in** and **sign out**.
 User model
 
-- Product 
-**Description**:
+**Product**:
 Includes **product listing page** & **product-order details page**
 Product model
 
