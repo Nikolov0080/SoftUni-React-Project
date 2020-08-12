@@ -33,5 +33,5 @@ Deletes current products in cart
 ### `Models`
 
 - **User model**: |
-----------------
+----------------|
  username |
