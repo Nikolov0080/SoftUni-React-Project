@@ -23,5 +23,5 @@ Includes add to cart functionality in **PDP**
 Order model
 
 - **Complete order**: 
-Includes complete order functionality
-
+Includes complete order functionality  
+Adds order price to **Total spend** in Home page 
