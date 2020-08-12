@@ -19,13 +19,15 @@ const OrdersCart = (props) => {
     const [id, setId] = useState(null);
     const [isNotification, setIsNotification] = useState(false);
     const [deletedOrder, setDeletedOrder] = useState(false);
-    const [userData, setUserData] = useState('');
+  
 
-    useEffect(() => {
-        if (context.user !== null) {
-            setId(context.user.id)
-        }
-    }, [context])
+useEffect(()=>{
+
+if(context.user !== null){
+    setId(context.user.id)
+}
+
+},[context])
 
     const orderRef = db.ref('orders/' + id);
 
@@ -38,32 +40,14 @@ const OrdersCart = (props) => {
 
         if (order === null) {
             setData();
-
             setLoading(false)
         }
-
 
     }, [orderRef]);
 
     const completeOrder = () => {
 
-        let {
-            email,
-            id,
-            username,
-            profilePicture,
-            orders
-        } = context.user
-
-        setUserData(Object.assign({}, {
-            lastUpdate: moment().format('MMMM Do YYYY, h:mm:ss a'),
-            email,
-            username,
-            profilePicture,
-            orders: orders += 1
-        }))
-
-        setIsNotification(true);
+           setIsNotification(true);
     }
 
     const deleteOrder = () => {
@@ -90,9 +74,7 @@ const OrdersCart = (props) => {
             </div>
         )
     }
-
-
-    console.log(order)
+console.log(order)
     return (
         <div>
             <div>
@@ -128,7 +110,7 @@ const OrdersCart = (props) => {
                     <Button onClick={completeOrder} variant="success">Complete</Button>
                     <Button onClick={deleteOrder} variant="danger">Delete</Button>
                 </div>
-                <AddressForm id={id} userData={userData} order={order}/>
+                <AddressForm order={order}/>
             </div>
         </div>
     );
