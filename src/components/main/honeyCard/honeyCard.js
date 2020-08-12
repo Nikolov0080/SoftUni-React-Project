@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import style from './honeyCard.module.css';
-import UserContext from '../../context/context'
+import UserContext from '../../../context/context'
 
 const HoneyCard = ({ imageUrl, name, description ,price}) => {
 
@@ -16,7 +16,7 @@ const HoneyCard = ({ imageUrl, name, description ,price}) => {
     const [content, limit] = [description, 50];
     const path = '/order/' + name.replace(' ', '_').toLowerCase();
 
-    return (
+    return ( 
         <div className={style.card}>
             <Card style={{ width: '18rem',border:"1px solid gray"}}>
                 <Card.Body style={{ "textAlign": "center" }}>

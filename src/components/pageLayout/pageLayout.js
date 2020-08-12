@@ -1,6 +1,6 @@
 import React from 'react';
-import Navigation from '../navigation/index';
-import Footer from '../footer/footer'
+import Navigation from '../main/navigation/index';
+import Footer from '../main/footer/footer'
 import style from './pageLayout.module.css'
 import Title from '../utils/title/title';
 import '../../fire/fire'

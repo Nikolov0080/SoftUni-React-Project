@@ -4,8 +4,8 @@ import UserContext from '../../../context/context';
 import { Button } from 'react-bootstrap';
 import moment from 'moment';
 import dbUtils from '../../../fire/utils/DB-utils';
-import ButtonLink from '../../button-link/button-link';
-import Loading from '../../loading/loading';
+import ButtonLink from '../../utils/button-link/button-link';
+import Loading from '../../utils/loading/loading';
 import style from './cart.module.css'
 import Notification from '../../../notifications/notification';
 

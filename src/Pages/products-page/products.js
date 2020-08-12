@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PageLayout from '../../components/pageLayout/pageLayout';
 import dbRef from '../../fire/DB-refs/allProducts-ref';
-import Posts from '../../components/posts/posts';
-import Loading from '../../components/loading/loading';
+import Posts from '../../components/main/posts/posts';
+import Loading from '../../components/utils/loading/loading';
 
 const ProductsPage = (props) => {
 

@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react'
-import NaviItem from '../nav-item/navItem';
-import '../../fire/fire';
-import UserContext from '../../context/context';
+import NaviItem from '../../utils/nav-item/navItem';
+import '../../../fire/fire';
+import UserContext from '../../../context/context';
 import NavBar_items from './navBar_Items';
 import { useHistory } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import LoadingNav from '../../components/loading/loadingNav';
+import LoadingNav from '../../utils/loading/loadingNav';
 const Navigation = () => {
 
     const context = useContext(UserContext);

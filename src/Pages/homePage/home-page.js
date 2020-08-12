@@ -6,7 +6,7 @@ import { Card } from 'react-bootstrap';
 import honey_1 from './images/honey_1.jpg'
 import honey_2 from './images/honey_2.jpg'
 import UserContext from '../../context/context';
-import ButtonLink from '../../components/button-link/button-link';
+import ButtonLink from '../../components/utils/button-link/button-link';
 import Notification from '../../notifications/notification';
 const ref = db.database().ref("totalSpend/usd");
 

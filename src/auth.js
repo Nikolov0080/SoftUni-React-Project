@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import UserContext from './context/context';
 import firebase from 'firebase';
 import fireAuth from './fire/fireAuth';
-import Loading from './components/loading/loading';
+import Loading from './components/utils/loading/loading';
 
 import './fire/fire'
 
