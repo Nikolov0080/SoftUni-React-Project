@@ -34,9 +34,9 @@ Deletes current products in cart
 
  **User model** | **Product model** | **Added to cart/Cart model**
  -------- | -------- | 
- username |name
- email |price
- password |description
+ username | name
+ email | price
+ password | description
  profile image  </br> (optional) | product image
  
  
