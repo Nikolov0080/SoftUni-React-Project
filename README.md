@@ -23,7 +23,7 @@ Includes add to cart functionality in **PDP**
 Order model
 
 - **Complete order**:  
-Includes complete order functionality  
+Includes complete order and select quantity functionality  
 Adds order price to **Total spend** in Home page  
 Sets **Last order** info in Home page  
 
@@ -32,11 +32,11 @@ Deletes current products in cart
 
 ### `Models`
 
- **User model**: | 
- -------- |
- username |
- email |
- password |
+ **User model** | **Product model**
+ -------- | -------- | 
+ username | name
+ email | price
+ password | 
  profile image </br> (optional)  |
  
  
