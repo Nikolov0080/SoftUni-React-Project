@@ -36,8 +36,8 @@ Deletes current products in cart
  -------- | -------- | 
  username | name
  email | price
- password | 
- profile image </br> (optional)  |
+ password | description
+ profile image </br> (optional)  | product image
  
  
  
