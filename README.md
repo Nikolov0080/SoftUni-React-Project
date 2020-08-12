@@ -9,20 +9,20 @@
 ### `Functionalities`
 
 
-- **Authentication**: 
+- **Authentication**:  
 This functionality includes **sign up**,**sign in** and **sign out**.  
 User model
 
-- **Product**: 
+- **Product**:  
 Includes **product listing page**(PLP) & **product details page**(PDP)  
 Product model
 
 
-- **Add to cart**: 
+- **Add to cart**:  
 Includes add to cart functionality in **PDP**  
 Order model
 
-- **Complete order**: 
+- **Complete order**:  
 Includes complete order functionality  
 Adds order price to **Total spend** in Home page  
 Sets **Last order** info in Home page  
