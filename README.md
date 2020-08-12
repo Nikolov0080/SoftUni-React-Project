@@ -32,12 +32,13 @@ Deletes current products in cart
 
 ### `Models`
 
- **User model** | **Product model** | **Added to cartCart model** |
- ------------ | ------------ | 
-username | name |
-email | price |
-password | description |
-profile image  </br> (optional) | product image |
+ **User model** | **Product model** | **Added to cart/Cart model** | **Order model** |
+ ------------ | ------------------- | -----------------------------| --------------- | 
+username      | name                | honey type                   | honey type 
+email         | price               | quantity                     | quantity
+password      | description         | order price                  | time created
+profile image | product image       | product image                | product image    
+ |             |                     | total price                  | user
  
  
  
