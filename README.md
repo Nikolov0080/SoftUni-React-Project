@@ -24,4 +24,11 @@ Order model
 
 - **Complete order**: 
 Includes complete order functionality  
-Adds order price to **Total spend** in Home page 
+Adds order price to **Total spend** in Home page  
+Sets **Last order** info in Home page  
+
+- **Delete order**:   
+Deletes current products in cart  
+
+### `Functionalities`
+
