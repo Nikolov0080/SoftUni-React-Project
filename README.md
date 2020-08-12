@@ -9,11 +9,11 @@
 ### `Functionalities`
 
 
-**Authentication**:
+- **Authentication**:
 This functionality includes **sign up**,**sign in** and **sign out**.
 User model
 
-**Product**:
+- **Product**:
 Includes **product listing page** & **product-order details page**
 Product model
 
