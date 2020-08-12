@@ -25,7 +25,6 @@ const ProductsPage = (props) => {
 
     if (loading) {
         return (
-
             <PageLayout title="Our Products">
                 <Loading />
             </PageLayout>

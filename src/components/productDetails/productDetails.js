@@ -32,7 +32,7 @@ const ProductDetails = ({ name, price, user, userId, imageUrl }) => {
     const submitOrder = (e) => {
         e.preventDefault();
         setTotal(quantity * price)
-        ordersRef.ref('orders/' + userId).push(order).then(response => {
+        ordersRef.ref('orders/' + userId).set(order).then(response => {
             console.log('Order saved to card!');
             history.push('/profile');
         })

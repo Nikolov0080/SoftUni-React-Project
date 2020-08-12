@@ -8,12 +8,13 @@ import ButtonLink from '../../utils/button-link/button-link';
 import Loading from '../../utils/loading/loading';
 import style from './cart.module.css'
 import Notification from '../../../notifications/notification';
+import AddressForm from '../../utils/addressForm/addressForm';
 
 const OrdersCart = (props) => {
 
     const context = useContext(UserContext);
 
-    const [orders, setOrders] = useState({});
+    const [order, setOrder] = useState(null);
     const [loading, setLoading] = useState(true);
     const [id, setId] = useState(null);
     const [isNotification, setIsNotification] = useState(false);
@@ -27,19 +28,23 @@ const OrdersCart = (props) => {
         }
     }, [context])
 
-    const ordersRef = db.ref('orders/' + id);
+    const orderRef = db.ref('orders/' + id);
 
     useEffect(() => {
+        const setData = () => {
+            orderRef.on('value', (snap) => {
+                setOrder(snap.val())
+            })
+        }
 
-        ordersRef.once('value', (snapshot) => {
-            setOrders(snapshot.val());
-        }).then(() => {
-            setTimeout(() => {
-                setLoading(false);
-            }, 200)
-        });
+        if (order === null) {
+            setData();
 
-    }, [ordersRef]);
+            setLoading(false)
+        }
+
+
+    }, [orderRef]);
 
     const completeOrder = () => {
 
@@ -53,7 +58,7 @@ const OrdersCart = (props) => {
 
         const userData = Object.assign({}, { lastUpdate: moment().format('MMMM Do YYYY, h:mm:ss a'), email, username, profilePicture, orders: orders += 1 })
 
-        dbUtils.updateTotalSpend(totalPrice, username);
+        dbUtils.updateTotalSpend(order.totalPrice, username);
         dbUtils.addToCompletedOrders(id)
         dbUtils.updateUser(userData, id).then(() => {
             dbUtils.deleteOrders(id);
@@ -74,7 +79,7 @@ const OrdersCart = (props) => {
         )
     }
 
-    if (!orders) {
+    if (!order) {
         return (
             <div className="text-center">
                 <div className={style.emptyMessage}>
@@ -88,49 +93,45 @@ const OrdersCart = (props) => {
     }
 
 
+    console.log(order)
     return (
+
+
         <div>
-            {Object.values(orders).map((orderData, index) => {
-
-                totalPrice += +orderData.totalPrice;
-                return (
-
-                    <div key={index}>
-                        <div className="container">
-                            <div className="row align-items-center rounded border mt-4">
-                                <div className="col-12 col-md-6 text-center"><img width="80%" height="200px" alt="Grandfather with child" src={orderData.imageUrl} sizes="(max-width: 660px) 100vw, 660px" /></div>
-                                <div className="col-12 col-md-6">
-                                    <table className="table">
-                                        <tbody>
-                                            <tr>
-                                                <td>Honey type</td>
-                                                <td>{orderData.honeyType}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Quantity</td>
-                                                <td>{orderData.quantity}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Total price</td>
-                                                <td>{orderData.totalPrice} USD</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+            <div>
+                <div className="container">
+                    <div className="row align-items-center rounded border mt-4">
+                        <div className="col-12 col-md-6 text-center"><img width="80%" height="200px" alt="Grandfather with child" src={order.imageUrl} sizes="(max-width: 660px) 100vw, 660px" /></div>
+                        <div className="col-12 col-md-6">
+                            <table className="table">
+                                <tbody>
+                                    <tr>
+                                        <td>Honey type</td>
+                                        <td>{order.honeyType}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Quantity</td>
+                                        <td>{order.quantity}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total price</td>
+                                        <td>{order.totalPrice} USD</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                )
-            })}
+                </div>
+            </div>
+
 
             <div className="row text-center mt-4 mb-4 position-bottom">
-                <div className="col">
-                    <h3>Total Price: {totalPrice} USD</h3>
-                </div>
+
                 <div className="col">
                     <Button onClick={completeOrder} variant="success">Complete</Button>
                     <Button onClick={deleteOrder} variant="danger">Delete</Button>
                 </div>
+                <AddressForm />
             </div>
         </div>
     );
