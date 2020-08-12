@@ -32,6 +32,14 @@ Deletes current products in cart
 
 ### `Models`
 
- **User model**: |
+ **User model**: | 
  ---------------- |
  username |
+ email |
+ password |
+ profile image  (optional)  |
+ 
+ 
+ 
+ 
+
