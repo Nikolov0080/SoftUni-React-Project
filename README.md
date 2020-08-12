@@ -33,11 +33,11 @@ Deletes current products in cart
 ### `Models`
 
  **User model** | **Product model** | **Added to cart/Cart model** |
- -------------- | ------------------- | 
-username | name
-email | price
-password | description
-profile image  </br> (optional) | product image
+ ------------ | ------------ | 
+username | name |
+email | price |
+password | description |
+profile image  </br> (optional) | product image |
  
  
  
