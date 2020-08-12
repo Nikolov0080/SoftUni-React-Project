@@ -21,7 +21,8 @@ const HoneyCard = ({ imageUrl, name, description ,price}) => {
             <Card style={{ width: '18rem',border:"1px solid gray"}}>
                 <Card.Body style={{ "textAlign": "center" }}>
                     <Card.Img style={{ height: "12em", width: "10em" }} variant="bottom" src={imageUrl} />
-                    <Card.Title>{name}</Card.Title>
+    <Card.Title>{name} </Card.Title>
+    <Card.Title>Price {price} USD</Card.Title>
 
                     <Card.Text>
                         {showAll === true
