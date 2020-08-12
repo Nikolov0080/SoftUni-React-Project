@@ -10,4 +10,7 @@
 
 - Authentication 
 
-**Description** This functionality includes **sign up** and **sign in**
+**Description**:
+This functionality includes **sign up**,**sign in** and **sign out**.
+User model
+
