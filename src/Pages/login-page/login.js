@@ -69,7 +69,6 @@ const LoginPage = () => {
             </div>
         </PageLayout>
     )
-
 }
 
 export default LoginPage;

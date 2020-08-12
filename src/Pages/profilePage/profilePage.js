@@ -2,8 +2,8 @@ import React  from 'react';
 import PageLayout from '../../components/pageLayout/pageLayout';
 import style from './profilePage.module.css'
 import { Row } from 'react-bootstrap';
-import ProfileCard from '../../components/profileCard/profileCard';
-import Cart from '../../components/Cart/Cart';
+import ProfileCard from '../../components/profile-cart/profileCard/profileCard';
+import Cart from '../../components/profile-cart/Cart/Cart';
 
 const ProfilePage = (props) => {
 

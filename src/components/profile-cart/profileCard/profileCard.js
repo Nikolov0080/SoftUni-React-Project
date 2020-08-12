@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
-import UserContext from '../../context/context';
+import UserContext from '../../../context/context';
 import { useHistory } from 'react-router-dom';
-import Loading from '../loading/loading';
+import Loading from '../../loading/loading';
 
 const ProfileCard = () => {
 

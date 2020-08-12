@@ -1,13 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react';
-import db from '../../fire/DB-refs/DB-ref';
-import UserContext from '../../context/context';
+import db from '../../../fire/DB-refs/DB-ref';
+import UserContext from '../../../context/context';
 import { Button } from 'react-bootstrap';
 import moment from 'moment';
-import dbUtils from '../../fire/utils/DB-utils';
-import ButtonLink from '../button-link/button-link';
-import Loading from '../loading/loading';
+import dbUtils from '../../../fire/utils/DB-utils';
+import ButtonLink from '../../button-link/button-link';
+import Loading from '../../loading/loading';
 import style from './cart.module.css'
-import Notification from '../../notifications/notification';
+import Notification from '../../../notifications/notification';
 
 const OrdersCart = (props) => {
 
@@ -54,7 +54,7 @@ const OrdersCart = (props) => {
         const userData = Object.assign({}, { lastUpdate: moment().format('MMMM Do YYYY, h:mm:ss a'), email, username, profilePicture, orders: orders += 1 })
 
         dbUtils.updateTotalSpend(totalPrice, username);
-dbUtils.addToCompletedOrders(id)
+        dbUtils.addToCompletedOrders(id)
         dbUtils.updateUser(userData, id).then(() => {
             dbUtils.deleteOrders(id);
         });
@@ -65,7 +65,7 @@ dbUtils.addToCompletedOrders(id)
     const deleteOrder = () => {
 
         setDeletedOrder(true);
-       return dbUtils.deleteOrders(context.user.id);
+        return dbUtils.deleteOrders(context.user.id);
     }
 
     if (loading) {
@@ -86,15 +86,15 @@ dbUtils.addToCompletedOrders(id)
             </div>
         )
     }
-    
-    
+
+
     return (
         <div>
             {Object.values(orders).map((orderData, index) => {
-                
+
                 totalPrice += +orderData.totalPrice;
                 return (
-                    
+
                     <div key={index}>
                         <div className="container">
                             <div className="row align-items-center rounded border mt-4">

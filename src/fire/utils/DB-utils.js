@@ -2,7 +2,6 @@ import '../fire'
 import db from '../DB-refs/DB-ref'
 import moment from 'moment';
 
-
 export default {
     updateUser(userData, userId) {
         return db.ref('users/' + userId).set(userData);
@@ -23,9 +22,9 @@ export default {
         });
     }, addToCompletedOrders(id) {
         db.ref('orders/' + id).once('value').then((snapshot) => {
-            return snapshot.val()
+            return snapshot.val();
         }).then(completedOrder => {
-            db.ref('completedOrders').set(Object.values(completedOrder))
+            db.ref('completedOrders').push(...Object.values(completedOrder));
         })
     }
 
