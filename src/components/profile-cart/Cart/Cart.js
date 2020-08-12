@@ -19,8 +19,7 @@ const OrdersCart = (props) => {
     const [id, setId] = useState(null);
     const [isNotification, setIsNotification] = useState(false);
     const [deletedOrder, setDeletedOrder] = useState(false);
-
-    let totalPrice = 0
+    const [userData, setUserData] = useState('');
 
     useEffect(() => {
         if (context.user !== null) {
@@ -56,13 +55,13 @@ const OrdersCart = (props) => {
             orders
         } = context.user
 
-        const userData = Object.assign({}, { lastUpdate: moment().format('MMMM Do YYYY, h:mm:ss a'), email, username, profilePicture, orders: orders += 1 })
-
-        dbUtils.updateTotalSpend(order.totalPrice, username);
-        dbUtils.addToCompletedOrders(id)
-        dbUtils.updateUser(userData, id).then(() => {
-            dbUtils.deleteOrders(id);
-        });
+        setUserData(Object.assign({}, {
+            lastUpdate: moment().format('MMMM Do YYYY, h:mm:ss a'),
+            email,
+            username,
+            profilePicture,
+            orders: orders += 1
+        }))
 
         setIsNotification(true);
     }
@@ -95,8 +94,6 @@ const OrdersCart = (props) => {
 
     console.log(order)
     return (
-
-
         <div>
             <div>
                 <div className="container">
@@ -131,7 +128,7 @@ const OrdersCart = (props) => {
                     <Button onClick={completeOrder} variant="success">Complete</Button>
                     <Button onClick={deleteOrder} variant="danger">Delete</Button>
                 </div>
-                <AddressForm />
+                <AddressForm id={id} userData={userData} order={order}/>
             </div>
         </div>
     );
