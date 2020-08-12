@@ -19,7 +19,7 @@ Includes **product listing page**(PLP) & **product details page**(PDP)<br/>
 
 
 - **Add to cart**: 
-Includes add to cart functionality in **PDP**<br/>
+Includes add to cart functionality in **PDP**  
 Order model
 
 - **Complete order**: 
