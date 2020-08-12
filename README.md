@@ -30,5 +30,7 @@ Sets **Last order** info in Home page
 - **Delete order**:   
 Deletes current products in cart  
 
-### `Functionalities`
+### `Models`
 
+- **User model**:   
+ - username
