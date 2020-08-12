@@ -10,4 +10,4 @@
 
 - Authentication 
 
-**Description**
+**Description** This functionality includes **sign up** and **sign in**
