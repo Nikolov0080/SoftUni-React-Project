@@ -10,12 +10,12 @@
 
 
 - **Authentication**: 
-This functionality includes **sign up**,**sign in** and **sign out**.<br/>
+This functionality includes **sign up**,**sign in** and **sign out**.  
 User model
 
 - **Product**: 
-Includes **product listing page**(PLP) & **product details page**(PDP)<br/>
- Product model
+Includes **product listing page**(PLP) & **product details page**(PDP)  
+Product model
 
 
 - **Add to cart**: 
