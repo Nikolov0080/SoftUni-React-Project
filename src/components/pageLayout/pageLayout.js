@@ -2,7 +2,7 @@ import React from 'react';
 import Navigation from '../navigation/index';
 import Footer from '../footer/footer'
 import style from './pageLayout.module.css'
-import Title from '../title/title';
+import Title from '../utils/title/title';
 import '../../fire/fire'
 
 const PageLayout =(props)=> {

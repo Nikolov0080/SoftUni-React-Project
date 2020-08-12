@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Input from '../../components/input/input';
+import Input from '../../components/utils/input/input';
 import PageLayout from '../../components/pageLayout/pageLayout';
 import style from './login.module.css';
 import { Button } from 'react-bootstrap';

@@ -22,7 +22,6 @@ const ProductDetails = ({ name, price, user, userId, imageUrl }) => {
                 createdAt: moment().format('LLL')
             });
        
-      
     }, [total, name, quantity, user, imageUrl]);
 
     const saveQuantity = (e) => {

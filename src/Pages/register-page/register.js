@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PageLayout from '../../components/pageLayout/pageLayout';
-import Input from '../../components/input/input';
+import Input from '../../components/utils/input/input';
 import style from './register.module.css';
 import { Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form'
