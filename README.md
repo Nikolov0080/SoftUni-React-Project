@@ -1,5 +1,3 @@
-## Online store
+## Beehive
 
-- initialize
-
-### `npm start`
+### `tinitialize`
