@@ -6,8 +6,7 @@ import { Card } from 'react-bootstrap';
 import honey_1 from './images/honey_1.jpg'
 import honey_2 from './images/honey_2.jpg'
 import UserContext from '../../context/context';
-import ButtonLink from '../../components/utils/button-link/button-link';
-import Notification from '../../notifications/notification';
+import HomeView from '../../components/utils/homeView/homeView';
 import LastFive from '../../components/utils/lastFive/lastFive';
 
 const ref = db.database().ref("totalSpend/usd");
@@ -27,54 +26,6 @@ const Home = (props) => {
     });
   }, []);
 
-  const pageView = () => {
-    if (!isLogged) {
-      return (
-        <div>
-          <Card.Footer className="text-muted"><h5>Last purchase by client at </h5>
-            <br />
-            <h5>{statistics.lastOrderTime}</h5>
-            <br />
-            <h5>For: {statistics.for} USD</h5>
-            <h5>By User [{statistics.username}]</h5>
-          </Card.Footer>
-          <Card.Title>So <ButtonLink to="/login" value="Login" /> and make yours</Card.Title>
-          <Card.Title>If you don't have an account just <ButtonLink to="/register" value="Register" /></Card.Title>
-        </div>
-      )
-    } else {
-      return (
-        <div>
-
-          {status === "logged"
-            ? <Notification type="success" message="You are now Logged in !" /> : ''}
-
-          {status === "registered"
-            ? <Notification type="success" message="Registration successful !" /> : ''}
-
-          <Card>
-            <Card.Title className={style.total}>
-              <h5>You are logged in !</h5>
-              <br></br>
-              <h5>Now you can make you purchase !</h5>
-
-            </Card.Title >
-            <ButtonLink to="/products" value="Go to products" variant="success" />
-
-            <Card.Title className={style.total}>
-              <br></br>
-              <h5>Or complete complete you orders.</h5>
-              <br></br>
-              <h5>Last Order {statistics.for} USD</h5>
-              <h5>By User [{statistics.username}]</h5>
-              <ButtonLink to="/profile" value="Go to Cart" variant="success" />
-
-            </Card.Title>
-          </Card>
-        </div>
-      )
-    }
-  }
 
   return (
 
@@ -89,18 +40,17 @@ const Home = (props) => {
         <Card.Body>
 
           <div className="row">
-            <div className="col text-center">
 
+            <div className="col text-center">
               <img alt="honey" className={style.img} src={honey_2} />
-
             </div>
+
             <div className="col">
-              {pageView()}
+              <HomeView status={status} isLogged={isLogged} statistics={statistics} style={style} />
             </div>
+
             <div className="col text-center">
-
               <img alt="honey" className={style.img} src={honey_1} />
-
             </div>
 
           </div>
@@ -108,7 +58,7 @@ const Home = (props) => {
       </Card>
 
       <LastFive />
-      
+
     </PageLayout>
   );
 }
