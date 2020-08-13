@@ -4,7 +4,6 @@ import moment from 'moment';
 
 export default {
     updateUser(userData, userId) {
-        console.log(userData)
         return db.ref('users/' + userId).set(userData);
     },
     deleteOrders(id) {
@@ -16,7 +15,7 @@ export default {
             let result = snapshot.val();
             return db.ref('totalSpend/usd').update({
                 for: currentOrderValue,
-                usd: eval(+currentOrderValue + +result.usd),
+                usd: +currentOrderValue + +result.usd,
                 lastOrderTime: moment().format('LLL'),
                 username: username
             })
@@ -27,6 +26,9 @@ export default {
         }).then(completedOrder => {
             db.ref('completedOrders').push(completedOrder);
         })
+    }, updateOrder(id, orderData) {
+        console.log(id, orderData);
+        db.ref("orders/" + id).set(orderData)
     }
 
 }
