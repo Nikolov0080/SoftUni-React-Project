@@ -16,7 +16,7 @@ const OrdersCart = (props) => {
     const [isNotification, setIsNotification] = useState(false);
     const [deletedOrder, setDeletedOrder] = useState(false);
 
-   
+
 
     useEffect(() => {
 
@@ -92,11 +92,13 @@ const OrdersCart = (props) => {
                     </div>
                 </div>
             </div>
-            <div className="row text-center mt-4 mb-4 position-bottom">
+            <div className=" text-center">
+
                 <AddressForm order={order}
                     setIsNotification={setIsNotification}
                     setDeletedOrder={setDeletedOrder}
                 />
+
             </div>
         </div>
     );

@@ -32,8 +32,8 @@ const LoginPage = () => {
 
     return (
         <PageLayout title="Login">
-            {emailInUse === true ? <p>Email or password wrong,try again</p> : ""}
             <div className={style.login}>
+            {emailInUse === true ? <p className={style.err}>Email or password wrong,try again</p> : ""}
                 <form className="container" onSubmit={handleSubmit(onSubmit)}>
 
                     <Input name="email"
@@ -48,7 +48,7 @@ const LoginPage = () => {
                         (<p className={style.err}>Please enter Email</p>)}
 
                     {errors.email && errors.email.type === "pattern" &&
-                        (<p>Please enter valid Email</p>)}
+                        (<p className={style.err}>Please enter valid Email</p>)}
 
                     <Input name="password"
                         type="password"
@@ -59,10 +59,10 @@ const LoginPage = () => {
                     />
 
                     {errors.password && errors.password.type === "required" &&
-                        (<p>Please enter your Password</p>)}
+                        (<p className={style.err}>Please enter your Password</p>)}
 
                     {errors.password && errors.password.type === "minLength" &&
-                        (<p>Password must be 6 characters long</p>)}
+                        (<p className={style.err}>Password must be 6 characters long</p>)}
 
                     <Button type="submit" variant="primary">Login</Button>
                 </form>

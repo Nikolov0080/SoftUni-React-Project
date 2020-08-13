@@ -1,14 +1,10 @@
-
-
 .rightDiv {
   float: right;
-  border: red solid 1px;
 }
 
 .leftDiv {
     margin-top:4em;
   float: left;
-  border: red solid 1px;
   width: 40%;
   margin-left: 12em;
   text-align: center;

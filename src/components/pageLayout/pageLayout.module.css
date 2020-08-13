@@ -8,8 +8,7 @@
 }
 
 .inner_container {
-  border: 2px blue solid;
-  height: 60px;
+  height: 40px;
 }
 
 .over_flow_div {
@@ -17,8 +16,7 @@
   width:100%;
   height:auto;
   overflow: auto;
-  border: 2px red solid;
-  margin: 0 auto;
+  margin-bottom: 30px;
   padding-bottom: 1.5rem; 
 }
 

@@ -1,12 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form';
-import { Button } from 'react-bootstrap';
+import { Button, Row, Col } from 'react-bootstrap';
 import dbUtils from '../../../fire/utils/DB-utils';
 import UserContext from '../../../context/context';
-
+import Input from '../input/input'
 import moment from 'moment';
 
-const AddressForm = ({ order ,setIsNotification,setDeletedOrder}) => {
+const AddressForm = ({ order, setIsNotification, setDeletedOrder }) => {
 
     const context = useContext(UserContext);
     const { register, handleSubmit, errors } = useForm();
@@ -54,29 +54,38 @@ const AddressForm = ({ order ,setIsNotification,setDeletedOrder}) => {
     }
 
     return (
-        <div>
+        <div >
             <form onSubmit={handleSubmit(onSubmit)} >
+                <Row >
+                    <Col >
+                        <Input
+                            id="city"
+                            label="City"
+                            name="city"
+                            register={register({ required: true })}
+                        />
+                    </Col>
+                    <Col>
+                        <Input
+                            id="postCode"
+                            label="postCode"
+                            name="postCode"
+                            register={register({ required: true })}
+                        />
+                    </Col>
+                    <Col>
+                        <Input
+                            id="street"
+                            label="Street"
+                            name="street"
+                            register={register({ required: true })}
+                        />
+                    </Col>
 
-                <label id="city">City:</label>
-                <input id="city" name="city"
-                    ref={register({ required: true })} />
-                <br />
-                <label id="street">Street</label>
-                <input id="street" name="street"
-                    ref={register({ required: true })} />
-                <br />
-
-                <label id="postCode">Post code</label>
-                <input id="postCode" name="postCode"
-                    ref={register({ required: true })} />
-                <br />
-                <br />
-
+                </Row>
                 <Button type="submit">Complete</Button>
             </form>
             <Button onClick={deleteOrder} variant="danger">Delete</Button>
-
-
         </div>
     )
 }

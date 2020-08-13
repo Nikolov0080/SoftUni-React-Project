@@ -1,5 +1,6 @@
 .register{
-    border: rgb(71, 203, 255) 4px solid;
+    border-top: darkblue solid 3px;
+    border-left: darkblue solid 3px;
     width:40%;
     margin:0 auto;
     font-size: x-large;
