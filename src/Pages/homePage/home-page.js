@@ -8,6 +8,8 @@ import honey_2 from './images/honey_2.jpg'
 import UserContext from '../../context/context';
 import ButtonLink from '../../components/utils/button-link/button-link';
 import Notification from '../../notifications/notification';
+import LastFive from '../../components/utils/lastFive/lastFive';
+
 const ref = db.database().ref("totalSpend/usd");
 
 const Home = (props) => {
@@ -104,6 +106,9 @@ const Home = (props) => {
           </div>
         </Card.Body>
       </Card>
+
+      <LastFive />
+      
     </PageLayout>
   );
 }

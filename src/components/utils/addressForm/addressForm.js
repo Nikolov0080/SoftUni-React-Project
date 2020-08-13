@@ -11,7 +11,6 @@ const AddressForm = ({ order ,setIsNotification,setDeletedOrder}) => {
     const context = useContext(UserContext);
     const { register, handleSubmit, errors } = useForm();
     const [userData, setUserData] = useState('');
-    
 
     let {
         email,
@@ -20,9 +19,6 @@ const AddressForm = ({ order ,setIsNotification,setDeletedOrder}) => {
         profilePicture,
         orders
     } = context.user;
-
-
-   
 
     useEffect(() => {
         setUserData(Object.assign({}, {

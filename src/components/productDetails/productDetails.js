@@ -19,7 +19,7 @@ const ProductDetails = ({ name, price, user, userId, imageUrl }) => {
                 honeyType: name,
                 quantity: quantity,
                 user: user,
-                createdAt: moment().format('LLL')
+                createdAt: moment().format('LL')
             });
        
     }, [total, name, quantity, user, imageUrl]);
