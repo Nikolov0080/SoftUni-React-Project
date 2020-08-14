@@ -9,6 +9,7 @@ import UserContext from '../../context/context';
 import HomeView from '../../components/utils/homeView/homeView';
 import LastFive from '../../components/utils/lastFive/lastFive';
 import Loading from '../../components/utils/loading/loading';
+import numberWithComas from '../../utils/numbersWithComas';
 
 const ref = db.database().ref("totalSpend/usd");
 
@@ -49,7 +50,7 @@ const Home = (props) => {
 
     <PageLayout title="Welcome to the Beehive">
       <div className="container-lg text-center col" >
-        <h1 className={style.total}>Total spend by clients:  {statistics.usd} USD</h1>
+        <h1 className={style.total}>Total spend by clients:  {numberWithComas(statistics.usd)} USD</h1>
         <p>(Updates after every completed order!)</p>
       </div>
 

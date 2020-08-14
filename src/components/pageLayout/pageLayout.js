@@ -3,22 +3,23 @@ import Navigation from '../main/navigation/index';
 import Footer from '../main/footer/footer'
 import style from './pageLayout.module.css'
 import Title from '../utils/title/title';
-import '../../fire/fire'
 
-const PageLayout =(props)=> {
-   
-        return (
-            <div className={style.page_container}>
-                <Navigation />
-                <Title title={props.title} />
-                <div className={style.inner_container}>
-                    <div className={style.over_flow_div}>
-                        {props.children}
-                    </div>
+
+import '../../fire/fire'
+const PageLayout = (props) => {
+    
+    return (
+        <div className={style.page_container}>
+            <Navigation />
+            <Title title={props.title} />
+            <div className={style.inner_container}>
+                <div className={style.over_flow_div}>
+                    {props.children}
                 </div>
-                <Footer />
             </div>
-        )
+            <Footer />
+        </div>
+    )
 }
 
 export default PageLayout;
