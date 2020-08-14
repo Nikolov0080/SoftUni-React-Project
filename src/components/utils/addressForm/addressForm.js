@@ -6,11 +6,12 @@ import UserContext from '../../../context/context';
 import Input from '../input/input'
 import moment from 'moment';
 import DropdownMenu from '../../utils/input/dropdown';
+import style from './AF.module.css';
 
 const AddressForm = ({ order, setIsNotification, setDeletedOrder }) => {
 
     const context = useContext(UserContext);
-    const { register, handleSubmit, errors } = useForm();
+    const { register, handleSubmit, errors, } = useForm();
     const [userData, setUserData] = useState('');
 
     let {
@@ -30,8 +31,6 @@ const AddressForm = ({ order, setIsNotification, setDeletedOrder }) => {
             orders: orders += 1
         }))
     }, [username, email, profilePicture, orders])
-
-
 
     const onSubmit = (address) => {
 
@@ -54,41 +53,63 @@ const AddressForm = ({ order, setIsNotification, setDeletedOrder }) => {
         return dbUtils.deleteOrders(context.user.id);
     }
 
-  
-
     return (
-        <div >
+        <div className="mt-5" >
             <form onSubmit={handleSubmit(onSubmit)} >
+                {errors.fullName && errors.fullName.type === "required" &&
+                    (<p className={style.err}>Full Name field is required</p>)}
+
                 <Row >
                     <Col >
-                        <Input
-                            id="city"
-                            label="City"
+                        <DropdownMenu
+                            register={register({ required: true })}
+                            id="sect-city"
                             name="city"
-                            register={register({ required: true })}
+                            label="Select city"
                         />
                     </Col>
                     <Col>
                         <Input
-                            id="postCode"
-                            label="postCode"
-                            name="postCode"
+                            type="text"
+                            id="fullName"
+                            label="Full Name"
+                            name="fullName"
                             register={register({ required: true })}
                         />
-                    </Col>
-                    <Col>
-                        <Input
-                            id="street"
-                            label="Street"
-                            name="street"
-                            register={register({ required: true })}
-                        />
-                    </Col>
 
+                        {errors.phone && errors.phone.type === "required" &&
+                            (<p className={style.err}>Phone field is required</p>)}
+
+                        {errors.phone && errors.phone.type === "validate" &&
+                            (<p className={style.err}>Phone must be 10 digits starting with 0</p>)}
+
+                        <Input
+                            type="tel"
+                            id="phone"
+                            label="Phone"
+                            name="phone"
+                            register={register({
+                                required: true, validate: (value) => {
+                                    return !!+value.match(/^0\d{9}$/)
+                                },
+                            })}
+                        />
+                    </Col>
+                    <Col>
+                        {errors.addressLine && errors.addressLine.type === "required" &&
+                            (<p className={style.err}>Address line field is required</p>)}
+
+                        <Input
+                            id="addressLine"
+                            label="Address line"
+                            name="addressLine"
+                            register={register({ required: true })}
+                        />
+                        <Button type="submit" variant="success">Complete</Button>
+                        <Button onClick={deleteOrder} variant="danger">Delete</Button>
+                    </Col>
                 </Row>
-                <Button type="submit">Complete</Button>
             </form>
-            <Button onClick={deleteOrder} variant="danger">Delete</Button>
         </div>
     )
 }

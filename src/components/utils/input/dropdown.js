@@ -1,19 +1,19 @@
 import React from 'react';
 
+const DropdownMenu = ({ register, id, label, name }) => {
 
-const DropdownMenu = (onChange) => {
-
-    const f = (a) => {
-        onChange(a)
-    }
 
     return (
-        <select onChange={(val) => f(val)}>
-            <option value="Grapefruit">Not working yet</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="mango">Mango</option>
-        </select>
+        <div>
+            <label id={id}>{label}</label>
+            <select className='custom-select' name={name} ref={register}>
+                <option value="Sofia">Sofia</option>
+                <option value="Burgas">Burgas</option>
+                <option value="Plovdiv">Plovdiv</option>
+                <option value="Varna">Varna</option>
+            </select>
+        </div>
+
     )
 }
 

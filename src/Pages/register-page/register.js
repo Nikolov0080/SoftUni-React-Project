@@ -25,8 +25,6 @@ const RegisterPage = (props) => {
                 setHaveAcc(true)
             }
         });
-
-
     }
 
     return (
@@ -51,7 +49,6 @@ const RegisterPage = (props) => {
 
                     {errors.username && errors.username.type === "minLength" &&
                         (<p className={style.err}>Username must be 6 characters long</p>)}
-
 
                     <Input
                         name="email"

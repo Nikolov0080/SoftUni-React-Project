@@ -6,6 +6,7 @@ import Loading from '../../utils/loading/loading';
 import style from './cart.module.css'
 import AddressForm from '../../utils/addressForm/addressForm';
 import Notification from '../../../notifications/notification'
+
 const OrdersCart = (props) => {
 
     const context = useContext(UserContext);
@@ -15,8 +16,6 @@ const OrdersCart = (props) => {
     const [id, setId] = useState(null);
     const [isNotification, setIsNotification] = useState(false);
     const [deletedOrder, setDeletedOrder] = useState(false);
-
-
 
     useEffect(() => {
 
@@ -49,7 +48,7 @@ const OrdersCart = (props) => {
             <Loading />
         )
     }
-
+console.log(order)
     if (!order) {
         return (
             <div className="text-center">
