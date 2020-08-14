@@ -35,7 +35,7 @@ const Home = (props) => {
         <p>(Updates after every completed order!)</p>
       </div>
 
-      <Card className="text-center">
+      <Card className="text-center" style={{border:"none"}}>
 
         <Card.Body>
 

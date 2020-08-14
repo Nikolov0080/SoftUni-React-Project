@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect, useRef } from 'react'
 import { useForm } from 'react-hook-form';
 import { Button, Row, Col } from 'react-bootstrap';
 import dbUtils from '../../../fire/utils/DB-utils';
@@ -13,6 +13,7 @@ const AddressForm = ({ order, setIsNotification, setDeletedOrder }) => {
     const context = useContext(UserContext);
     const { register, handleSubmit, errors, } = useForm();
     const [userData, setUserData] = useState('');
+    const ordersCur = useRef(0);
 
     let {
         email,
@@ -21,14 +22,14 @@ const AddressForm = ({ order, setIsNotification, setDeletedOrder }) => {
         profilePicture,
         orders
     } = context.user;
-
+    ordersCur.current = orders
     useEffect(() => {
         setUserData(Object.assign({}, {
             lastUpdate: '',
             email,
             username,
             profilePicture,
-            orders: orders += 1
+            orders: ordersCur.current += 1
         }))
     }, [username, email, profilePicture, orders])
 

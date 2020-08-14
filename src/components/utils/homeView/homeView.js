@@ -29,7 +29,7 @@ const HomeView = ({ statistics, style, status, isLogged }) => {
         {status === "registered"
           ? <Notification type="success" message="Registration successful !" /> : ''}
 
-        <Card>
+        <Card  style={{border:"none"}}>
           <Card.Title className={style.total}>
             <h5>You are logged in !</h5>
             <br></br>
@@ -38,7 +38,7 @@ const HomeView = ({ statistics, style, status, isLogged }) => {
           </Card.Title >
           <ButtonLink to="/products" value="Go to products" variant="success" />
 
-          <Card.Title className={style.total}>
+          <Card.Title className={style.total} style={{marginTop:'1em'}}>
             <br></br>
             <h5>Or complete complete you orders.</h5>
             <br></br>

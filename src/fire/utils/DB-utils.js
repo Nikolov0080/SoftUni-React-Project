@@ -13,9 +13,11 @@ export default {
 
         db.ref('totalSpend/usd').once('value').then((snapshot) => {
             let result = snapshot.val();
+console.log(result)
+//TODO handle if result is null !!!
             return db.ref('totalSpend/usd').update({
                 for: currentOrderValue,
-                usd: +currentOrderValue + +result.usd,
+                usd: +currentOrderValue +  (+result.usd || 0),
                 lastOrderTime: moment().format('LLL'),
                 username: username
             })
@@ -27,7 +29,6 @@ export default {
             db.ref('completedOrders').push(completedOrder);
         })
     }, updateOrder(id, orderData) {
-        console.log(id, orderData);
         db.ref("orders/" + id).set(orderData)
     }
 

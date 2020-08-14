@@ -27,8 +27,6 @@ const OrdersCart = (props) => {
 
     const orderRef = db.ref('orders/' + id);
 
-
-
     useEffect(() => {
         const setData = () => {
             orderRef.on('value', (snap) => {
@@ -38,7 +36,9 @@ const OrdersCart = (props) => {
 
         if (order === null) {
             setData();
-            setLoading(false)
+            setTimeout(()=>{
+                setLoading(false)
+            },350)
         }
 
     }, [orderRef, order]);
@@ -48,7 +48,7 @@ const OrdersCart = (props) => {
             <Loading />
         )
     }
-console.log(order)
+
     if (!order) {
         return (
             <div className="text-center">
