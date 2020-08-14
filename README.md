@@ -89,3 +89,11 @@ profile image | product image       | product image                | product ima
  - **Profile-Cart**  
  Here users can see their profile information on the left side  
  On the righ side is the cart, and products order can be completed  
+ 
+### **`Pages`**  
+ - Home page - "/"  
+ - Login page - "/login"  
+ - Register page - "/register"
+ - Products page - "/products"  
+ - Order page - "/orders/:product_name" (accessable from Products page)  
+ - Profile/Cart page - "/profile"  
