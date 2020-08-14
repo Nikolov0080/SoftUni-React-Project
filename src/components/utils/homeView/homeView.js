@@ -2,6 +2,7 @@ import React from 'react'
 import { Card } from 'react-bootstrap'
 import Notification from '../../../notifications/notification';
 import ButtonLink from '../../../components/utils/button-link/button-link';
+import numberWithComas  from '../../../utils/numbersWithComas';
 
 const HomeView = ({ statistics, style, status, isLogged }) => {
 
@@ -12,7 +13,7 @@ const HomeView = ({ statistics, style, status, isLogged }) => {
           <br />
           <h5>{statistics.lastOrderTime}</h5>
           <br />
-          <h5>For: {statistics.for} USD</h5>
+          <h5>For: {numberWithComas(statistics.for)} USD</h5>
           <h5>By User [{statistics.username}]</h5>
         </Card.Footer>
         <Card.Title>So <ButtonLink to="/login" value="Login" /> and make yours</Card.Title>
@@ -29,7 +30,7 @@ const HomeView = ({ statistics, style, status, isLogged }) => {
         {status === "registered"
           ? <Notification type="success" message="Registration successful !" /> : ''}
 
-        <Card  style={{border:"none"}}>
+        <Card style={{ border: "none" }}>
           <Card.Title className={style.total}>
             <h5>You are logged in !</h5>
             <br></br>
@@ -38,11 +39,11 @@ const HomeView = ({ statistics, style, status, isLogged }) => {
           </Card.Title >
           <ButtonLink to="/products" value="Go to products" variant="success" />
 
-          <Card.Title className={style.total} style={{marginTop:'1em'}}>
+          <Card.Title className={style.total} style={{ marginTop: '1em' }}>
             <br></br>
             <h5>Or complete complete you orders.</h5>
             <br></br>
-            <h5>Last Order {statistics.for} USD</h5>
+            <h5>Last Order {numberWithComas(statistics.for)} USD</h5>
             <h5>By User [{statistics.username}]</h5>
             <ButtonLink to="/profile" value="Go to Cart" variant="success" />
           </Card.Title>

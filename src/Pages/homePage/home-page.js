@@ -8,6 +8,7 @@ import honey_2 from './images/honey_2.jpg'
 import UserContext from '../../context/context';
 import HomeView from '../../components/utils/homeView/homeView';
 import LastFive from '../../components/utils/lastFive/lastFive';
+import Loading from '../../components/utils/loading/loading';
 
 const ref = db.database().ref("totalSpend/usd");
 
@@ -17,15 +18,32 @@ const Home = (props) => {
 
   const context = useContext(UserContext);
   const [statistics, setStatistics] = useState({});
-
+  const [loading, setLoading] = useState(true)
   const isLogged = context.user;
 
   useEffect(() => {
     ref.on('value', (snapshot) => {
       setStatistics(snapshot.val())
+      setLoading(false)
     });
   }, []);
 
+  if (statistics === null) {
+    setStatistics({
+      for: "no orders",
+      usd: "no orders",
+      lastOrderTime: "no orders",
+      username: "no orders"
+    }
+    )
+  }
+  if (loading) {
+    return (
+      <PageLayout>
+        <Loading />
+      </PageLayout>
+    )
+  }
 
   return (
 
@@ -35,7 +53,7 @@ const Home = (props) => {
         <p>(Updates after every completed order!)</p>
       </div>
 
-      <Card className="text-center" style={{border:"none"}}>
+      <Card className="text-center" style={{ border: "none" }}>
 
         <Card.Body>
 
