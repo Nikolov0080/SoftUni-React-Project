@@ -7,6 +7,7 @@ import style from './cart.module.css'
 import AddressForm from '../../utils/addressForm/addressForm';
 import Notification from '../../../notifications/notification'
 
+
 const OrdersCart = (props) => {
 
     const context = useContext(UserContext);
@@ -45,7 +46,7 @@ const OrdersCart = (props) => {
 
     if (loading) {
         return (
-            <Loading />
+                <Loading />
         )
     }
 
@@ -63,7 +64,6 @@ const OrdersCart = (props) => {
     return (
         <div>
             <div>
-                {console.log(isNotification)}
                 {isNotification === true ? <Notification type="success" message="Order is Complete !" /> : ''}
                 {deletedOrder === true ? <Notification type="error" message="Order is Deleted !" /> : ''}
 

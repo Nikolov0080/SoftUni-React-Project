@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import ordersRef from '../../fire/DB-refs/DB-ref';
@@ -9,10 +9,12 @@ const ProductDetails = ({ name, price, user, userId, imageUrl }) => {
 
     const [quantity, setQuantity] = useState(1);
     const [total, setTotal] = useState(price);
-    const [order, setOrder] = useState({});
+    const [order, setOrder] = useState('');
+    const mounted = useRef(false);
 
     useEffect(() => {
-        
+
+        if (!mounted.current) {
             setOrder({
                 imageUrl: imageUrl,
                 totalPrice: total,
@@ -21,7 +23,10 @@ const ProductDetails = ({ name, price, user, userId, imageUrl }) => {
                 user: user,
                 createdAt: moment().format('LL')
             });
-       
+            mounted.current = true;
+        }
+
+
     }, [total, name, quantity, user, imageUrl]);
 
     const saveQuantity = (e) => {
@@ -62,7 +67,7 @@ const ProductDetails = ({ name, price, user, userId, imageUrl }) => {
                     </div>
 
                     <div className="col">
-                        <h5>{total} USD</h5>
+                        <h5>Total: {total} USD</h5>
                     </div>
 
                     <Button type="submit" style={{ margin: "20px" }} >Add to card</Button>

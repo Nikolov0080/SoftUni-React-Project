@@ -22,7 +22,9 @@ const AddressForm = ({ order, setIsNotification, setDeletedOrder }) => {
         profilePicture,
         orders
     } = context.user;
-    ordersCur.current = orders
+
+    ordersCur.current = orders;
+    
     useEffect(() => {
         setUserData(Object.assign({}, {
             lastUpdate: '',

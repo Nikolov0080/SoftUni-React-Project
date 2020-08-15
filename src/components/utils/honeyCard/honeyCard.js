@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import style from './honeyCard.module.css';
-import UserContext from '../../context/context'
+import UserContext from '../../../context/context'
 
 const HoneyCard = ({ imageUrl, name, description, price }) => {
 

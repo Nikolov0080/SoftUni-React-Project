@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import PageLayout from '../../components/pageLayout/pageLayout';
 import style from './profilePage.module.css'
 import { Row } from 'react-bootstrap';
@@ -8,10 +8,17 @@ import UserContext from '../../context/context';
 
 const ProfilePage = (props) => {
     const context = useContext(UserContext).user.username;
-    const [title, setTitle] = useState('')
+    const [title, setTitle] = useState('');
+    const mounted = useRef(false)
 
     useEffect(() => {
-        setTitle(`Welcome ${context}`)
+
+        mounted.current = true
+
+        if (mounted.current){
+            setTitle(`Welcome ${context}`);
+            mounted.current = false;
+        }
     }, [context]);
 
     return (
