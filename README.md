@@ -51,12 +51,12 @@ Deletes current products in cart
 
 ### **`Models`**
 
- **User model** | **Product model** | **Added to cart/Cart model** | **Order model** |
- ------------ | ------------------- | -----------------------------| --------------- | 
-username      | name                | honey type                   | honey type 
-email         | price               | quantity                     | quantity
-password      | description         | order price                  | time created
-profile image | product image       | product image                | product image    
+ **User model** | **Product model** | **Added to cart/Cart model** | **Order model** | **Complete order model**
+ ------------ | ------------------- | -----------------------------| --------------- | ------------------------|
+username      | name                | honey type                   | honey type | city
+email         | price               | quantity                     | quantity | full name 
+password      | description         | order price                  | time created | address line
+profile image | product image       | product image                | product image | phone
  |             |                     | total price                  | user
  
 ### **`Rules`**
@@ -74,6 +74,7 @@ profile image | product image       | product image                | product ima
 ### **`Pages`**  
  - **Home**  
  Not authenticated and authenticated users view  
+ Shows statistics for the last few orders  
  - **Login**  
  Users can login  
  - **Register**  
@@ -88,3 +89,11 @@ profile image | product image       | product image                | product ima
  - **Profile-Cart**  
  Here users can see their profile information on the left side  
  On the righ side is the cart, and products order can be completed  
+ 
+### **`Pages`**  
+ - Home page - "/"  
+ - Login page - "/login"  
+ - Register page - "/register"
+ - Products page - "/products"  
+ - Order page - "/orders/:product_name" (accessable from Products page)  
+ - Profile/Cart page - "/profile"  
