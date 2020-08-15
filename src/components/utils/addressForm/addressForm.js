@@ -7,9 +7,11 @@ import Input from '../input/input'
 import moment from 'moment';
 import DropdownMenu from '../../utils/input/dropdown';
 import style from './AF.module.css';
+import { useHistory } from 'react-router-dom';
 
-const AddressForm = ({ order, setIsNotification, setDeletedOrder }) => {
+const AddressForm = ({ order }) => {
 
+    const history = useHistory();
     const context = useContext(UserContext);
     const { register, handleSubmit, errors, } = useForm();
     const [userData, setUserData] = useState('');
@@ -24,7 +26,7 @@ const AddressForm = ({ order, setIsNotification, setDeletedOrder }) => {
     } = context.user;
 
     ordersCur.current = orders;
-    
+
     useEffect(() => {
         setUserData(Object.assign({}, {
             lastUpdate: '',
@@ -40,20 +42,27 @@ const AddressForm = ({ order, setIsNotification, setDeletedOrder }) => {
         userData.lastUpdate = moment().format('MMMM Do YYYY, h:mm:ss a')
 
         const finalOrder = { address: address, ...order }
-        console.log(finalOrder);
-
         dbUtils.updateOrder(id, finalOrder);
         dbUtils.updateTotalSpend(order.totalPrice, userData.username);
         dbUtils.addToCompletedOrders(id)
         dbUtils.updateUser(userData, id).then(() => {
             dbUtils.deleteOrders(id);
+            history.push({
+                pathname: '/profile',
+                state: 'completed'
+            })
         })
-        setIsNotification(true);
+
     }
 
     const deleteOrder = () => {
-        setDeletedOrder(true);
-        return dbUtils.deleteOrders(context.user.id);
+
+        return dbUtils.deleteOrders(context.user.id).then(()=>{
+            history.push({
+                pathname: '/profile',
+                state: 'deleted'
+            })
+        });
     }
 
     return (

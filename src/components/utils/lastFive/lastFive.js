@@ -32,7 +32,7 @@ const LastFive = () => {
             {lastFive.length === 0 ? <h1>No orders yet...</h1> : ''}
             {lastFive.map((item, i) => {
                 return <Row key={i} className="text-center" style={{ width: "80%", border: "#fff solid 4px", marginLeft: '10%', padding: "5px" }}>
-                    <Col className="text-right"> {i+1} --- <img className={style.honeyPic} alt="honey" src={item.imageUrl} /></Col>
+                    <Col className="text-right"> [{i+1}] --- <img className={style.honeyPic} alt="honey" src={item.imageUrl} /></Col>
                     <Col>{item.honeyType} for {item.totalPrice} USD</Col>
                     <Col>Ordered by: {item.user}</Col>
                     <Col>Shipping to: {item.address.city}</Col>

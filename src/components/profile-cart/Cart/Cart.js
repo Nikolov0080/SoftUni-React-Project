@@ -5,8 +5,6 @@ import ButtonLink from '../../utils/button-link/button-link';
 import Loading from '../../utils/loading/loading';
 import style from './cart.module.css'
 import AddressForm from '../../utils/addressForm/addressForm';
-import Notification from '../../../notifications/notification'
-
 
 const OrdersCart = (props) => {
 
@@ -15,8 +13,7 @@ const OrdersCart = (props) => {
     const [order, setOrder] = useState(null);
     const [loading, setLoading] = useState(true);
     const [id, setId] = useState(null);
-    const [isNotification, setIsNotification] = useState(false);
-    const [deletedOrder, setDeletedOrder] = useState(false);
+
 
     useEffect(() => {
 
@@ -37,16 +34,16 @@ const OrdersCart = (props) => {
 
         if (order === null) {
             setData();
-            setTimeout(()=>{
+            setTimeout(() => {
                 setLoading(false)
-            },350)
+            }, 350)
         }
 
     }, [orderRef, order]);
 
     if (loading) {
         return (
-                <Loading />
+            <Loading />
         )
     }
 
@@ -64,8 +61,6 @@ const OrdersCart = (props) => {
     return (
         <div>
             <div>
-                {isNotification === true ? <Notification type="success" message="Order is Complete !" /> : ''}
-                {deletedOrder === true ? <Notification type="error" message="Order is Deleted !" /> : ''}
 
                 <div className="container">
                     <div className="row align-items-center rounded border mt-4">
@@ -93,10 +88,7 @@ const OrdersCart = (props) => {
             </div>
             <div className=" text-center">
 
-                <AddressForm order={order}
-                    setIsNotification={setIsNotification}
-                    setDeletedOrder={setDeletedOrder}
-                />
+                <AddressForm order={order} />
 
             </div>
         </div>
