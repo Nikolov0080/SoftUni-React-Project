@@ -10,7 +10,7 @@ const ProfileCard = () => {
     const [loading, setLoading] = useState(true);
     const history = useHistory();
     useEffect(() => {
-        if (context.user) { setLoading(false) }
+        if (context.user) { setTimeout(() => { setLoading(false) }, 200) }
     }, [context])
 
     const signOutUser = () => {
@@ -20,7 +20,7 @@ const ProfileCard = () => {
 
     if (loading) {
         return (
-         <Loading />
+            <Loading />
         )
     }
 
