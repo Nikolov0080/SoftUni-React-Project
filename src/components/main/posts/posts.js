@@ -42,7 +42,6 @@ const Posts = ({ props }) => {
     const search = (event) => {
         inputText.current = event.target.value.toLowerCase();
 
-        console.log(inputText.current)
         searchResult.current = forFilter.current.reduce((acc, curr) => {
 
             if (curr.name.toLowerCase().includes(inputText.current) || // by name

@@ -15,7 +15,6 @@ export default {
             let result = snapshot.val();
 
             if (result === null) {
-                console.log(result)
                 return db.ref('totalSpend/usd').set({
                     for: currentOrderValue,
                     usd: currentOrderValue,
