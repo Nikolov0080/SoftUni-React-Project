@@ -62,7 +62,7 @@ const RegisterPage = (props) => {
                     {errors.email && errors.email.type === "required" &&
                         (<p className={style.err}>Please enter Email</p>)}
 
-                    {haveAcc === true ? <p>The email address is already in use by another account.</p> : ''}
+                    {haveAcc === true ? <p className={style.err}>The email address is already in use by another account.</p> : ''}
 
                     {errors.email && errors.email.type === "pattern" &&
                         (<p className={style.err}>Please enter valid Email</p>)}

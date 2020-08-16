@@ -20,16 +20,13 @@ const OrderPage = () => {
 
     return (
         <PageLayout title="Place Your order">
-            <div className="container-xxl-4 " style={{ border: "blue solid 4px", overflow: "hidden" }}>
+            <div className="container-sm " style={{background:"#F2F4F4", overflow: "hidden" }}>
                 <div className="row">
-                    <div className="col text-center" style={{ border: "green solid 4px" }}>
-
+                    <div className="col text-center" >
                         <ProductDetails name={context.currentProduct.name} price={context.currentProduct.price} user={context.user.username} userId={context.user.id} imageUrl={context.currentProduct.imageUrl} />
-
                     </div>
                     <div className="col text-center" >
-                        <h2>Product image</h2>
-                        <div className="text-center" style={{ border: "black solid 2px" }}>
+                        <div className="text-center">
                             <img className="rounded" alt="honey " src={context.currentProduct.imageUrl} style={{ width: "250", height: "323px" }} />
                         </div>
                     </div>

@@ -23,8 +23,6 @@ export default {
                 })
             }
 
-
-
             return db.ref('totalSpend/usd').update({
                 for: currentOrderValue,
                 usd: +currentOrderValue + (+result.usd || 0),

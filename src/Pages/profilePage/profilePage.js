@@ -36,7 +36,7 @@ const ProfilePage = (props) => {
                 <Row>
 
                     {/* User data */}
-                    <div className="w-50 mt-4 " style={{ "border": "solid 3px #eee" }} >
+                    <div className="w-50 mt-4 "  >
                         <h1 className={style.header}>Profile info</h1>
 
                         <ProfileCard />
@@ -44,7 +44,7 @@ const ProfilePage = (props) => {
                     </div>
 
                     {/* Orders Data */}
-                    <div className="w-50 mt-4" style={{ "border": "solid 3px  #000", "float": "right", maxHeight: "560px", overflow: "auto" }} >
+                    <div className="w-50 mt-4" style={{  "float": "right", maxHeight: "560px", overflow: "auto" }} >
 
                         <h1 className={style.header}>Cart</h1>
 
